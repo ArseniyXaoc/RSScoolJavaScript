@@ -1,0 +1,111 @@
+/* roboto-regular - latin */
+
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+    clip: rect(0 0 0 0)
+}
+
+body,
+li,
+ul,
+div,
+a {
+    font-family: 'Roboto', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style-type: none;
+}
+
+.wrapper {
+    max-width: 1062px;
+    margin: 0 auto;
+}
+
+.container__top {
+    min-height: 744px;
+    min-width: 1600px;
+    background-image: url(/assets/bg-image.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #000;
+}
+
+/*HEader*/
+.navigation {
+    margin: 0px auto;
+    padding-top: 25px;
+    max-width: 596px;
+    display: flex;
+}
+
+
+.navigation--cont1 {
+    display: flex;
+    min-width: 175px;
+    justify-content: space-between;
+    margin-right: 101px;
+    padding-top: 14px;
+
+}
+
+.navigation__elem {
+    color: white;
+    text-decoration-line: none;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 140%;
+}
+
+.navigation__elem:hover {
+    font-weight: 500;
+    opacity: 0.7;
+    color: violet;
+    transition: color 500ms;
+}
+
+
+.navigation--logo {
+    margin-right: 101px;
+    line-height: 0px;
+
+}
+
+.navigation--cont2 {
+    display: flex;
+    min-width: 161px;
+    justify-content: space-between;
+    padding-top: 14px;
+}
+
+.navigation--select {
+    font-weight: 500;
+    border-bottom: 1px white solid;
+    align-self: flex-start;
+}
+
+
+/*Блок Your Life*/
+
+.slogan {
+    margin-top: 160px;
+    letter-spacing: 4.5px;
+    text-transform: uppercase;
+    color: white;
+    font-weight: bold;
+    font-size: 64px;
+    line-height: 75px;
+    text-align: center;
+    padding-left: 4px;
+}

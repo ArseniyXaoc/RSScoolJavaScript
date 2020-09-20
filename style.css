@@ -550,6 +550,10 @@ li {
 
 }
 
+.button:hover {
+    background: #009CC2;
+}
+
 .button--youlife {
     margin-bottom: 183px;
 }
@@ -689,6 +693,12 @@ li {
 
 }
 
+.svg_1:hover {
+
+    filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
+
+}
+
 .num__elem {
     display: inline-block;
     font-size: 19px;
@@ -756,6 +766,10 @@ li {
     width: 66px;
     height: 46px;
     background-color: #00AFDB;
+}
+
+.btn:hover {
+    background-color: #009CC2;
 }
 
 .Ok {
@@ -867,7 +881,14 @@ li {
     font-weight: normal;
     font-size: 14px;
     line-height: 140%;
+
 }
+
+.footer__menu li a:hover {
+    color: #818181;
+}
+
+.footer__menu:hover {}
 
 .footer__text {
     color: #818181;

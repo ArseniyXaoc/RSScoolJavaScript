@@ -440,7 +440,7 @@ li {
 .container__top {
     min-height: 744px;
     min-width: 1600px;
-    background-image: url(/assets/bg-image.jpg);
+    background-image: url(assets/bg-image.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-color: #000;
@@ -718,7 +718,7 @@ li {
     margin: 0 auto;
     min-width: 1600px;
     height: 523px;
-    background-image: url(/assets/pexels-christina-morillo.png);
+    background-image: url(assets/pexels-christina-morillo.png);
     background-repeat: no-repeat;
     background-position: center;
 }

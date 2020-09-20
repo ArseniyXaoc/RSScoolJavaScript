@@ -83,6 +83,7 @@ pre {
 
 a {
     background-color: transparent;
+    color: white;
 }
 
 /**
@@ -419,6 +420,7 @@ p {
 
     margin: 0;
     padding: 0;
+    text-decoration-line: none;
 }
 
 
@@ -576,7 +578,7 @@ li {
 .Rappresent__col1 {
     width: 532px;
     margin-top: 270px;
-    margin-left: 268px;
+    margin-left: 269px;
 }
 
 .Rappresent__maintext {
@@ -599,6 +601,7 @@ li {
     justify-content: space-between;
 
     color: #4E4E4E;
+    margin-bottom: 30px;
 }
 
 .Rappresent__photo {
@@ -693,9 +696,189 @@ li {
     color: #373737;
 }
 
-.num__elem:nth-child(2){
+.num__elem:nth-child(2) {
     padding: 0px 0px 0px 6px;
 }
-.num__elem:nth-child(4){
+
+.num__elem:nth-child(4) {
     padding: 1px 5px 0px 0px;
+}
+
+.Rappresent__photo--mod {
+    margin-left: 146px;
+    padding-top: 117px;
+}
+
+.Rappresent__col1--mod {
+    margin-top: 291px;
+    margin-left: 154px;
+}
+
+.signup__wrap {
+    margin: 0 auto;
+    min-width: 1600px;
+    height: 523px;
+    background-image: url(/assets/pexels-christina-morillo.png);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.signup__text {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: white;
+    text-align: center;
+    padding-top: 200px;
+
+}
+
+.email__text {
+    text-align: center;
+}
+
+.email {
+    margin: 0 auto;
+    width: 340px;
+    height: 46px;
+    border-radius: 0px;
+    margin-top: 30px;
+}
+
+.btn {
+    vertical-align: bottom;
+    display: inline-block;
+    margin-top: 30px;
+    width: 66px;
+    height: 46px;
+    background-color: #00AFDB;
+}
+
+.Ok {
+    margin-top: 17px;
+}
+
+.download {
+    background-color: #fff;
+}
+
+.download__wrap {
+    margin: 0 auto;
+    max-width: 483px;
+    text-align: center;
+    padding-top: 100px;
+
+}
+
+.download__main {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: center;
+
+    color: #373737;
+}
+
+.download__text {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 140%;
+    color: #4E4E4E;
+    padding-top: 2px;
+    margin-bottom: 28px;
+}
+
+.dounload_btn {
+    display: flex;
+    margin: 0 auto;
+    width: 406px;
+    height: 50px;
+    justify-content: space-between;
+    margin-bottom: 180px;
+}
+
+.btn_d {
+    display: flex;
+}
+
+.icon1 {
+    padding: 15px 22px;
+    background-color: #009CC2;
+}
+
+.icon2 {
+    padding: 13px 20px;
+    background-color: #009CC2;
+}
+
+.btn1 {
+    background-color: #00AFDB;
+    width: 128px;
+    padding-top: 20px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.btn2 {
+    background-color: #00AFDB;
+    width: 128px;
+    padding-top: 20px;
+    font-weight: bold;
+    font-size: 14px;
+
+}
+
+.btn1:hover {
+    background-color: #009CC2;
+}
+
+.btn2:hover {
+    background-color: #009CC2;
+}
+
+.footer {
+    background-color: #000;
+    padding-bottom: 79px;
+}
+
+.footer_wrap {
+    margin: 0 auto;
+    display: flex;
+    background-color: #000;
+    justify-content: space-between;
+    width: 1280px;
+
+}
+
+.footer__menu {
+    display: flex;
+    padding-top: 75px;
+    width: 236px;
+    justify-content: space-between;
+
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 140%;
+}
+
+.footer__text {
+    color: #818181;
+    padding-top: 73px;
+
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 140%;
+}
+
+.footer__logo {
+    padding-top: 60px;
+    padding-right: 64px;
 }

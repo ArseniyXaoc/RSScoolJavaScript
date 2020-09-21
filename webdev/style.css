@@ -618,7 +618,13 @@ li {
 }
 
 .sec3 {
+    min-width: 1600px;
     background-color: #F5F6F7;
+}
+
+.sec4 {
+    min-width: 1600px;
+    background-color: #fff;
 }
 
 .OurCommunity {

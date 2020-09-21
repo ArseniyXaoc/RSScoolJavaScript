@@ -561,7 +561,7 @@ li {
 .social {
     max-width: 170px;
     margin: 0 auto;
-    margin-bottom: 58px;
+    
 
 }
 
@@ -581,6 +581,7 @@ li {
 
 .Rappresent__col1 {
     width: 532px;
+    min-width: 532px;
     margin-top: 270px;
     margin-left: 269px;
 }
@@ -632,6 +633,7 @@ li {
 .OurCommunity__user {
     margin-left: 269px;
     max-width: 298px;
+    min-width: 298px;
     padding-top: 155px;
     text-align: center;
 
@@ -669,7 +671,7 @@ li {
 .slider {}
 
 .slider__item {
-    min-width: 407px;
+    min-width: 437px;
     min-height: 244px;
     padding-right: 30px;
 }
@@ -778,6 +780,7 @@ li {
 
 .download {
     background-color: #fff;
+    min-width: 1600px;
 }
 
 .download__wrap {
@@ -806,15 +809,15 @@ li {
     font-size: 14px;
     line-height: 140%;
     color: #4E4E4E;
-    padding-top: 2px;
-    margin-bottom: 28px;
+    padding-top: 1px;
+    margin-bottom: 31px;
 }
 
 .dounload_btn {
     display: flex;
     margin: 0 auto;
-    width: 406px;
-    height: 50px;
+    width: 402px;
+    height: 46px;
     justify-content: space-between;
     margin-bottom: 180px;
 }
@@ -835,16 +838,16 @@ li {
 
 .btn1 {
     background-color: #00AFDB;
-    width: 128px;
-    padding-top: 20px;
+    width: 125px;
+    padding-top: 16px;
     font-weight: bold;
     font-size: 14px;
 }
 
 .btn2 {
     background-color: #00AFDB;
-    width: 128px;
-    padding-top: 20px;
+    width: 125px;
+    padding-top: 16px;
     font-weight: bold;
     font-size: 14px;
 
@@ -861,6 +864,7 @@ li {
 .footer {
     background-color: #000;
     padding-bottom: 79px;
+    min-width: 1600px;
 }
 
 .footer_wrap {
@@ -874,7 +878,7 @@ li {
 
 .footer__menu {
     display: flex;
-    padding-top: 75px;
+    padding-top: 74px;
     width: 236px;
     justify-content: space-between;
 
@@ -901,5 +905,5 @@ li {
 
 .footer__logo {
     padding-top: 60px;
-    padding-right: 64px;
+    padding-right: 65px;
 }

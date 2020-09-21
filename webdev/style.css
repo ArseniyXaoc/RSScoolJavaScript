@@ -892,7 +892,19 @@ li {
     color: #818181;
 }
 
-.footer__menu:hover {}
+.footer__menu li {
+    position: relative;
+}
+.footer__menu li:nth-child(-n+2)::after {
+    content: "|";
+    position: absolute;
+    left: 64px;
+    height: 5px;
+    font-size: 9px;
+    color: white;
+}
+
+
 
 .footer__text {
     color: #818181;

@@ -39,7 +39,7 @@ class Calculator {
     }
 
     choseOperation(operation) { // Текущая операция
-        if (this.currentOperand === '' || this.currentOperand === '.' || this.currentOperand === '0') return;
+        if (this.currentOperand === '' || this.currentOperand === '.' ) return;
         if (this.currentOperand[this.currentOperand.length - 1] === '.') this.currentOperand += 0;
         if (this.previosOperand !== '') {
             this.compute();
@@ -103,7 +103,7 @@ class Calculator {
 
 
         this.currentOperandTextElement.innerText = this.getDisplayNumber(this.currentOperand);
-        this.previosOperandTextElement.innerText = this.previosOperand;
+        this.previosOperandTextElement.innerText = this.getDisplayNumber(this.previosOperand);
         if (this.operation != undefined) this.previosOperandTextElement.innerText += this.operation;
 
 

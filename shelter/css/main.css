@@ -40,25 +40,29 @@ a {
           box-sizing: content-box;
 }
 
+:root {
+  font-size: 10px;
+}
+
 h2 {
   font-family: Georgia, "Times New Roman", Times, serif;
   font-weight: 400;
-  font-size: 2.75rem;
+  font-size: 4.4rem;
   line-height: 130%;
 }
 
 h3 {
   font-family: Georgia, "Times New Roman", Times, serif;
   font-weight: 400;
-  font-size: 2.1875rem;
-  line-height: 128%;
+  font-size: 3.5rem;
+  line-height: 130%;
   letter-spacing: 0.06em;
 }
 
 h4 {
   font-family: Georgia, "Times New Roman", Times, serif;
   font-weight: 400;
-  font-size: 1.25rem;
+  font-size: 2rem;
   line-height: 115%;
   letter-spacing: 0.06em;
 }
@@ -66,26 +70,42 @@ h4 {
 h5 {
   font-family: Georgia, "Times New Roman", Times, serif;
   font-weight: 400;
-  font-size: 0.9375rem;
+  font-size: 1.5rem;
   line-height: 110%;
   letter-spacing: 0.1em;
 }
 
-.top__wrapper {
-  width: 1920px;
+.wrapper {
   margin: 0 auto;
+  max-width: 1280px;
+  padding: 0px 40px;
+}
+
+.button {
+  padding: 16px 46px;
+  display: inline-block;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-weight: 400;
+  color: #292929;
+  background-color: #f1cdb3;
+  font-size: 1.7rem;
+  letter-spacing: 0.096rem;
+  border-radius: 10rem;
+  border: none;
+}
+
+.top__wrapper {
   background: url(/assets/image/start-screen-background.png), radial-gradient(100% 215.42% at 0% 0%, #5b483a 0%, #262425 100%), #211f20;
 }
 
 .header_container {
-  margin-bottom: 60px;
+  margin-bottom: 6rem;
 }
 
 .header_wrapper {
-  width: 1280px;
-  margin: 0 auto;
-  padding: 0px 40px;
-  padding-top: 3.17708%;
+  padding-top: 6rem;
 }
 
 .header {
@@ -116,7 +136,7 @@ h5 {
 .logo__title {
   font-family: Georgia, "Times New Roman", Times, serif;
   font-weight: 400;
-  font-size: 2rem;
+  font-size: 3.2rem;
   line-height: 110%;
   letter-spacing: 0.06em;
   color: #f1cdb3;
@@ -125,10 +145,10 @@ h5 {
 .logo__subtitle {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 400;
-  font-size: 0.8125rem;
+  font-size: 1.3rem;
   letter-spacing: 0.1em;
-  padding-left: 0.25rem;
-  padding-top: 0.625rem;
+  padding-left: 0.4rem;
+  padding-top: 1rem;
   color: #ffffff;
 }
 
@@ -144,7 +164,7 @@ h5 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding-bottom: 0.1875rem;
+  padding-bottom: 0.3rem;
 }
 
 .navigation a {
@@ -155,7 +175,7 @@ h5 {
 .navigation__link {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 400;
-  font-size: 0.9375rem;
+  font-size: 1.5rem;
   line-height: 160%;
   color: white;
 }
@@ -166,15 +186,11 @@ h5 {
   display: flex;
   color: #fafafa;
   border-bottom: 4px solid #f1cdb3;
-  padding-top: 0.0625rem;
+  padding-top: 0.1rem;
 }
 
 .main__wrapper {
-  width: 1280px;
-  height: 728px;
-  margin: 0 auto;
-  padding: 0px 40px;
-  margin-bottom: 4.166667%;
+  margin-bottom: 8rem;
 }
 
 .main__container {
@@ -192,11 +208,9 @@ h5 {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  padding-bottom: 7.2%;
-  margin-right: 42px;
+  padding-top: 16.4rem;
+  padding-bottom: 8rem;
+  margin-right: 4.2rem;
 }
 
 .content__title {
@@ -209,24 +223,9 @@ h5 {
   padding-bottom: 8.9%;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 400;
-  font-size: 0.9375rem;
+  font-size: 1.5rem;
   line-height: 160%;
   color: #cdcdcd;
-}
-
-.button {
-  padding: 15px 43px;
-  display: inline-block;
-  width: 209px;
-  height: 52px;
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-weight: 400;
-  color: #292929;
-  background-color: #f1cdb3;
-  font-size: 17px;
-  letter-spacing: 0.06rem;
-  border-radius: 100px;
-  border: none;
 }
 
 .puppy {
@@ -235,28 +234,23 @@ h5 {
 
 .puppy img {
   width: 100%;
+  display: block;
 }
 
 .about__wrapper {
-  margin: 0 auto;
-  width: 1280px;
-  padding: 0px 40px;
-  margin-bottom: 5.209%;
+  padding-bottom: 10rem;
 }
 
 .about__container {
+  width: 85rem;
+  margin: 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 850px;
-  margin: 0 auto;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
 }
 
-.about__pets {
-  width: 300px;
+.about__pets img {
+  display: block;
 }
 
 .about__text {
@@ -267,22 +261,99 @@ h5 {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 430px;
-  -ms-flex-line-pack: center;
-      align-content: center;
+  max-width: 43rem;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-left: auto;
+  padding: 1.4rem 0;
 }
 
-.about__heading {
-  color: #545454;
-  width: 380px;
-  padding-top: 15px;
+.about__text .about__heading {
+  max-width: 31rem;
 }
 
-.about__title {
+.about__text .about__title {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 400;
-  font-size: 0.9375rem;
+  font-size: 1.5rem;
   line-height: 160%;
-  padding-top: 25px;
+}
+
+.pets {
+  text-align: center;
+  padding-top: 8.2rem;
+}
+
+.pets__heading {
+  margin-bottom: -0.2rem;
+}
+
+.card {
+  width: 99rem;
+  height: 55.5rem;
+  padding: 6rem 0;
+}
+
+.arrow {
+  padding-top: 10rem;
+  width: 52px;
+  height: 52px;
+  border: 2px solid #f1cdb3;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 100px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  display: block;
+  padding: 16px 15px;
+  background-color: #fff;
+}
+
+.arrow_reverse {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.pets__card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.card__ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.card__img {
+  padding: 3rem 3.5rem;
+}
+
+.card__text {
+  color: #4c4c4c;
+  font-family: Georgia;
+  font-size: 2rem;
+  line-height: 100%;
+  letter-spacing: 0.06em;
+  text-align: center;
+}
+
+.card__button {
+  margin-top: 3.1rem;
+  padding: 14px 43px;
+  border: 2px solid #F1CDB3;
+  background-color: #fff;
 }
 /*# sourceMappingURL=main.css.map */

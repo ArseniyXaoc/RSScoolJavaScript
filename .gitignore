@@ -104,4 +104,5 @@ dist
 .tern-port
 
 shelter/pages/main/*.scss
+*scss
 

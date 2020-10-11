@@ -156,7 +156,6 @@ h5 {
 }
 //Header---------------------------------------------------
 
-
 .header_wrapper {
     margin-bottom: 6rem;
     position: sticky;
@@ -178,6 +177,7 @@ h5 {
 }
 
 .logo__title {
+    margin: 0;
     @include logo_title;
     color: $color-dark-l;
 }
@@ -220,15 +220,14 @@ h5 {
     text-align: center;
     padding-top: 5.1rem;
     margin-bottom: 10rem;
-    
+
     &__heading {
         margin-bottom: 5.9rem;
     }
-    &__card{
+    &__card {
         margin-bottom: 9rem;
     }
-    &__switch{
-        
+    &__switch {
         display: flex;
         justify-content: center;
         margin: 0 auto;
@@ -236,9 +235,13 @@ h5 {
 }
 
 .card {
-    li:hover {
+    &__item {
+        border-radius: 3%;
+    }
+    &__item:hover {
+        border-radius: 3%;
         box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.14);
-    }           
+    }
     &__ul {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -247,6 +250,7 @@ h5 {
         grid-row-gap: 6rem;
     }
     &__img {
+        border-radius: 3%;
         padding-bottom: 2.9rem;
     }
     &__text {
@@ -269,14 +273,15 @@ h5 {
 }
 
 .arrow {
-    &:nth-last-child(1){
+    &:nth-last-child(1) {
         margin-right: 0rem;
     }
-    &__unactiv{
+    &_unactiv {
         color: $color-dark-s;
         border-color: $color-dark-s;
+        
     }
-    &__current{
+    &__current {
         border-color: $color-primary;
         background-color: $color-primary;
     }
@@ -291,11 +296,11 @@ h5 {
     display: block;
     padding: 13px 8px;
     background-color: #fff;
-    &:hover {
+    &_active:hover {
+        cursor: pointer;
         border: 2px solid $color-primary-light;
         background-color: $color-primary-light;
     }
-    
 }
 
 .arrow_reverse {
@@ -309,3 +314,115 @@ h5 {
 }
 
 //Pets end---------------------------------------------------
+// Footer----------------------------------
+.footer {
+    padding-top: 4rem;
+    display: flex;
+    justify-content: space-between;
+    h3 {
+        color: #fff;
+    }
+
+    &__contacts {
+        padding-top: 1.7rem;
+        max-width: 27.9rem;
+        a {
+            color: $color-primary;
+        }
+    }
+    &__email {
+        padding-top: 4.4rem;
+        padding-left: 6rem;
+
+        position: relative;
+    }
+
+    &__email::before {
+        content: "";
+        background-image: url(/assets/icons/mail.svg);
+        width: 4rem;
+        height: 3.3rem;
+        background-size: 4rem 4rem;
+        position: absolute;
+        background-repeat: no-repeat;
+        top: 3.5rem;
+        left: 0px;
+    }
+
+    &__tel {
+        margin-top: 4.9rem;
+        padding-left: 6rem;
+        position: relative;
+        a {
+            color: $color-primary;
+        }
+        &::before {
+            content: "";
+            background-image: url(/assets/icons/telephone.svg);
+            width: 4rem;
+            height: 3.7rem;
+            background-size: 4rem 4rem;
+            position: absolute;
+            background-repeat: no-repeat;
+            top: -0.9rem;
+            left: 0rem;
+        }
+    }
+
+    &__addres1 {
+        padding-left: 4.2rem;
+        padding-top: 3.2rem;
+        position: relative;
+        a {
+            color: $color-primary;
+        }
+        &::before {
+            content: "";
+            background-image: url(/assets/icons/pin.svg);
+            width: 3.2rem;
+            height: 3.2rem;
+            background-size: 3.2rem 3.2rem;
+            position: absolute;
+            background-repeat: no-repeat;
+            top: 3.9rem;
+            left: -0.5rem;
+        }
+    }
+
+    &__addres2 {
+        padding-left: 4.2rem;
+        margin-top: 3.8rem;
+        position: relative;
+
+        &::before {
+            content: "";
+            background-image: url(/assets/icons/pin.svg);
+            width: 3.2rem;
+            height: 3.2rem;
+            background-size: 3.2rem 3.2rem;
+            position: absolute;
+            background-repeat: no-repeat;
+            top: -0.5rem;
+            left: -0.5rem;
+        }
+    }
+
+    &__map {
+        padding-top: 1.7rem;
+        max-width: 30.2rem;
+        a {
+            color: $color-primary;
+        }
+    }
+    &__image {
+        img {
+            display: block;
+        }
+    }
+}
+
+.footer_bg {
+    background: url(/assets/image/footer-background.png),
+        radial-gradient(100% 215.42% at 0% 0%, #5b483a 0%, #262425 100%), #211f20;
+}
+// Footer end----------------------------------------------------------------------

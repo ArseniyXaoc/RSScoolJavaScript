@@ -16,11 +16,11 @@
         <header class="header_wrapper wrapper">
             <header class="header">
                 <div class="logo_container">
-                    <div class="logo__title">Cozy House</div>
+                    <h1 class="logo__title">Cozy House</h1>
                     <div class="logo__subtitle">Shelter for pets in Boston</div>
                 </div>
                 <ul class="navigation">
-                    <li class="navigation__link"><a href="#">About the shelter</a></li>
+                    <li class="navigation__link"><a href="/pages/main/main.html">About the shelter</a></li>
                     <li class="navigation__link"><a href="#">Our pets</a></li>
                     <li class="navigation__link"><a href="#">Help the shelter</a></li>
                     <li class="navigation__link"><a href="#">Contacts</a></li>
@@ -78,18 +78,57 @@
                     </ul>
                 </div>
                 <div class="pets__switch">
-                    <button class="arrow arrow__unactiv"><h4><b>&lt;&lt;</b></h4></button>
-                    <button class="arrow arrow__unactiv"><h4><b>&lt;</b></h4></button>
-                    <button class="arrow arrow__current"><h4>1</h4></button>
-                    <button class="arrow"><h4><b>></b></h4></button>
-                    <button class="arrow"><h4><b>>></b></h4></button>
+                    <button disabled class="arrow arrow_unactiv">
+                        <h4><b>&lt;&lt;</b></h4>
+                    </button>
+                    <button disabled class="arrow arrow_unactiv">
+                        <h4><b>&lt;</b></h4>
+                    </button>
+                    <button class="arrow arrow_active">
+                        <h4>1</h4>
+                    </button>
+                    <button class="arrow arrow_active">
+                        <h4><b>></b></h4>
+                    </button>
+                    <button class="arrow arrow_active">
+                        <h4><b>>></b></h4>
+                    </button>
                 </div>
-                
+
             </section>
         </div>
-    </div>
 
-    
+
+        <div class="footer_bg">
+            <footer class="footer wrapper">
+
+                <div class="footer__contacts">
+                    <h3>For questions and suggestions</h3>
+                    <a href="mailto:email@shelter.com">
+                        <h4 class="footer__email">email@shelter.com</h4>
+                    </a>
+                    <a href="tel:+13 674 567 75 54">
+                        <h4 class="footer__tel">+13 674 567 75 54</h4>
+                    </a>
+                </div>
+                <div class="footer__map">
+                    <h3>We are waiting for your visit</h3>
+                    <a href="" target="_blank">
+                        <h4 class="footer__addres1">
+                            <p>1 Central Street, Boston </p>
+                            <p>(entrance from the store)</p>
+                        </h4>
+                    </a>
+                    <a href="" target="_blank">
+                        <h4 class="footer__addres2">18 South Park, London </h4>
+                    </a>
+                </div>
+                <div class="footer__image"><img src="/assets/image/footer-puppy.png" alt=""></div>
+
+            </footer>
+        </div>
+        </div>
+
 
 
 </body>

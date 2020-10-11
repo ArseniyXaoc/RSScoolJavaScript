@@ -18,9 +18,12 @@
                         <div class="logo__title">Cozy House</div>
                         <div class="logo__subtitle">Shelter for pets in Boston</div>
                     </div>
+                    <div class="header__burger">
+                        <img src="/assets/icons/Burger.png" alt="">
+                    </div>
                     <ul class="navigation">
                         <li class="navigation__link"><a href="#">About the shelter</a></li>
-                        <li class="navigation__link"><a href="#">Our pets</a></li>
+                        <li class="navigation__link"><a href="/pages/pets/pets.html">Our pets</a></li>
                         <li class="navigation__link"><a href="#">Help the shelter</a></li>
                         <li class="navigation__link"><a href="#">Contacts</a></li>
                     </ul>
@@ -53,9 +56,7 @@
                 <div class="about__pets"><img src="/assets/image/about-pets.png" alt=""></div>
                 <div class="about__text">
                     <h3 class="about__heading">About the shelter “Cozy House”</h3>
-                    <p class="about__title">Currently we have 121 dogs and 342 cats on our hands and statistics show
-                        that only 20% of them will find a family. The others will continue to live with us and will be
-                        waiting for a lucky chance to become dearly loved.</p>
+                    <p class="about__title">Currently we have 121 dogs and 342 cats on our hands and statistics show that only 20% of them will find a family. The others will continue to live with us and will be waiting for a lucky chance to become dearly loved.</p>
                     <p class="about__title">We feed our wards with the best food and make sure that they do not get
                         sick, feel comfortable (including psychologically) and well. We are supported by 87 volunteers
                         and 28 employees of various skill levels. About 12% of the animals are taken by the shelter
@@ -73,7 +74,7 @@
             <h3 class="pets__heading"><span>Our friends who</span><br>
                 <span>are looking for a house</span></h3>
             <div class="pets__card">
-                <button class="arrow"><img src="/assets/icons/arrow.svg" alt=""></button>
+                <button class="arrow about_hide_320 "><img src="/assets/icons/arrow.svg" alt=""></button>
                 <div class="card">
                     <ul class="card__ul">
                         <li class="card__item">
@@ -81,19 +82,24 @@
                             <p class="card__text">Katrine</p>
                             <a href="#" class="card__button button">Learn more</a>
                         </li>
-                        <li class="card__item">
+                        <li class="card__item card__item_hide_320">
                             <img class="card__img" src="/assets/image/pets-jennifer.png" alt="dog">
                             <p class="card__text">Jennifer</p>
                             <a href="#" class="card__button button">Learn more</a>
                         </li>
-                        <li class="card__item">
+                        <li class="card__item card__item_hide card__item_hide_320">
                             <img class="card__img" src="/assets/image/pets-woody.png" alt="dog">
                             <p class="card__text">Woody</p>
                             <a href="#" class="card__button button">Learn more</a>
                         </li>
                     </ul>
                 </div>
-                <button class="arrow arrow_reverse"><img src="/assets/icons/arrow.svg" alt=""></button>
+                <button class="arrow arrow_reverse about_hide_320"><img src="/assets/icons/arrow.svg" alt=""></button>
+               
+            </div>
+            <div class="arrow_320 about_show_320">
+                <button class="arrow about_show_320"><img src="/assets/icons/arrow.svg" alt=""></button>
+                <button class="arrow arrow_reverse about_show_320"><img src="/assets/icons/arrow.svg" alt=""></button>
             </div>
             <a href="#" class="pets_button button">Get to know the rest</a>
         </section>
@@ -135,9 +141,30 @@
                     </object>
                     <h4 class="helpcard__text">Shampoos</h4>
                 </div>
+                <div class="helpcard__elem helpcard__elem_show">
+                    <object width="60rem" data="/assets/icons/help/vitamins.svg" type="image/svg+xml">
+                    </object>
+                    <h4 class="helpcard__text">Vitamins</h4>
+                </div>
+                <div class="helpcard__elem helpcard__elem_show">
+                    <object width="60rem" data="/assets/icons/help/medicines.svg" type="image/svg+xml">
+                    </object>
+                    <h4 class="helpcard__text">Medicines</h4>
+                </div>
+                <div class="helpcard__elem helpcard__elem_show">
+                    <object width="60rem" data="/assets/icons/help/collars.svg" type="image/svg+xml">
+                    </object>
+                    <h4 class="helpcard__text">Collars / leashes</h4>
+                </div>
+                <div class="helpcard__elem helpcard__elem_show">
+                    <object width="60rem" data="/assets/icons/help/sleeping-area.svg" type="image/svg+xml">
+                    </object>
+                    <h4 class="helpcard__text">Sleeping areas</h4>
+                </div>
+
             </div>
-            <div class="helpcard helpcard__2col">
-                <div class="helpcard__elem">
+            <div class="helpcard__2col helpcard helpcard__elem_hide">
+                <div class="helpcard__elem ">
                     <object width="60rem" data="/assets/icons/help/vitamins.svg" type="image/svg+xml">
                     </object>
                     <h4 class="helpcard__text">Vitamins</h4>
@@ -152,13 +179,14 @@
                     </object>
                     <h4 class="helpcard__text">Collars / leashes</h4>
                 </div>
-                <div class="helpcard__elem">
+                <div class="helpcard__elem ">
                     <object width="60rem" data="/assets/icons/help/sleeping-area.svg" type="image/svg+xml">
                     </object>
                     <h4 class="helpcard__text">Sleeping areas</h4>
                 </div>
             </div>
         </div>
+
     </div>
 
 
@@ -193,19 +221,32 @@
 
     <div class="footer_bg">
         <footer class="footer wrapper">
-            
+
+            <div class="footer__info">
                 <div class="footer__contacts">
                     <h3>For questions and suggestions</h3>
-                    <a href="mailto:email@shelter.com"><h4 class="footer__email">email@shelter.com</h4></a>
-                    <a href="tel:+13 674 567 75 54"><h4 class="footer__tel">+13 674 567 75 54</h4></a>
+                    <a href="mailto:email@shelter.com">
+                        <h4 class="footer__email">email@shelter.com</h4>
+                    </a>
+                    <a href="tel:+13 674 567 75 54">
+                        <h4 class="footer__tel">+13 674 567 75 54</h4>
+                    </a>
                 </div>
                 <div class="footer__map">
                     <h3>We are waiting for your visit</h3>
-                    <a href="" target="_blank"><h4 class="footer__addres1"><p>1 Central Street, Boston </p><p>(entrance from the store)</p></h4></a>
-                    <a href="" target="_blank"><h4 class="footer__addres2">18 South Park, London </h4></a>
+                    <a href="" target="_blank">
+                        <h4 class="footer__addres1">
+                            <p>1 Central Street, Boston </p>
+                            <p>(entrance from the store)</p>
+                        </h4>
+                    </a>
+                    <a href="" target="_blank">
+                        <h4 class="footer__addres2">18 South Park, London </h4>
+                    </a>
                 </div>
-                <div class="footer__image"><img src="/assets/image/footer-puppy.png" alt=""></div>
-            
+            </div>
+            <div class="footer__image"><img src="/assets/image/footer-puppy.png" alt=""></div>
+
         </footer>
     </div>
 

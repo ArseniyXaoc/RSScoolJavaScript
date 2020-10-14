@@ -128,10 +128,28 @@ h5 {
     line-height: 1.8rem;
     text-align: left;
 }
+
+@mixin h3-mobile {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-weight: 400;
+    font-size: 2.5rem;
+    line-height: 130%;
+    letter-spacing: 0.06em;
+}
+
+body {
+    color: $color-dark-l;
+}
 .wrapper {
     margin: 0 auto;
     max-width: 1280px;
     padding: 0rem 4rem;
+    @media (max-width: 1279px) {
+        padding: 0rem 3rem;
+    }
+    @media (max-width: 767px) {
+        padding: 0rem 1rem;
+    }
 }
 
 .button {
@@ -151,9 +169,6 @@ h5 {
     }
 }
 
-.main {
-    margin-bottom: 10rem;
-}
 //Header---------------------------------------------------
 
 .header_wrapper {
@@ -161,6 +176,8 @@ h5 {
     position: sticky;
     padding-top: 3rem;
     top: 0;
+    background-color: white;
+    z-index: 1;
 }
 
 .header {
@@ -200,10 +217,18 @@ h5 {
             color: $color-dark-s;
         }
     }
+    &_hide320 {
+        @media (max-width: 767px) {
+            display: none;
+        }
+    }
 }
 
 .navigation__link {
     @include paragraph-l;
+    a {
+        color: $color-dark-l;
+    }
     color: $color-dark-l;
     &:nth-child(2) a {
         display: flex;
@@ -212,6 +237,103 @@ h5 {
         padding-top: 0.1rem;
     }
 }
+// Бургер меню-------------------------------------------------
+.hamburger-menu{
+    display: none;
+    @media (max-width: 767px) {
+        display: block;
+    }
+}
+#menu__toggle {
+    opacity: 0;
+    &:checked ~ .menu__btn > span {
+        transform: rotate(45deg);
+    }
+
+    &:checked ~ .menu__btn > span::before {
+        top: 0;
+        transform: rotate(0);
+    }
+
+    &:checked ~ .menu__btn > span::after {
+        top: 0;
+        transform: rotate(90deg);
+    }
+
+    &:checked ~ .menu__box {
+        visibility: visible;
+        display: flex;
+        right: 0;
+    }
+}
+
+.menu__btn {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 47px;
+    right: 53px;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.menu__btn > span,
+.menu__btn > span::before,
+.menu__btn > span::after {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #616161;
+    transition-duration: 0.25s;
+}
+
+.menu__btn > span::before {
+    content: "";
+    top: -10px;
+}
+
+.menu__btn > span::after {
+    content: "";
+    top: 10px;
+}
+
+.menu__box {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    visibility: hidden;
+    top: 0;
+    right: -100%;
+    text-align: center;
+    margin: 0 auto;
+    width: 131px;
+    height: 183px;
+    margin: 0;
+    padding: 80px 0;
+    list-style: none;
+    text-align: center;
+    transition-duration: 0.25s;
+}
+
+.menu__item {
+    display: block;
+    padding: 12px 24px;
+    color: #333;
+    font-family: "Roboto", sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    transition-duration: 0.25s;
+    &:hover {
+        background-color: #cfd8dc;
+    }
+}
+// Бургер меню end-------------------------------------------------
+
 //Header end---------------------------------------------------
 
 //Pets------------------------------------------------------
@@ -220,9 +342,24 @@ h5 {
     text-align: center;
     padding-top: 5.1rem;
     margin-bottom: 10rem;
+    @media (max-width: 1279px) {
+        margin-bottom: 76px;
+    }
+
+    @media (max-width: 767px) {
+        padding-top: 1.2rem;
+        margin-bottom: 42px;
+    }
 
     &__heading {
         margin-bottom: 5.9rem;
+        @media (max-width: 1279px) {
+            margin-bottom: 2.9rem;
+        }
+        @media (max-width: 767px) {
+            @include h3-mobile;
+            margin-bottom: 4.2rem;
+        }
     }
     &__card {
         margin-bottom: 9rem;
@@ -242,12 +379,33 @@ h5 {
         border-radius: 3%;
         box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.14);
     }
+    //скрываем карточки
+    &__item_hide768 {
+        @media (max-width: 1279px) {
+            display: none;
+        }
+    }
+
+    &__item_hide320 {
+        @media (max-width: 767px) {
+            display: none;
+        }
+    }
+
     &__ul {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
         grid-template-rows: 1fr 1fr;
         grid-column-gap: 4rem;
         grid-row-gap: 6rem;
+        @media (max-width: 1279px) {
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+        }
+        @media (max-width: 767px) {
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+        }
     }
     &__img {
         border-radius: 3%;
@@ -273,13 +431,16 @@ h5 {
 }
 
 .arrow {
+    @media (max-width: 767px) {
+        margin-right: 3.4%;
+    }
+
     &:nth-last-child(1) {
         margin-right: 0rem;
     }
     &_unactiv {
         color: $color-dark-s;
         border-color: $color-dark-s;
-        
     }
     &__current {
         border-color: $color-primary;
@@ -311,6 +472,15 @@ h5 {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+    
+    @media (max-width: 1279px) {
+        justify-content: center;
+        margin-bottom: 7rem;
+    }
+    @media (max-width: 767px) {
+        margin-bottom: 7.2rem;
+    }
+    
 }
 
 //Pets end---------------------------------------------------
@@ -319,20 +489,53 @@ h5 {
     padding-top: 4rem;
     display: flex;
     justify-content: space-between;
+
+    &__info {
+        display: flex;
+        justify-content: space-between;
+        max-width: 741px;
+        flex-grow: 1;
+
+        @media (max-width: 1279px) {
+            padding: 14px 34px 23px 34px;
+            max-width: 1279px;
+        }
+
+        @media (max-width: 767px) {
+            flex-direction: column;
+            text-align: center;
+            padding: 0;
+        }
+    }
+
     h3 {
         color: #fff;
+
+        @media (max-width: 767px) {
+            @include h3-mobile;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
     }
 
     &__contacts {
         padding-top: 1.7rem;
         max-width: 27.9rem;
+
+        @media (max-width: 767px) {
+            max-width: 100vw;
+            padding-top: 3.1rem;
+        }
+
         a {
             color: $color-primary;
         }
     }
+
     &__email {
         padding-top: 4.4rem;
         padding-left: 6rem;
+        display: inline-block;
 
         position: relative;
     }
@@ -347,15 +550,22 @@ h5 {
         background-repeat: no-repeat;
         top: 3.5rem;
         left: 0px;
+
+        @media (max-width: 767px) {
+            //left: 24px;
+        }
     }
 
     &__tel {
         margin-top: 4.9rem;
         padding-left: 6rem;
         position: relative;
+        display: inline-block;
+
         a {
             color: $color-primary;
         }
+
         &::before {
             content: "";
             background-image: url(/assets/icons/telephone.svg);
@@ -366,6 +576,10 @@ h5 {
             background-repeat: no-repeat;
             top: -0.9rem;
             left: 0rem;
+
+            @media (max-width: 767px) {
+                //left: 30px;
+            }
         }
     }
 
@@ -373,9 +587,11 @@ h5 {
         padding-left: 4.2rem;
         padding-top: 3.2rem;
         position: relative;
+
         a {
             color: $color-primary;
         }
+
         &::before {
             content: "";
             background-image: url(/assets/icons/pin.svg);
@@ -386,6 +602,16 @@ h5 {
             background-repeat: no-repeat;
             top: 3.9rem;
             left: -0.5rem;
+
+            @media (max-width: 767px) {
+                top: 47px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            padding-top: 40px;
+            padding-left: 42px;
+            text-align: start;
         }
     }
 
@@ -404,20 +630,53 @@ h5 {
             background-repeat: no-repeat;
             top: -0.5rem;
             left: -0.5rem;
+            @media (max-width: 767px) {
+                top: 2px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            padding-top: 6px;
+            padding-left: 42px;
+            text-align: start;
         }
     }
 
     &__map {
         padding-top: 1.7rem;
         max-width: 30.2rem;
+
+        @media (max-width: 767px) {
+            margin: 0 auto;
+            padding-top: 4.4rem;
+            //left: 24px;
+        }
+
         a {
             color: $color-primary;
         }
     }
+
     &__image {
         img {
             display: block;
+            width: 100%;
         }
+
+        @media (max-width: 1279px) {
+            margin: 0 auto;
+            padding: 46px 20px 0px;
+        }
+
+        @media (max-width: 767px) {
+            margin: 0 auto;
+            padding: 45px 20px 0;
+        }
+    }
+
+    @media (max-width: 1279px) {
+        padding-top: 0;
+        flex-direction: column;
     }
 }
 

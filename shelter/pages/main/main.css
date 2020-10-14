@@ -262,6 +262,7 @@ h5 {
   .content {
     text-align: center;
     padding-bottom: 103px;
+    align-items: center;
   }
 }
 
@@ -377,6 +378,8 @@ h5 {
     max-width: 43.6rem;
     order: 0;
     margin: 0 auto;
+    padding-left: 2px;
+    padding-right: 2px;
   }
 }
 
@@ -482,6 +485,7 @@ h5 {
 @media (min-width: 768px) and (max-width: 1279px) {
   .card__ul {
     justify-content: space-around;
+    margin: 0px -8px;
   }
 }
 
@@ -732,7 +736,6 @@ h5 {
   max-width: 38rem;
   padding-top: 0.1rem;
   color: #545454;
-  text-align: center;
 }
 
 @media (max-width: 767px) {
@@ -799,7 +802,7 @@ h5 {
     font-family: Georgia, "Times New Roman", Times, serif;
     font-weight: 400;
     font-size: 1.5rem;
-    line-height: 150%;
+    line-height: 160%;
     letter-spacing: 0.06em;
   }
 }
@@ -1018,7 +1021,7 @@ h5 {
 @media (min-width: 768px) and (max-width: 1279px) {
   .footer__image {
     margin: 0 auto;
-    padding: 46px 20px 20px;
+    padding: 0px 20px;
   }
 }
 

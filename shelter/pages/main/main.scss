@@ -17,9 +17,11 @@
     box-sizing: inherit;
     margin: 0;
 }
+
 img {
     width: 100%;
 }
+
 html {
     box-sizing: border-box;
 }
@@ -148,9 +150,11 @@ h5 {
     margin: 0 auto;
     max-width: 1280px;
     padding: 0rem 4rem;
+
     @media (min-width: 768px) and (max-width: 1279px) {
         padding: 0rem 3rem;
     }
+
     @media (max-width: 767px) {
         padding: 0rem 1rem;
     }
@@ -168,9 +172,11 @@ h5 {
     letter-spacing: 0.096rem;
     border-radius: 10rem;
     border: none;
+
     &:hover {
         background-color: $color-primary-light;
     }
+
     @media (max-width: 1279px) {
         align-self: center;
     }
@@ -187,6 +193,7 @@ h5 {
 
 .header_wrapper {
     padding-top: 6rem;
+
     @media (max-width: 1279px) {
         padding-top: 3rem;
     }
@@ -197,8 +204,10 @@ h5 {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 6rem;
+
     &__burger {
         display: none;
+
         @media (max-width: 767px) {
             display: block;
             padding-right: 43px;
@@ -228,13 +237,16 @@ h5 {
     justify-content: space-between;
     align-items: center;
     padding-bottom: 0.3rem;
+
     a {
         white-space: nowrap;
         color: $color-dark-l;
+
         &:hover {
             color: $color-dark-s;
         }
     }
+
     @media (max-width: 767px) {
         display: none;
     }
@@ -243,6 +255,7 @@ h5 {
 .navigation__link {
     @include paragraph-l;
     color: white;
+
     &:nth-child(1) a {
         display: flex;
         color: $color-light-s;
@@ -253,6 +266,7 @@ h5 {
 
 .main__wrapper {
     margin-bottom: 8rem;
+
     @media (max-width: 767px) {
         margin-bottom: 3rem;
     }
@@ -260,6 +274,7 @@ h5 {
 
 .main__container {
     display: flex;
+
     @media (max-width: 1279px) {
         flex-direction: column;
     }
@@ -272,20 +287,24 @@ h5 {
     padding-top: 16.4rem;
     padding-bottom: 8rem;
     margin-right: 4.2rem;
+
     @media (max-width: 1279px) {
         margin: 0 auto;
         padding-top: 0;
         padding-bottom: 101px;
     }
+
     @media (max-width: 767px) {
         text-align: center;
         padding-bottom: 103px;
+        align-items: center;
     }
 }
 
 .content__title {
     color: $color-light-xl;
     max-width: 31rem;
+
     @media (max-width: 767px) {
         @include h3-mobile;
     }
@@ -296,6 +315,7 @@ h5 {
     padding-bottom: 8.9%;
     @include paragraph-l;
     color: $color-dark-s;
+
     @media (max-width: 767px) {
         padding-top: 14%;
         padding-bottom: 14%;
@@ -304,14 +324,17 @@ h5 {
 
 .puppy {
     max-width: 69.8rem;
+
     img {
         width: 100%;
         display: block;
+
         @media (max-width: 767px) {
             width: 87%;
             margin-left: auto;
         }
     }
+
     @media (min-width: 768px) and (max-width: 1279px) {
         max-width: 80.3%;
         margin-left: auto;
@@ -321,6 +344,7 @@ h5 {
 .about {
     &__wrapper {
         padding-bottom: 10rem;
+
         @media (max-width: 767px) {
             padding-bottom: 8.4rem;
         }
@@ -330,6 +354,7 @@ h5 {
         max-width: 85rem;
         margin: 0 auto;
         display: flex;
+
         @media (max-width: 1279px) {
             flex-direction: column;
         }
@@ -339,14 +364,17 @@ h5 {
         img {
             display: block;
         }
+
         @media (min-width: 768px) and (max-width: 1279px) {
             order: 1;
             margin: 0 auto;
             padding-top: 7.9%;
         }
+
         @media (max-width: 767px) {
             order: 2;
             padding: 27px 20px 0px 20px;
+            margin: 0 auto;
         }
     }
 
@@ -357,31 +385,42 @@ h5 {
         justify-content: space-between;
         margin-left: auto;
         padding: 1.4rem 0;
+
         @media (min-width: 768px) and (max-width: 1279px) {
             padding: 0;
             max-width: 43.6rem;
-        }
-
-        @media (min-width: 768px) and (max-width: 1279px) {
             order: 0;
             margin: 0 auto;
+            padding-left: 2px;
+            padding-right: 2px;
+        }
+
+        @media (max-width: 767px) {
+            margin: 0 auto;
+            align-items: center;
         }
     }
+
     &__heading {
         max-width: 31rem;
+
         @media (min-width: 768px) and (max-width: 1279px) {
             margin-bottom: 25px;
         }
+
         @media (max-width: 767px) {
             @include h3-mobile;
             text-align: center;
         }
     }
+
     &__title {
         @include paragraph-l;
+
         @media (min-width: 768px) and (max-width: 1279px) {
             padding-bottom: 25px;
         }
+
         @media (max-width: 767px) {
             padding: 23px 15px 0px 15px;
             text-align: justify;
@@ -395,13 +434,16 @@ h5 {
     text-align: center;
     padding-top: 8.1rem;
     margin-bottom: 10rem;
+
     @media (max-width: 767px) {
         padding-top: 0;
+        margin-bottom: 1.4%;
     }
 }
 
 .pets__heading {
     margin-bottom: -0.2rem;
+
     @media (max-width: 767px) {
         @include h3-mobile;
     }
@@ -411,6 +453,7 @@ h5 {
     li:hover {
         box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.14);
     }
+
     @media (max-width: 767px) {
         padding-top: 4.4rem;
         margin-bottom: 10px;
@@ -421,20 +464,26 @@ h5 {
     flex-basis: 99rem;
     height: 55.5rem;
     padding: 6rem 0;
+
     &__ul {
         display: flex;
         justify-content: space-between;
+
         @media (min-width: 768px) and (max-width: 1279px) {
             justify-content: space-around;
+            margin: 0px -8px;
         }
+
         @media (max-width: 767px) {
             justify-content: center;
         }
     }
+
     &__img {
         padding-bottom: 2.9rem;
         width: 270px;
     }
+
     &__text {
         color: $color-dark-xl;
         font-family: Georgia;
@@ -443,20 +492,24 @@ h5 {
         letter-spacing: 0.06em;
         text-align: center;
     }
+
     &__button {
         margin-top: 3.3rem;
         padding: 14px 43px;
         border: 2px solid #f1cdb3;
         background-color: #fff;
+
         &:hover {
             border: 2px solid $color-primary-light;
         }
     }
+
     &__item_hide {
         @media (min-width: 768px) and (max-width: 1279px) {
             display: none;
         }
     }
+
     &__item_hide_320 {
         @media (max-width: 767px) {
             display: none;
@@ -476,30 +529,34 @@ h5 {
     padding: 16px 15px;
     background-color: #fff;
     flex-shrink: 0;
+
     &:hover {
         border: 2px solid $color-primary-light;
         background-color: $color-primary-light;
     }
 }
 
-.arrow_320{
+.arrow_320 {
     display: flex;
     justify-content: space-around;
     margin: 0px 20px;
-    
+
 }
+
 .about_hide_320 {
     @media (max-width: 767px) {
         display: none; //[pp[p[p[p
     }
 }
+
 .about_show_320 {
     display: none;
+
     @media (max-width: 767px) {
-        display: flex; //[pp[p[p[p
-        padding-bottom: 13.5%;
+        display: flex;
+        margin-bottom: 21px;
     }
-    
+
 }
 
 
@@ -517,41 +574,87 @@ h5 {
 .help {
     text-align: center;
     padding-top: 8rem;
+
+    &__title {
+        @media (max-width: 767px) {
+            margin-bottom: 42px;
+        }
+
+        p {
+            @media (max-width: 767px) {
+                @include h3-mobile;
+            }
+        }
+    }
+
     &__card {
         max-width: 120rem;
         margin: 0 auto;
         padding: 6rem 8.7rem 9.9rem 8.7rem;
+
         @media (min-width: 768px) and (max-width: 1279px) {
             padding: 5.8rem 3.9rem 10rem 3.9rem;
         }
+
+        @media (max-width: 767px) {
+            padding: 0;
+        }
     }
-    @media (max-width: 767px) {
-        display: none; //[pp[p[p[p
-    }
+
 }
 
 .helpcard {
+
     display: grid;
     grid-template-columns: repeat(5, min-content);
 
     justify-content: space-between;
+
     &__text {
         padding-top: 2.9rem;
+
+        @media (max-width: 767px) {
+            font-family: Georgia, "Times New Roman", Times, serif;
+            font-weight: 400;
+            font-size: 1.5rem;
+            line-height: 110%;
+            letter-spacing: 0.06em;
+            padding-top: 1.9rem;
+        }
     }
+
     &__elem {
         text-align: center;
     }
 
+    &__elem object {
+        @media (max-width: 767px) {
+            width: 50px;
+        }
+    }
+
     &__elem_show {
         display: none;
-        @media (min-width: 768px) and (max-width: 1279px) {
+
+        @media (max-width: 1279px) {
             display: block;
         }
     }
+
     @media (min-width: 768px) and (max-width: 1279px) {
         grid-template-columns: repeat(3, 170px);
         grid-template-rows: 1fr 1fr 1fr;
         grid-row-gap: 54px;
+    }
+
+    @media (max-width: 767px) {
+        grid-template-columns: repeat(2, 130px);
+        grid-template-rows: repeat(5, 87px);
+        grid-row-gap: 30px;
+        grid-column-gap: 30px;
+        margin: 0 5px 0;
+        justify-content: center;
+        margin-bottom: 42px;
     }
 
     &__2col {
@@ -561,7 +664,7 @@ h5 {
 }
 
 .helpcard__elem_hide {
-    @media (min-width: 768px) and (max-width: 1279px) {
+    @media (max-width: 1279px) {
         display: none;
     }
 }
@@ -570,36 +673,76 @@ h5 {
     &__container {
         display: flex;
         padding: 7.9rem 0rem 9.8rem 0rem;
+
         @media (max-width: 1279px) {
             flex-direction: column;
             padding-bottom: 0;
         }
+
+        @media (max-width: 767px) {
+            flex-direction: column;
+            padding-top: 4rem;
+        }
     }
+
     &__pets {
         padding: 1.2rem 3rem 1.1rem 14.2rem;
-        @media (min-width: 768px) and (max-width: 1279px) {
+
+        @media (max-width: 1279px) {
             order: 1;
             margin: 0 auto;
             padding: 60px 0 100px 0;
         }
+
+        @media (max-width: 767px) {
+            padding: 42px 20px 41px 20px;
+        }
     }
+
     &__text {
         max-width: 38rem;
         padding-top: 0.1rem;
         color: $color-dark-l;
 
-        @media (min-width: 768px) and (max-width: 1279px) {
+        
+
+        @media (max-width: 767px) {
+
+            text-align: center;
+
+        }
+
+        @media (max-width: 1279px) {
             order: 0;
             margin: 0 auto;
+            
+
+        }
+
+        @media (max-width: 767px) {
+
+            h3 {
+                @include h3-mobile;
+                text-align: center;
+            }
         }
     }
+
     &__title {
         padding-top: 0.1rem;
     }
+
     &__subtitle {
         padding-top: 2rem;
         margin-bottom: 2rem;
+
+        @media (max-width: 767px) {
+            @include paragraph-l;
+            text-align: center;
+            letter-spacing: 0;
+        }
     }
+
     &__phone {
         display: inline-block;
         padding: 1rem 1.5rem;
@@ -609,13 +752,24 @@ h5 {
         padding-bottom: 0.8rem;
         border-radius: 1rem;
         margin-bottom: 2rem;
+
         &:hover {
             background-color: $color-primary-light;
         }
-        @media (max-width: 767px) {
-            display: none;
+
+        h4 {
+            @media (max-width: 767px) {
+                font-family: Georgia, "Times New Roman", Times, serif;
+                font-weight: 400;
+                font-size: 1.5rem;
+                line-height: 160%;
+                letter-spacing: 0.06em;
+            }
         }
+
+
     }
+
     &__number {
         display: inline-block;
         padding-left: 1.3rem;
@@ -625,6 +779,11 @@ h5 {
     &__description {
         @include donation_description;
         color: $color-dark-m;
+
+        @media (max-width: 767px) {
+            margin: 0 10px;
+            text-align: justify;
+        }
     }
 }
 
@@ -642,18 +801,33 @@ h5 {
         @media (min-width: 768px) and (max-width: 1279px) {
             padding: 12px 34px 69px 34px;
         }
+
         @media (max-width: 767px) {
             flex-direction: column;
+            text-align: center;
         }
     }
 
     h3 {
         color: #fff;
+
+        @media (max-width: 767px) {
+            @include h3-mobile;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
     }
+
 
     &__contacts {
         padding-top: 1.7rem;
         max-width: 27.9rem;
+
+        @media (max-width: 767px) {
+            max-width: 100vw;
+            padding-top: 3.1rem;
+        }
+
         a {
             color: $color-primary;
         }
@@ -662,8 +836,11 @@ h5 {
     &__email {
         padding-top: 4.4rem;
         padding-left: 6rem;
+        display: inline-block;
 
         position: relative;
+
+
     }
 
     &__email::before {
@@ -676,15 +853,22 @@ h5 {
         background-repeat: no-repeat;
         top: 3.5rem;
         left: 0px;
+
+        @media (max-width: 767px) {
+            //left: 24px;
+        }
     }
 
     &__tel {
         margin-top: 4.9rem;
         padding-left: 6rem;
         position: relative;
+        display: inline-block;
+
         a {
             color: $color-primary;
         }
+
         &::before {
             content: "";
             background-image: url(/assets/icons/telephone.svg);
@@ -695,6 +879,10 @@ h5 {
             background-repeat: no-repeat;
             top: -0.9rem;
             left: 0rem;
+
+            @media (max-width: 767px) {
+                //left: 30px;
+            }
         }
     }
 
@@ -702,9 +890,11 @@ h5 {
         padding-left: 4.2rem;
         padding-top: 3.4rem;
         position: relative;
+
         a {
             color: $color-primary;
         }
+
         &::before {
             content: "";
             background-image: url(/assets/icons/pin.svg);
@@ -715,6 +905,16 @@ h5 {
             background-repeat: no-repeat;
             top: 3.9rem;
             left: -0.5rem;
+
+            @media (max-width: 767px) {
+                top: 47px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            padding-top: 40px;
+            padding-left: 42px;
+            text-align: start;
         }
     }
 
@@ -733,24 +933,50 @@ h5 {
             background-repeat: no-repeat;
             top: -0.5rem;
             left: -0.5rem;
+            @media (max-width: 767px) {
+                top:4px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            padding-top: 8px;
+            padding-left: 42px;
+            text-align: start;
         }
     }
 
     &__map {
         padding-top: 1.7rem;
         max-width: 30.2rem;
+
+        @media (max-width: 767px) {
+            margin: 0 auto;
+            padding-top: 4.4rem;
+            //left: 24px;
+        }
+
         a {
             color: $color-primary;
         }
     }
+
     &__image {
         img {
             display: block;
         }
+
         @media (min-width: 768px) and (max-width: 1279px) {
             margin: 0 auto;
+            padding: 0px 20px;
+        }
+
+        @media (max-width: 767px){
+            margin: 0 auto;
+            padding: 46px 20px 0;
+
         }
     }
+
     @media (max-width: 1279px) {
         padding-top: 0;
         flex-direction: column;

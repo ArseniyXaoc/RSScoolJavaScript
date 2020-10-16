@@ -121,6 +121,7 @@ h5 {
 }
 
 .logo__title {
+  margin: 0;
   font-family: Georgia, "Times New Roman", Times, serif;
   font-weight: 400;
   font-size: 3.2rem;
@@ -191,7 +192,12 @@ h5 {
   margin: 0 auto;
 }
 
-.card li:hover {
+.card__item {
+  border-radius: 3%;
+}
+
+.card__item:hover {
+  border-radius: 3%;
   box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.14);
 }
 
@@ -204,6 +210,7 @@ h5 {
 }
 
 .card__img {
+  border-radius: 3%;
   padding-bottom: 2.9rem;
 }
 
@@ -245,7 +252,7 @@ h5 {
   margin-right: 0rem;
 }
 
-.arrow__unactiv {
+.arrow_unactiv {
   color: #cdcdcd;
   border-color: #cdcdcd;
 }
@@ -255,7 +262,8 @@ h5 {
   background-color: #f1cdb3;
 }
 
-.arrow:hover {
+.arrow_active:hover {
+  cursor: pointer;
   border: 2px solid #fddcc4;
   background-color: #fddcc4;
 }
@@ -268,5 +276,121 @@ h5 {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+}
+
+.footer {
+  padding-top: 4rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer h3 {
+  color: #fff;
+}
+
+.footer__contacts {
+  padding-top: 1.7rem;
+  max-width: 27.9rem;
+}
+
+.footer__contacts a {
+  color: #f1cdb3;
+}
+
+.footer__email {
+  padding-top: 4.4rem;
+  padding-left: 6rem;
+  position: relative;
+}
+
+.footer__email::before {
+  content: "";
+  background-image: url(/assets/icons/mail.svg);
+  width: 4rem;
+  height: 3.3rem;
+  background-size: 4rem 4rem;
+  position: absolute;
+  background-repeat: no-repeat;
+  top: 3.5rem;
+  left: 0px;
+}
+
+.footer__tel {
+  margin-top: 4.9rem;
+  padding-left: 6rem;
+  position: relative;
+}
+
+.footer__tel a {
+  color: #f1cdb3;
+}
+
+.footer__tel::before {
+  content: "";
+  background-image: url(/assets/icons/telephone.svg);
+  width: 4rem;
+  height: 3.7rem;
+  background-size: 4rem 4rem;
+  position: absolute;
+  background-repeat: no-repeat;
+  top: -0.9rem;
+  left: 0rem;
+}
+
+.footer__addres1 {
+  padding-left: 4.2rem;
+  padding-top: 3.2rem;
+  position: relative;
+}
+
+.footer__addres1 a {
+  color: #f1cdb3;
+}
+
+.footer__addres1::before {
+  content: "";
+  background-image: url(/assets/icons/pin.svg);
+  width: 3.2rem;
+  height: 3.2rem;
+  background-size: 3.2rem 3.2rem;
+  position: absolute;
+  background-repeat: no-repeat;
+  top: 3.9rem;
+  left: -0.5rem;
+}
+
+.footer__addres2 {
+  padding-left: 4.2rem;
+  margin-top: 3.8rem;
+  position: relative;
+}
+
+.footer__addres2::before {
+  content: "";
+  background-image: url(/assets/icons/pin.svg);
+  width: 3.2rem;
+  height: 3.2rem;
+  background-size: 3.2rem 3.2rem;
+  position: absolute;
+  background-repeat: no-repeat;
+  top: -0.5rem;
+  left: -0.5rem;
+}
+
+.footer__map {
+  padding-top: 1.7rem;
+  max-width: 30.2rem;
+}
+
+.footer__map a {
+  color: #f1cdb3;
+}
+
+.footer__image img {
+  display: block;
+}
+
+.footer_bg {
+  background: url(/assets/image/footer-background.png), radial-gradient(100% 215.42% at 0% 0%, #5b483a 0%, #262425 100%), #211f20;
 }
 /*# sourceMappingURL=pets.css.map */

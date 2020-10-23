@@ -14,6 +14,7 @@ let ElemMass = [CardElem1, CardElem2, CardElem3];
 let i = 0;
 let x;
 let back = '';
+let gen3 = [];
 
 
 //JSON load Pets.json
@@ -52,12 +53,14 @@ request.onload = function () {
         hideItem('to-right');
         changeCurrentItem(n - 1);
         showItem('from-left');
+        del(n);
     }
 
     function nextItem(n) {
         hideItem('to-left');
         changeCurrentItem(n + 1);
         showItem('from-right');
+        del(n);
     }
 
     document.querySelector('.arrow').addEventListener('click', function (e) {
@@ -101,11 +104,12 @@ request.onload = function () {
             newNode.childNodes[3].innerText = `${name[nodeCount].name}`;
             return newNode;
         }
+        
 
-        let gen3 = shuffle(randPets);
+        gen3 = shuffle(randPets);
+        console.log(gen3);
 
-
-        console.log(currentItem);
+        
 
         function genAnimal(gen, x) {
             ElemMass[x].appendChild(createNode(gen[0]));
@@ -115,24 +119,38 @@ request.onload = function () {
 
         function forward() {
             genAnimal(gen3, currentItem);
-            if(currentItem === 0 ) ElemMass[2].innerHTML = '';
-            else ElemMass[currentItem-1].innerHTML = '';
+            // if(currentItem === 0 ) ElemMass[2].innerHTML = '';
+            // else ElemMass[currentItem-1].innerHTML = '';
         }
 
         function backto() {
             genAnimal(gen3, currentItem);
-            if(currentItem === 2 ) ElemMass[0].innerHTML = '';
-            else ElemMass[currentItem+1].innerHTML = '';
+            // if(currentItem === 2 ) ElemMass[0].innerHTML = '';
+            // else ElemMass[currentItem+1].innerHTML = '';
         }
 
-        // if (back === true) backto();
-        // else forward();
+        if (back === true) backto();
+        else forward();
     }
 
     function shuffle(array) {
-        array.sort(() => Math.random() - 0.5);
+        
+
+        array.sort(() => Math.random() - 0.5);        
         array = array.slice(0, 3);
+        if(array.filter(i => gen3.includes(i)).length !== 0){
+            return shuffle(randPets);
+        };
+        //console.log(array);
         return array;
     }
+
+    function del(item) {        
+        ElemMass[currentItem].innerHTML = '';
+    }
+    
 }
+
+
+
 request.send();

@@ -73,7 +73,7 @@ function dateUpdate() {
     let date = new Date();
     i = date.getHours();
     let day = '';
-    const dayarr = ['воскресенье','понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота'];
+    const dayarr = ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота'];
     let numday = date.getDay();
     let aryDate = date.getDate();
     let month = date.toLocaleString('ru', {
@@ -142,7 +142,7 @@ focus.addEventListener('blur', setFocus);
 function setName(event) {
     if (event.type === 'keypress') {
         if (event.which == 13 || event.keyCode == 13) {
-            if (name.innerText.trim() === '') name.innerText = '[Введите имя]';
+            if (name.innerText.trim() === '') name.innerText = '[Введите имя]' //= localStorage.getItem('name');;
             localStorage.setItem('name', event.target.innerText);
             name.blur();
         }
@@ -169,7 +169,7 @@ function setFocus(event) {
 
 function getFocus() {
     if (localStorage.getItem('focus') === null || localStorage.getItem('focus') === '') {
-        focus.textContent = '[Введите цель]'
+        focus.textContent = '[Введите цель]';
     } else {
         focus.textContent = localStorage.getItem('focus');
     }
@@ -177,7 +177,7 @@ function getFocus() {
 
 function getName() {
     if (localStorage.getItem('name') === null || localStorage.getItem('name') === '') {
-        name.textContent = '[Введите имя]'
+        name.textContent = '[Введите имя]';
     } else {
         name.textContent = localStorage.getItem('name');
     }
@@ -200,18 +200,36 @@ const weatherIcon = document.querySelector('.weather-icon');
 const temperature = document.querySelector('.temperature');
 const weatherDescription = document.querySelector('.weather-desription');
 const city = document.querySelector('.city');
+const wind = document.querySelector('.wind');
+const humidity = document.querySelector('.humidity');
+
+
 
 
 async function getWeather() {
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.textContent}&lang=ru&appid=c93716942e89d2e4eeed33f18f863cef&units=metric`;
-    const res = await fetch(url);
-    const data = await res.json();
-    console.log(data.weather[0].id, data.weather[0].description, data.main.temp);
 
-    weatherIcon.className = 'weather-icon owf';
-    weatherIcon.classList.add(`owf-${data.weather[0].id}`);
-    temperature.textContent = `${data.main.temp} °С`;
-    weatherDescription.textContent = data.weather[0].description;
+    if ((city.textContent !== "[Enter City]") && (city.textContent !== null)){
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.textContent}&lang=ru&appid=c93716942e89d2e4eeed33f18f863cef&units=metric`;
+        const res = await fetch(url);
+        const data = await res.json();
+    if (data['cod'] === '404') {
+        temperature.textContent = `Город не найден`;
+        weatherIcon.className = '';
+        //weatherIcon.classList.add(`owf-${data.weather[0].id}`);
+        weatherDescription.textContent = '';
+        wind.textContent = ``;
+        humidity.textContent = ``;
+        //weatherDescription.textContent = data.weather[0].description;
+
+    } else {
+
+        weatherIcon.className = 'weather-icon owf';
+        weatherIcon.classList.add(`owf-${data.weather[0].id}`);
+        temperature.textContent = `${data.main.temp} °С`;
+        wind.textContent = `Ветер ${data.wind.speed} м/с`;
+        humidity.textContent = `Влажность ${data.main.humidity}%`;
+        weatherDescription.textContent = data.weather[0].description;
+    }}
 }
 getWeather();
 
@@ -222,6 +240,47 @@ function setCity(event) {
     }
 }
 
+
+function getCity() {
+    if (localStorage.getItem('city') === null) {
+      city.textContent = '[Enter City]';
+      localStorage.setItem('city', city.textContent);
+    } else {
+      city.textContent = localStorage.getItem('city');
+      getWeather();
+    }
+  }
+
+  function setCity(e) {
+    if (e.type === 'keypress') {
+        // Make sure enter is pressed
+        if (e.which == 13 || e.keyCode == 13) {
+            checkCity();
+          localStorage.setItem('city', city.textContent);
+          getWeather();
+          city.blur();
+        }
+  }
+}
+
+  function checkCity() {
+    if ((city.textContent == '') || (city.textContent.trim().length == 0))
+        city.textContent = localStorage.getItem('city');
+    else {
+        localStorage.setItem('city', city.textContent);
+        city.textContent = localStorage.getItem('city');
+        getWeather();
+    }
+}
+
+city.addEventListener('click', function() {
+    city.textContent = '';
+  });
+  city.addEventListener('keypress', setCity);
+  city.addEventListener('blur', checkCity);
+
+
+
 document.addEventListener('DOMCOntentLoaded', getWeather);
 city.addEventListener('keypress', setCity);
 
@@ -230,13 +289,14 @@ const blockquote = document.querySelector('blockquote');
 const figcaption = document.querySelector('figcaption');
 const blockquote_btn = document.querySelector('blockquote_btn');
 
-async function getQuote() {  
-  const url = `https://cors-anywhere.herokuapp.com/https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=ru`;
-  const res = await fetch(url);
-  const data = await res.json(); 
-  blockquote.textContent = data.quoteText;
-  figcaption.textContent = data.quoteAuthor;
+async function getQuote() {
+    const url = `https://cors-anywhere.herokuapp.com/https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=ru`;
+    const res = await fetch(url);
+    const data = await res.json();
+    blockquote.textContent = data.quoteText;
+    figcaption.textContent = data.quoteAuthor;
 }
 
 document.addEventListener('DOMContentLoaded', getQuote);
 btn.addEventListener('click', getQuote);
+blockquote_btn.addEventListener('click', getQuote);

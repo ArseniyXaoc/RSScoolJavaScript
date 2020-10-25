@@ -1,0 +1,82 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html {
+    background-size: cover;
+    background-position: center center;
+    background-image: url('assets/images/overlay.png');
+}
+
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    flex-direction: column;
+    height: 100vh;
+    background-size: cover;
+    background-position: center center;
+    background-image: url('assets/images/overlay.png');
+    transition: background-image 1s ease-in-out;
+    -moz-transition: background-image 1s ease-in-out;
+    -webkit-transition: background-image 1s ease-in-out;
+    color: rgb(93, 240, 171);
+    
+    
+}
+
+#time {
+    font-size: 14vw;
+    padding-bottom: 1%;
+    
+    
+}
+
+#date1{
+    font-size: 2rem;
+    padding-bottom: 1%;
+    
+}
+
+.weather {
+    position: absolute;
+    right: 40px;
+    top: 40px;
+}
+
+
+    .btn {
+        margin: 40px;
+        padding: 0 50px;
+    
+        height: 60px;
+        border-radius: 15px;
+        border: none;
+    
+        color: #fff;
+    
+        transition: 0.3s ease;
+    
+        font-family: "Poppins", sans-serif;
+        font-size: 24px;
+        min-height: 20px;
+    }
+    
+    .btn {
+        background-color: #57b894;
+    
+        box-shadow: 0 10px #4fa283;
+    }
+    .btn:hover {
+        box-shadow: 0 8px #4fa283;
+        transform: translateY(1px);
+    }
+    .btn:active {
+        background-color: #4a9377;
+        box-shadow: 0 5px #407762;
+        transform: translateY(4px);
+    }

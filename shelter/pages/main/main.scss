@@ -264,7 +264,7 @@ h5 {
 
 .navigation__link {
     cursor: pointer;
-    padding-bottom: 20px;
+    margin-bottom: 20px;
     @include paragraph-l;
     color: white;
     
@@ -288,6 +288,14 @@ h5 {
         
     }
 }
+
+.navigation__link_active{
+    display: flex;
+        color: $color-light-s;
+        border-bottom: 4px solid $color-primary;
+        padding-top: 0.1rem;
+}
+
 
 .unactive{
     pointer-events: none;
@@ -603,9 +611,7 @@ h5 {
     }
 }
 
-.pets__wrapper_color {
-    background-color: $color-dark-l;
-}
+
 
 .pets {
     //display: flex;
@@ -613,7 +619,7 @@ h5 {
     position: relative;
     text-align: center;
     padding-top: 8.1rem;
-    margin-bottom: 10rem;
+    padding-bottom: 10rem;
 
     @media (max-width: 767px) {
         padding-top: 0;
@@ -825,6 +831,10 @@ h5 {
     display: none;
 }
 
+.pets__wrapper_color {
+    background-color: #f6f6f6;
+    
+}
 //Popup------------------------------------------------------------------
 .popup {
 

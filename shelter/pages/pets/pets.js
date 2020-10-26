@@ -6,6 +6,9 @@ let card_ul = document.querySelector(".card__ul");
 let fullPetsList = [];
 let copyFullPetsList = [];
 console.log(checkbox);
+let numCardOnPage;
+const bodyWidth = document.querySelector('body').offsetWidth;
+const btn_last_page = document.querySelector("body > div > div.wrap_color > div > section > div.pets__switch > button:nth-child(5)");
 
 overlay.addEventListener('click', () => checkbox.checked = false);
 
@@ -83,13 +86,43 @@ function createcard(endPets) {
 
     }
 
-    for(let i = 8; i<48; i++){
-        card_ul.children[i].classList.add('visually-hidden');
-    }
+    cardonpages(bodyWidth);
 
+    
+
+    // for(let i = 8; i<48; i++){
+    //     card_ul.children[i].classList.add('visually-hidden');
+    // }
 
     
 }
+
+function cardonpages(width){
+    console.log(width);
+    const numCardOnPage = width >= 1280 ? 8 : width >= 768 ? 6 : 3;
+    for(let i = numCardOnPage; i<48; i++){
+             card_ul.children[i].classList.add('visually-hidden');
+         }
+
+}
+
+window.addEventListener('resize', function(event) {
+    
+    let width = document.querySelector('body').offsetWidth;
+    numCardOnPage = width >= 1280 ? 8 : width >= 768 ? 6 : 3;
+    console.log(numCardOnPage);
+    for(let i = numCardOnPage; i<48; i++){
+             card_ul.children[i].classList.add('visually-hidden');
+         }
+
+         for(let i = 0; i<numCardOnPage; i++){
+            card_ul.children[i].classList.remove('visually-hidden');
+        }
+});
+
+btn_last_page.addEventListener('click', (event) =>{
+console.log(numCardOnPage);
+});
 
 
 

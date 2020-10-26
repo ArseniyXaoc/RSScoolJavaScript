@@ -62,6 +62,7 @@ request.onload = function () {
         showItem('from-right');
         del(n);
     }
+    //Button-------------------------------------------------------------------------------
 
     document.querySelector('.arrow').addEventListener('click', function (e) {
         if (isEnabled) {
@@ -78,7 +79,25 @@ request.onload = function () {
             setPetsCard(Pets, card_node);
         }
     })
-    //Slider end------------------------------------------------------------------------
+
+    document.querySelector("body > div > section > div.arrow_320.about_show_320 > button.arrow.arrow_reverse.about_show_320").addEventListener('click', function (e) {
+        if (isEnabled) {
+            back = true;
+            previousItem(currentItem);
+            setPetsCard(Pets, card_node);
+        }
+    })
+
+    document.querySelector("body > div > section > div.arrow_320.about_show_320 > button:nth-child(1)").addEventListener('click', function (e) {
+        if (isEnabled) {
+            back = false;
+            nextItem(currentItem);
+            setPetsCard(Pets, card_node);
+        }
+    })
+
+    
+    
 
 
 
@@ -104,17 +123,21 @@ request.onload = function () {
             newNode.childNodes[3].innerText = `${name[nodeCount].name}`;
             return newNode;
         }
-        
+
 
         gen3 = shuffle(randPets);
         console.log(gen3);
 
-        
+
 
         function genAnimal(gen, x) {
             ElemMass[x].appendChild(createNode(gen[0]));
             ElemMass[x].appendChild(createNode(gen[1]));
+            ElemMass[x].childNodes[1].classList.add('card__item_hide_320');
             ElemMass[x].appendChild(createNode(gen[2]));
+            ElemMass[x].childNodes[2].classList.add('card__item_hide');
+            ElemMass[x].childNodes[2].classList.add('card__item_hide_320');
+            
         }
 
         function forward() {
@@ -134,23 +157,25 @@ request.onload = function () {
     }
 
     function shuffle(array) {
-        
 
-        array.sort(() => Math.random() - 0.5);        
+
+        array.sort(() => Math.random() - 0.5);
         array = array.slice(0, 3);
-        if(array.filter(i => gen3.includes(i)).length !== 0){
+        if (array.filter(i => gen3.includes(i)).length !== 0) {
             return shuffle(randPets);
         };
         //console.log(array);
         return array;
     }
 
-    function del(item) {        
+    function del(item) {
         ElemMass[currentItem].innerHTML = '';
     }
-    
+
 }
 
 
 
 request.send();
+
+//Slider end------------------------------------------------------------------------

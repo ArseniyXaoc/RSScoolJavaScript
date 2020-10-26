@@ -201,6 +201,12 @@ body {
   padding-top: 0.1rem;
 }
 
+.unactive {
+  pointer-events: none;
+  cursor: default;
+  color: #999;
+}
+
 .hamburger-menu {
   display: none;
 }
@@ -243,6 +249,11 @@ body {
   position: fixed;
   top: 0;
   left: 0;
+}
+
+.burger_logo {
+  margin-right: 90px;
+  margin-bottom: 158px;
 }
 
 .menu__btn {

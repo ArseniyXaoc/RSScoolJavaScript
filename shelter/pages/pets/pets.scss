@@ -251,6 +251,13 @@ body {
     }
 }
 
+.unactive{
+    pointer-events: none;
+    cursor: default;
+    color: #999;
+}
+
+
 // Бургер меню-------------------------------------------------
 .hamburger-menu {
     display: none;
@@ -294,6 +301,11 @@ body {
         left: 0;
        }
     
+}
+
+.burger_logo {
+    margin-right: 90px;
+    margin-bottom: 158px;    
 }
 
 

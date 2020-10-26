@@ -170,6 +170,7 @@ h5 {
 }
 
 .button {
+    cursor: pointer;
     padding: 17px 46px;
     display: inline-block;
     align-self: flex-start;
@@ -262,12 +263,17 @@ h5 {
 }
 
 .navigation__link {
+    cursor: pointer;
     padding-bottom: 20px;
     @include paragraph-l;
     color: white;
+    
 
     a {
         color: $color-light-s;
+    }
+    a:hover {
+        color: $color-dark-s;
     }
 
     &:nth-child(1) a {
@@ -276,8 +282,18 @@ h5 {
         border-bottom: 4px solid $color-primary;
         padding-top: 0.1rem;
     }
+    &:nth-child(1) a:hover {
+        
+        border-bottom: 4px solid $color-dark-m;
+        
+    }
 }
 
+.unactive{
+    pointer-events: none;
+    cursor: default;
+    color: #999;
+}
 
 
 .main__wrapper {
@@ -341,6 +357,11 @@ h5 {
 
 }
 
+.burger_logo {
+    margin-right: 90px;
+    margin-bottom: 158px;    
+}
+
 
 
 .menu__btn {
@@ -397,7 +418,7 @@ h5 {
     list-style: none;
     text-align: center;
     transition-duration: 0.25s;
-    padding-top: 158px;
+    padding-top: 28px;
 
     li {
         //styleName: paragraph-mobile-menu;
@@ -674,6 +695,7 @@ h5 {
     }
 
     &__button {
+        cursor: pointer;
         margin-top: 3.3rem;
         padding: 14px 43px;
         border: 2px solid #f1cdb3;
@@ -834,7 +856,7 @@ h5 {
     }
 
     &__show {
-        display: block;
+        display: flex;
         animation: fadeIn 1s;
     }
 

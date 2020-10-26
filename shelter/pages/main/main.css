@@ -108,6 +108,7 @@ h5 {
 }
 
 .button {
+  cursor: pointer;
   padding: 17px 46px;
   display: inline-block;
   align-self: flex-start;
@@ -216,6 +217,7 @@ h5 {
 }
 
 .navigation__link {
+  cursor: pointer;
   padding-bottom: 20px;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 400;
@@ -228,11 +230,25 @@ h5 {
   color: #fafafa;
 }
 
+.navigation__link a:hover {
+  color: #cdcdcd;
+}
+
 .navigation__link:nth-child(1) a {
   display: flex;
   color: #fafafa;
   border-bottom: 4px solid #f1cdb3;
   padding-top: 0.1rem;
+}
+
+.navigation__link:nth-child(1) a:hover {
+  border-bottom: 4px solid #b2b2b2;
+}
+
+.unactive {
+  pointer-events: none;
+  cursor: default;
+  color: #999;
 }
 
 .main__wrapper {
@@ -299,6 +315,11 @@ h5 {
   left: 0;
 }
 
+.burger_logo {
+  margin-right: 90px;
+  margin-bottom: 158px;
+}
+
 .menu__btn {
   display: flex;
   align-items: center;
@@ -353,7 +374,7 @@ h5 {
   list-style: none;
   text-align: center;
   transition-duration: 0.25s;
-  padding-top: 158px;
+  padding-top: 28px;
 }
 
 .menu__box li {
@@ -677,6 +698,7 @@ h5 {
 }
 
 .card__button {
+  cursor: pointer;
   margin-top: 3.3rem;
   padding: 14px 43px;
   border: 2px solid #f1cdb3;
@@ -821,7 +843,7 @@ h5 {
 }
 
 .popup__show {
-  display: block;
+  display: flex;
   animation: fadeIn 1s;
 }
 

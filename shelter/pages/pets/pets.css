@@ -484,6 +484,7 @@ body {
 }
 
 .arrow {
+  font-size: 2rem;
   color: #292929;
   margin-right: 2rem;
   width: 52px;

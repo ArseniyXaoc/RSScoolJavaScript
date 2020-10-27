@@ -168,7 +168,7 @@ function createcard(endPets) {
         cardsItem.innerHTML =
             `<img class="card__img" src="${endPets[i].img}" alt="cat">
         <p class="card__text">${endPets[i].name}</p>
-        <a href="" class="card__button button">Learn more</a>`;
+        <a class="card__button button">Learn more</a>`;
         card_ul.appendChild(cardsItem);
     }
     cardonpages(bodyWidth);

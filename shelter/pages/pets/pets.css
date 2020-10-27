@@ -134,8 +134,9 @@ body {
   padding-top: 3rem;
   background-color: white;
   position: fixed;
-  width: 93.8%;
-  max-width: 1280px;
+  width: 100%;
+  padding: 3rem 40px;
+  
   /* top: 0; */
   display: flex;
   justify-content: space-between;
@@ -144,7 +145,8 @@ body {
 
 @media (max-width: 1279px) {
   .header {
-    width: 92.1%;
+    width: 100%;
+    padding: 3rem 30px;
   }
 }
 
@@ -154,7 +156,7 @@ body {
     width: 100%;
     top: 0;
     right: 0;
-    padding-left: 15px;
+    padding-left: 10px;
   }
 }
 
@@ -284,7 +286,7 @@ body {
   align-items: center;
   position: absolute;
   top: 47px;
-  right: 38px;
+  right: 54px;
   width: 30px;
   height: 25px;
   cursor: pointer;
@@ -351,6 +353,7 @@ body {
 
 .back_black {
   background-color: rgba(41, 41, 41, 0.6);
+  opacity: 1;
   width: 100vw;
   height: 100vh;
   position: fixed;
@@ -361,7 +364,7 @@ body {
 
 .pets {
   text-align: center;
-  padding-top: 14.1rem;
+  padding-top: 17.1rem;
   margin-bottom: 10rem;
   position: relative;
 }
@@ -374,7 +377,7 @@ body {
 
 @media (max-width: 767px) {
   .pets {
-    margin-top: 60px;
+    margin-top: 90px;
     padding-top: 7.2rem;
     margin-bottom: 42px;
   }

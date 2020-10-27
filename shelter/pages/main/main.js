@@ -7,6 +7,35 @@ let checkbox = document.querySelector('#menu__toggle');
 let overlay = document.querySelector("div.hamburger-menu > div");
 console.log(checkbox);
 
+const wr2 = document.querySelector(".wr2");
+
+//-----------------------dark
+const onmouse = document.querySelector(".menu_out");
+
+console.log(onmouse);
+
+
+const hoverOn = () =>{
+    document.body.style.cursor = 'pointer';
+    onmouse.style.opacity = '0.8';   
+    wr2.style.backgroundColor = 'rgba(41, 41, 41, 0.2)';
+    console.log('1');
+}
+
+const hoverOff = () =>{
+    document.body.style.cursor = 'auto';
+    onmouse.style.opacity = '1';
+    wr2.style.backgroundColor = 'rgba(41, 41, 41, 0.6)';
+    console.log('1');
+}
+
+wr2.addEventListener('mouseout', hoverOff);
+onmouse.addEventListener('mouseout', hoverOff);
+
+wr2.addEventListener('mouseover', hoverOn);
+onmouse.addEventListener('mouseover', hoverOn);
+//dark end----------------------------------------
+
 
 overlay.addEventListener('click', () => {
     checkbox.checked = false;
@@ -36,7 +65,7 @@ let CardElem3 = document.querySelector("div.pets__card > div > ul:nth-child(3)")
 let ElemMass = [CardElem1, CardElem2, CardElem3];
 const popupbtn = document.querySelector(".card");
 const popup = document.querySelector(".popup");
-const wr2 = document.querySelector(".wr2");
+//const wr2 = document.querySelector(".wr2");
 
 
 let i = 0;

@@ -20,10 +20,34 @@ pagesShowNum = document.querySelector("body > div > div.wrap_color > div > secti
 const popup = document.querySelector(".popup");
 const popupbtn = document.querySelector(".card__ul");
 const wr2 = document.querySelector(".wr2");
+const back_black = document.querySelector(".back_black");
+
+//-----------------------dark
+const onmouse = document.querySelector(".menu_out");
+
+console.log(onmouse);
 
 
+const hoverOn = () =>{
+    document.body.style.cursor = 'pointer';
+    onmouse.style.opacity = '0.2';   
+    wr2.style.backgroundColor = 'rgba(41, 41, 41, 0.2)';
+    console.log('1');
+}
 
+const hoverOff = () =>{
+    document.body.style.cursor = 'auto';
+    onmouse.style.opacity = '1';
+    wr2.style.backgroundColor = 'rgba(41, 41, 41, 0.6)';
+    console.log('1');
+}
 
+wr2.addEventListener('mouseout', hoverOff);
+onmouse.addEventListener('mouseout', hoverOff);
+
+wr2.addEventListener('mouseover', hoverOn);
+onmouse.addEventListener('mouseover', hoverOn);
+//dark end----------------------------------------
 
 overlay.addEventListener('click', () => {
     checkbox.checked = false;

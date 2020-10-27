@@ -371,7 +371,8 @@ body {
 
 @media (max-width: 767px) {
   .pets {
-    padding-top: 10.2rem;
+    margin-top: 60px;
+    padding-top: 7.2rem;
     margin-bottom: 42px;
   }
 }

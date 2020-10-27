@@ -267,11 +267,12 @@ h5 {
     margin-bottom: 20px;
     @include paragraph-l;
     color: white;
-    
+
 
     a {
         color: $color-light-s;
     }
+
     a:hover {
         color: $color-dark-s;
     }
@@ -282,22 +283,23 @@ h5 {
         border-bottom: 4px solid $color-primary;
         padding-top: 0.1rem;
     }
+
     &:nth-child(1) a:hover {
-        
+
         border-bottom: 4px solid $color-dark-m;
-        
+
     }
 }
 
-.navigation__link_active{
+.navigation__link_active {
     display: flex;
-        color: $color-light-s;
-        border-bottom: 4px solid $color-primary;
-        padding-top: 0.1rem;
+    color: $color-light-s;
+    border-bottom: 4px solid $color-primary;
+    padding-top: 0.1rem;
 }
 
 
-.unactive{
+.unactive {
     pointer-events: none;
     cursor: default;
     color: #999;
@@ -368,7 +370,7 @@ h5 {
 
 .burger_logo {
     margin-right: 90px;
-    margin-bottom: 158px;    
+    margin-bottom: 158px;
 }
 
 
@@ -834,8 +836,9 @@ h5 {
 
 .pets__wrapper_color {
     background-color: #f6f6f6;
-    
+
 }
+
 //Popup------------------------------------------------------------------
 .popup {
 
@@ -843,7 +846,7 @@ h5 {
     position: absolute;
     border-radius: 5px;
     width: 900px;
-    height: 500px;
+    max-height: 500px;
     left: 50%;
     margin-left: -450px;
     display: flex;
@@ -856,137 +859,171 @@ h5 {
 
     @media (max-width: 1279px) {
         width: 630px;
+        min-height: 350px;
+        margin-left: -45%;
+        top: 272px;
+    }
+
+    @media (max-width: 767px) {
+        width: 220px;
+        margin-left: -52%;
+    }
+
+    //margin-left: -315px;
+    //top: 263px;
+
+
+&_list {
+    list-style-type: disc;
+    color: $color-primary;
+}
+
+&__show {
+    display: flex;
+    animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+&__close {
+
+    right: -54px;
+    top: -50px;
+    position: absolute;
+    background-color: transparent;
+    padding-top: 10rem;
+    width: 52px;
+    height: 52px;
+    border: 2px solid #f1cdb3;
+    box-sizing: border-box;
+    border-radius: 100px;
+    align-self: center;
+    display: block;
+    padding: 18px 18px;
+    flex-shrink: 0;
+
+    &:hover {
+        border: 2px solid $color-primary-light;
+        background-color: $color-primary-light;
+    }
+
+}
+
+&__img {
+    border-radius: 5px;
+    overflow: hidden;
+    width: 500px;
+    height: 500px;
+
+    @media (max-width: 1279px) {
+        width: 350px;
         height: 350px;
-        margin-left: -315px;
-        top: 263px;
     }
 
-    &_list {
-        list-style-type: disc;
-        color: $color-primary;
+    @media (max-width: 767px) {
+        width: 1px;
+        height: 1px;
+        //margin-left: -315px;
+        //top: 263px;
     }
+}
 
-    &__show {
-        display: flex;
-        animation: fadeIn 1s;
-    }
+&__text {
 
-    @keyframes fadeIn {
-        from {opacity: 0;}
-        to {opacity: 1;}
-    }
-
-    &__close {
-
-        right: -54px;
-        top: -50px;
-        position: absolute;
-        background-color: transparent;
-        padding-top: 10rem;
-        width: 52px;
-        height: 52px;
-        border: 2px solid #f1cdb3;
-        box-sizing: border-box;
-        border-radius: 100px;
-        align-self: center;
-        display: block;
-        padding: 18px 18px;
-        flex-shrink: 0;
-
-        &:hover {
-            border: 2px solid $color-primary-light;
-            background-color: $color-primary-light;
-        }
-
-    }
-
-    &__img {
-        border-radius: 5px;
-        overflow: hidden;
-        width: 500px;
-        height: 500px;
+    &_wrapper {
+        margin-top: 50px;
+        text-align: start;
+        width: 351px;
+        padding-left: 29px;
 
         @media (max-width: 1279px) {
-            width: 350px;
-            height: 350px;
+            margin-top: 10px;
+            width: 303px;
+            padding-left: 11px;
+        }
+        @media (max-width: 767px) {
+            width: 220px;
+            
         }
     }
+}
 
-    &__text {
+&__name {
+    margin-bottom: 10px;
+}
 
-        &_wrapper {
-            margin-top: 50px;
-            text-align: start;
-            width: 351px;
-            padding-left: 29px;
+&__type {
+    margin-bottom: 40px;
 
-            @media (max-width: 1279px) {
-                margin-top: 10px;
-                width: 303px;
-                padding-left: 11px;
-            }
-        }
+    @media (max-width: 1279px) {
+        margin-bottom: 20px;
     }
-
-    &__name {
+    @media (max-width: 767px) {
         margin-bottom: 10px;
+        white-space: normal; 
+        
     }
+}
 
-    &__type {
-        margin-bottom: 40px;
+&__description {
+    margin-bottom: 40px;
 
-        @media (max-width: 1279px) {
-            margin-bottom: 20px;
-        }
+    @media (max-width: 1279px) {
+        margin-bottom: 20px;
     }
-
-    &__description {
-        margin-bottom: 40px;
-
-        @media (max-width: 1279px) {
-            margin-bottom: 20px;
-        }
-    }
-
-    &__param {
+    @media (max-width: 767px) {
         margin-bottom: 10px;
-        color: black;
-
-        //styleName: h5-modal-window;
-        font-family: Georgia;
-        font-size: 15px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: 17px;
-        letter-spacing: 0.06em;
-        text-align: left;
-
-
-
+        
     }
+}
 
-    &__param2 {
-        font-family: Georgia;
-        font-size: 15px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 17px;
-        letter-spacing: 0.06em;
-        text-align: left;
+&__param {
+    margin-bottom: 10px;
+    color: black;
 
-    }
+    //styleName: h5-modal-window;
+    font-family: Georgia;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 17px;
+    letter-spacing: 0.06em;
+    text-align: left;
 
-    &__Inoculations {
-        margin-bottom: 10px;
-    }
 
-    &__Diseases {
-        margin-bottom: 10px;
-    }
 
-    &__Parasites {
-        margin-bottom: 10px;
-    }
+}
+
+&__param2 {
+    font-family: Georgia;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 17px;
+    letter-spacing: 0.06em;
+    text-align: left;
+
+}
+
+&__Inoculations {
+    margin-bottom: 10px;
+}
+
+&__Diseases {
+    margin-bottom: 10px;
+}
+
+&__Parasites {
+    margin-bottom: 10px;
+}
 }
 
 //Popup end--------------------------------------------------------------------------------

@@ -221,10 +221,18 @@ request.onload = function () {
         
         popup.classList.add('popup__show');
         wr2.classList.add('back_black');
+        document.body.style.overflow = 'hidden';
         console.log(popupclose);
         popupclose.addEventListener('click', () => {
             popup.classList.remove('popup__show');
             wr2.classList.remove('back_black');
+            document.body.style.overflow = 'auto';
+        })
+
+        wr2.addEventListener('click', () => {
+            popup.classList.remove('popup__show');
+            wr2.classList.remove('back_black');
+            document.body.style.overflow = 'auto';
         })
     }
 

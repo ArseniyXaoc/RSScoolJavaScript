@@ -21,7 +21,7 @@ pagesShowNum = document.querySelector("body > div > div.wrap_color > div > secti
 overlay.addEventListener('click', () => checkbox.checked = false);
 
 //JSON load Pets.json----------------------------------------------------
-let requestURL = 'http://localhost:5500/shelter/pages/main/pets.json';
+let requestURL = '../main/pets.json';
 let request = new XMLHttpRequest();
 request.open('GET', requestURL);
 

@@ -12,8 +12,7 @@
 *,
 *::before,
 *::after {
-  -webkit-box-sizing: inherit;
-          box-sizing: inherit;
+  box-sizing: inherit;
   margin: 0;
 }
 
@@ -22,8 +21,7 @@ img {
 }
 
 html {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 li {
@@ -39,8 +37,7 @@ a {
 }
 
 .block {
-  -webkit-box-sizing: content-box;
-          box-sizing: content-box;
+  box-sizing: content-box;
 }
 
 :root {
@@ -104,8 +101,7 @@ h5 {
 .button {
   padding: 17px 46px;
   display: inline-block;
-  -ms-flex-item-align: start;
-      align-self: flex-start;
+  align-self: flex-start;
   font-family: Georgia, "Times New Roman", Times, serif;
   font-weight: 400;
   color: #292929;
@@ -122,9 +118,7 @@ h5 {
 
 @media (max-width: 1279px) {
   .button {
-    -ms-flex-item-align: center;
-        -ms-grid-row-align: center;
-        align-self: center;
+    align-self: center;
   }
 }
 
@@ -156,20 +150,16 @@ h5 {
 }
 
 .card {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   overflow: hidden;
   position: relative;
-  -ms-flex-preferred-size: 99rem;
-      flex-basis: 99rem;
+  flex-basis: 99rem;
   height: 55.5rem;
   padding: 6rem 0;
 }
 
 .card li:hover {
-  -webkit-box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.14);
-          box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.14);
+  box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.14);
 }
 
 @media (max-width: 767px) {
@@ -183,40 +173,29 @@ h5 {
 
 .card__ul {
   display: none;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-animation: 0.8s ease-in-out;
-          animation: 0.8s ease-in-out;
+  justify-content: space-between;
+  animation: 0.8s ease-in-out;
 }
 
 @media (min-width: 768px) and (max-width: 1279px) {
   .card__ul {
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
+    justify-content: space-around;
     margin: 0px -8px;
   }
 }
 
 @media (max-width: 767px) {
   .card__ul {
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    justify-content: center;
   }
 }
 
 .card__active, .card__next {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   position: relative;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  flex-grow: 1;
   width: 100%;
-  -ms-flex-negative: 0;
-      flex-shrink: 0;
+  flex-shrink: 0;
 }
 
 .card__next {
@@ -262,34 +241,21 @@ h5 {
 }
 
 .card .to-left {
-  -webkit-animation-name: left;
-          animation-name: left;
+  animation-name: left;
 }
 
 .card .to-right {
-  -webkit-animation-name: right;
-          animation-name: right;
+  animation-name: right;
   animation-direction: reverse;
 }
 
 .card .from-left {
-  -webkit-animation-name: left;
-          animation-name: left;
+  animation-name: left;
   animation-direction: reverse;
 }
 
 .card .from-right {
-  -webkit-animation-name: right;
-          animation-name: right;
-}
-
-@-webkit-keyframes left {
-  from {
-    left: 0;
-  }
-  to {
-    left: -100%;
-  }
+  animation-name: right;
 }
 
 @keyframes left {
@@ -298,15 +264,6 @@ h5 {
   }
   to {
     left: -100%;
-  }
-}
-
-@-webkit-keyframes right {
-  from {
-    left: 100%;
-  }
-  to {
-    left: 0%;
   }
 }
 
@@ -324,17 +281,13 @@ h5 {
   width: 52px;
   height: 52px;
   border: 2px solid #f1cdb3;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   border-radius: 100px;
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
+  align-self: center;
   display: block;
   padding: 16px 15px;
   background-color: #fff;
-  -ms-flex-negative: 0;
-      flex-shrink: 0;
+  flex-shrink: 0;
 }
 
 .arrow:hover {
@@ -343,11 +296,8 @@ h5 {
 }
 
 .arrow_320 {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  justify-content: space-around;
   margin: 0px 20px;
 }
 
@@ -363,28 +313,19 @@ h5 {
 
 @media (max-width: 767px) {
   .about_show_320 {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     margin-bottom: 21px;
   }
 }
 
 .arrow_reverse {
-  -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
 .pets__card {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 
 .card__item_clone {

@@ -150,7 +150,8 @@ body {
 
 @media (max-width: 767px) {
   .header {
-    top: 30px;
+    padding-top: 30px;
+    top: 0;
     right: 0;
     margin-right: 15px;
   }

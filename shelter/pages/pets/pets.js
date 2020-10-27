@@ -18,7 +18,19 @@ const btn_left = document.querySelector(".arrow__left");
 let numofpages = 1;
 pagesShowNum = document.querySelector("body > div > div.wrap_color > div > section > div.pets__switch > button:nth-child(3)");
 
-overlay.addEventListener('click', () => checkbox.checked = false);
+overlay.addEventListener('click', () => {
+    checkbox.checked = false;
+    document.body.style.overflow = 'auto';
+});
+
+checkbox.addEventListener('change', () => {
+    if(checkbox.checked === true){
+        document.body.style.overflow = 'hidden';
+    }
+    else document.body.style.overflow = 'auto';
+})
+
+
 
 //JSON load Pets.json----------------------------------------------------
 let requestURL = '../main/pets.json';

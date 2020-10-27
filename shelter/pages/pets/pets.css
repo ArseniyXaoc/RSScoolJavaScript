@@ -447,6 +447,7 @@ body {
 }
 
 .card__button {
+  cursor: pointer;
   margin-top: 3.3rem;
   padding: 14px 43px;
   border: 2px solid #f1cdb3;

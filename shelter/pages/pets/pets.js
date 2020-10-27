@@ -17,6 +17,13 @@ const btn_right = document.querySelector(".arrow__right");
 const btn_left = document.querySelector(".arrow__left");
 let numofpages = 1;
 pagesShowNum = document.querySelector("body > div > div.wrap_color > div > section > div.pets__switch > button:nth-child(3)");
+const popup = document.querySelector(".popup");
+const popupbtn = document.querySelector(".card__ul");
+const wr2 = document.querySelector(".wr2");
+
+
+
+
 
 overlay.addEventListener('click', () => {
     checkbox.checked = false;
@@ -62,6 +69,67 @@ request.onload = function () {
     console.log(endPets);
     createcard(endPets);
 
+    popupbtn.addEventListener('click', popup_create);
+
+//Popup
+    function popup_create(event) {
+        let id = event.target.closest('li');
+        console.log(id.children[1].innerText);
+        console.log(Pets);
+        let indexOfPet = Pets.find((item, index, array) =>{            
+            if(Pets[index].name === id.children[1].innerText){
+                return true;
+            }
+        });
+        console.log(indexOfPet);
+
+        const name = indexOfPet.name;
+        const img = indexOfPet.img;
+        const type = indexOfPet.type;
+        const breed = indexOfPet.breed;
+        const description = indexOfPet.description;
+        const age = indexOfPet.age;
+        const inoculations = indexOfPet.inoculations;
+        const diseases = indexOfPet.diseases;
+        const parasites = indexOfPet.parasites;
+        
+    
+        popup.innerHTML = `
+        <button class="popup__close"><img src="../../assets/icons/Vector.png" alt=""></button>
+        <div class="popup__img"><img src="${img}" alt=""></div>
+        <div class="popup__text">
+            <div class="popup__text_wrapper">
+                <h3 class="popup__name">${name}</h3>
+                <h4 class="popup__type">${type} - ${breed}</h4>
+                <h5 class="popup__description">${description}</h5>
+                <ul>
+                    <li class="popup_list"><span class="popup__Age popup__param">Age: <span class="popup__param2">${age}</span></span></li>
+                    <li class="popup_list"><span class="popup__Inoculations popup__param">Inoculations:<span class="popup__param2">${inoculations}</span></span></li>
+                    <li class="popup_list"><span class="popup__Diseases popup__param">Diseases: <span class="popup__param2">${diseases}</span></span></li>
+                    <li class="popup_list"><span class="popup__Parasites popup__param">Parasites: <span class="popup__param2">${parasites}</span></span></li>
+                </ul>
+            </div>
+        </div>`;
+        const popupclose = document.querySelector(".popup__close");
+    
+        
+        popup.classList.add('popup__show');
+        wr2.classList.add('back_black');
+        document.body.style.overflow = 'hidden';
+        console.log(popupclose);
+        popupclose.addEventListener('click', () => {
+            popup.classList.remove('popup__show');
+            wr2.classList.remove('back_black');
+            document.body.style.overflow = 'auto';
+        })
+    
+        wr2.addEventListener('click', () => {
+            popup.classList.remove('popup__show');
+            wr2.classList.remove('back_black');
+            document.body.style.overflow = 'auto';
+        })
+    }
+//Popup end
 
 
 }

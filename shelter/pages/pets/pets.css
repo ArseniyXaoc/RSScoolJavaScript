@@ -131,11 +131,28 @@ body {
 }
 
 .header {
-  position: sticky;
-  top: 0;
+  background-color: white;
+  position: fixed;
+  width: 93.8%;
+  max-width: 1280px;
+  /* top: 0; */
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+@media (max-width: 1279px) {
+  .header {
+    width: 92.1%;
+  }
+}
+
+@media (max-width: 767px) {
+  .header {
+    top: 30px;
+    right: 0;
+    margin-right: 15px;
+  }
 }
 
 .logo_container {
@@ -263,8 +280,8 @@ body {
   display: flex;
   align-items: center;
   position: absolute;
-  top: 10px;
-  right: 53px;
+  top: 17px;
+  right: 38px;
   width: 30px;
   height: 25px;
   cursor: pointer;
@@ -336,11 +353,12 @@ body {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 1;
 }
 
 .pets {
   text-align: center;
-  padding-top: 8.1rem;
+  padding-top: 14.1rem;
   margin-bottom: 10rem;
   position: relative;
 }
@@ -353,7 +371,7 @@ body {
 
 @media (max-width: 767px) {
   .pets {
-    padding-top: 4.2rem;
+    padding-top: 10.2rem;
     margin-bottom: 42px;
   }
 }
@@ -779,6 +797,7 @@ body {
   display: flex;
   animation: fadeIn 1s;
   position: fixed;
+  z-index: 2;
 }
 
 @keyframes fadeIn {

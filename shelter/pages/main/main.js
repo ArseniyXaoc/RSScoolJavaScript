@@ -7,8 +7,18 @@ let checkbox = document.querySelector('#menu__toggle');
 let overlay = document.querySelector("div.hamburger-menu > div");
 console.log(checkbox);
 
-overlay.addEventListener('click', () => checkbox.checked = false);
 
+overlay.addEventListener('click', () => {
+    checkbox.checked = false;
+    document.body.style.overflow = 'auto';
+});
+
+checkbox.addEventListener('change', () => {
+    if(checkbox.checked === true){
+        document.body.style.overflow = 'hidden';
+    }
+    else document.body.style.overflow = 'auto';
+})
 
 
 //Slader start------------------------------------------------------------------------

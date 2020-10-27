@@ -197,7 +197,7 @@ body {
   color: #545454;
 }
 
-.navigation__link:nth-child(2) a {
+.navigation__select {
   display: flex;
   color: #292929;
   border-bottom: 4px solid #f1cdb3;
@@ -225,17 +225,8 @@ body {
 }
 
 #menu__toggle:checked ~ .menu__btn > span {
-  transform: rotate(45deg);
-}
-
-#menu__toggle:checked ~ .menu__btn > span::before {
-  top: 0;
-  transform: rotate(0);
-}
-
-#menu__toggle:checked ~ .menu__btn > span::after {
-  top: 0;
-  transform: rotate(90deg);
+  transform-origin: 50% 50% 0;
+  transform: rotate(-90deg);
 }
 
 #menu__toggle:checked ~ .menu__box {

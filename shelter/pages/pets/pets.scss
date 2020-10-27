@@ -248,12 +248,14 @@ body {
 
     color: $color-dark-l;
 
-    &:nth-child(2) a {
-        display: flex;
-        color: $color-dark-3xl;
-        border-bottom: 4px solid $color-primary;
-        padding-top: 0.1rem;
-    }
+    
+}
+
+.navigation__select {
+    display: flex;
+    color: $color-dark-3xl;
+    border-bottom: 4px solid $color-primary;
+    padding-top: 0.1rem;
 }
 
 .unactive{
@@ -276,17 +278,18 @@ body {
     opacity: 0;
 
     &:checked~.menu__btn>span {
-        transform: rotate(45deg);
+        transform-origin: 50% 50% 0;
+        transform: rotate(-90deg);
     }
 
     &:checked~.menu__btn>span::before {
-        top: 0;
-        transform: rotate(0);
+        //top: 0;
+        //transform: rotate(90deg);
     }
 
     &:checked~.menu__btn>span::after {
-        top: 0;
-        transform: rotate(90deg);
+        //top: 0;
+        //transform: rotate(90deg);
     }
 
     &:checked~.menu__box {

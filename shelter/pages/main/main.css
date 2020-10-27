@@ -986,6 +986,7 @@ h5 {
 
 .popup__Inoculations {
   margin-bottom: 10px;
+  word-break: break-all;
 }
 
 .popup__Diseases {

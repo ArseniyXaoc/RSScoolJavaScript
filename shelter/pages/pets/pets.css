@@ -124,13 +124,14 @@ body {
 .header_wrapper {
   margin-bottom: 30px;
   position: sticky;
-  padding-top: 3rem;
+  
   top: 0;
   background-color: white;
   z-index: 1;
 }
 
 .header {
+  padding-top: 3rem;
   background-color: white;
   position: fixed;
   width: 93.8%;

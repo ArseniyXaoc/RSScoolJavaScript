@@ -48,6 +48,13 @@ body {
     top: 40px;
 }
 
+@media (max-width: 750px){
+    .weather {
+        position: static;
+        
+    }
+}
+
 
     .btn {
         margin: 40px;

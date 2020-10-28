@@ -232,6 +232,7 @@ async function getWeather() {
     }}
 }
 getWeather();
+getCity();
 
 function setCity(event) {
     if (event.code === 'Enter') {
@@ -243,7 +244,7 @@ function setCity(event) {
 
 function getCity() {
     if (localStorage.getItem('city') === null) {
-      city.textContent = '[Enter City]';
+      city.textContent = '[Введите город]';
       localStorage.setItem('city', city.textContent);
     } else {
       city.textContent = localStorage.getItem('city');
@@ -263,6 +264,8 @@ function getCity() {
   }
 }
 
+
+
   function checkCity() {
     if ((city.textContent == '') || (city.textContent.trim().length == 0))
         city.textContent = localStorage.getItem('city');
@@ -272,6 +275,10 @@ function getCity() {
         getWeather();
     }
 }
+
+
+
+city.addEventListener('click', checkCity);
 
 city.addEventListener('click', function() {
     city.textContent = '';

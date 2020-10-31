@@ -121,15 +121,15 @@ function getimage() {
 
 
 name.addEventListener('click', () => {
-    if (name.textContent === '[Введите имя]') {
+    
         name.innerText = '';
-    }
+    
 });
 
 focus.addEventListener('click', () => {
-    if (focus.textContent === '[Введите цель]') {
+    
         focus.innerText = '';
-    }
+    
 });
 
 name.addEventListener('keypress', setName);
@@ -142,12 +142,12 @@ focus.addEventListener('blur', setFocus);
 function setName(event) {
     if (event.type === 'keypress') {
         if (event.which == 13 || event.keyCode == 13) {
-            if (name.innerText.trim() === '') name.innerText = '[Введите имя]' //= localStorage.getItem('name');;
+            if (name.innerText.trim() === '') name.innerText = localStorage.getItem('name'); //= localStorage.getItem('name');;
             localStorage.setItem('name', event.target.innerText);
             name.blur();
         }
     } else if (event.type === 'blur') {
-        if (name.innerText.trim() === '') name.innerText = '[Введите имя]';
+        if (name.innerText.trim() === '') name.innerText = localStorage.getItem('name');
         localStorage.setItem('name', event.target.innerText);
     }
 }
@@ -155,12 +155,12 @@ function setName(event) {
 function setFocus(event) {
     if (event.type === 'keypress') {
         if (event.which == 13 || event.keyCode == 13) {
-            if (focus.innerText.trim() === '') focus.innerText = '[Введите цель]';
+            if (focus.innerText.trim() === '') focus.innerText = localStorage.getItem('focus');
             localStorage.setItem('focus', event.target.innerText);
             focus.blur();
         }
     } else if (event.type === 'blur') {
-        if (focus.innerText.trim() === '') focus.innerText = '[Введите цель]';
+        if (focus.innerText.trim() === '') focus.innerText = localStorage.getItem('focus');
         localStorage.setItem('focus', event.target.innerText);
     }
 }
@@ -294,7 +294,7 @@ city.addEventListener('keypress', setCity);
 // Цитаты_______________________________________________________________
 const blockquote = document.querySelector('blockquote');
 const figcaption = document.querySelector('figcaption');
-const blockquote_btn = document.querySelector('blockquote_btn');
+const blockquote_btn = document.querySelector('.blockquote_btn');
 
 async function getQuote() {
     const url = `https://cors-anywhere.herokuapp.com/https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=ru`;
@@ -305,5 +305,5 @@ async function getQuote() {
 }
 
 document.addEventListener('DOMContentLoaded', getQuote);
-btn.addEventListener('click', getQuote);
+//btn.addEventListener('click', getQuote);
 blockquote_btn.addEventListener('click', getQuote);

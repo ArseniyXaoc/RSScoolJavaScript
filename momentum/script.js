@@ -297,7 +297,7 @@ const figcaption = document.querySelector('figcaption');
 const blockquote_btn = document.querySelector('.blockquote_btn');
 
 async function getQuote() {
-    const url = `https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=ru`;
+    const url = `https://cors-anywhere.herokuapp.com/https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=ru`;
     const res = await fetch(url);
     const data = await res.json();
     blockquote.textContent = data.quoteText;

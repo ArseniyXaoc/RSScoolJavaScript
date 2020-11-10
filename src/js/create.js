@@ -81,11 +81,11 @@ class Puzzle {
                 const f = i;
                 const element = document.createElement('div');
                 element.classList.add('element');
-                const value = arr[i].value; //inMass[i - 1] + 1;
+                const {value} = arr[i]; //inMass[i - 1] + 1;
                 element.innerHTML = value;
                 field.append(element);
-                const left = arr[i].left;
-                const top = arr[i].top;
+                const {left} = arr[i];
+                const {top} = arr[i];
                 this.elements.elemArr[i].value = arr[i].value;
                 this.elements.elemArr[i].top = arr[i].top;
                 this.elements.elemArr[i].left = arr[i].left;

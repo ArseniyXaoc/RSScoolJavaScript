@@ -24,13 +24,15 @@ let ard;
 let saved;
 const restart = document.querySelector('.ReStart');
 restart.addEventListener('click', () =>{
+  
   const field = document.querySelector('.field');
   if(field) (document.body.removeChild(field));
+  clearInterval(time);
   
   ard = '';
   ard = new Puzzle;
   ard.creator();  
-  console.log(field);  
+  setInterval(time, 1000);
 })
 
 const save = document.querySelector('.Save');
@@ -38,6 +40,7 @@ const load = document.querySelector('.Load');
 
 
 function SaveGame (){  
+  
   saved = JSON.parse(JSON.stringify(ard.elements.elemArr));  //ard.elements.elemArr.slice();
 }
 

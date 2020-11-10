@@ -24,7 +24,7 @@ const time = () => {
 }
 
 
-setInterval(time, 1000);
+
 export {
     time
 };

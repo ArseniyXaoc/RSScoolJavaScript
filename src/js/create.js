@@ -10,7 +10,7 @@ class Puzzle {
         this.elements = {
             win: false,
             elemArr: [], // Массив с позицией элемента
-            elementSize: 25,
+            elementSize: 100,
             moves: 0,
             move: null,
             empty: {
@@ -22,6 +22,7 @@ class Puzzle {
         }
 
         this.drug = {
+            Drug: true,
             StartCursorX: null,
             StartCursorY: null,
             StartX: null,
@@ -46,6 +47,7 @@ class Puzzle {
         field.classList.add('field');
         this.elements.move.classList.add('move');
         this.elements.move.innerText = ` Ходов: ${this.elements.moves}`;
+        field.setAttribute('onselectstart', 'return false');
 
 
         const inMass = this.solvability();
@@ -82,59 +84,40 @@ class Puzzle {
                 })
 
 
-                element.style.top = `${top * this.elements.elementSize}%`;
-                element.style.left = `${left * this.elements.elementSize}%`;
+                element.style.top = `${top * this.elements.elementSize}px`;
+                element.style.left = `${left * this.elements.elementSize}px`;
 
-                element.addEventListener('click', () => {
+                const move = () => {
                     this.move(f);
-                    
-                })
-
-                // Drug&Drop//////////////////////////
-
-
-                // Alt/////////////////////////////////////////////
-               /* element.onmousedown = function (event) {
-                    element.style.position = 'absolute';
-                    element.style.zIndex = 100;
-
-                    let shiftX = event.clientX - element.getBoundingClientRect().left;
-                    let shiftY = event.clientY - element.getBoundingClientRect().top;
-
-                    //document.body.append(element);
-                    moveAt(event.pageX, event.pageY);
-
-                    function moveAt(pageX, pageY) {
-                        //console.log(pageX, pageY, element.offsetWidth, element.offsetHeight);
-                        element.style.left = pageX - shiftX + 'px';
-                        element.style.top = pageY - shiftY + 'px';
-                    }
-
-                    function onMouseMove(event) {
-                        moveAt(event.pageX, event.pageY);                    
-                    }
-
-                    document.addEventListener('mousemove', onMouseMove);
-
-                    element.onmouseup = function () {
-                        document.removeEventListener('mousemove', onMouseMove);
-                        element.onmouseup = null;
-                    }
+                    console.log(this.elements.elemArr);
                 }
+
+                element.addEventListener('click', move);
 
                 element.ondragstart = function () {
                     return false;
-                }*/
+                }
 
 
-                // eslint-disable-next-line no-loop-func
+                element.addEventListener('mousedown', (event) => {
+                    this.moveElem(f, event, field);
+                })
 
+                element.ondragstart = function () {
+                    return false;
+                }
 
+                // Drug&Drop//////////////////////////
+                //element.onmousedown = 
+                //////////////////////////////////////
 
             }
             document.body.appendChild(field);
             document.body.appendChild(this.elements.move);
+
         }
+
+
     }
 
     // eslint-disable-next-line class-methods-use-this
@@ -173,13 +156,21 @@ class Puzzle {
                 this.elements.elemArr[i].left = arr[i].left;
                 this.elements.elemArr[i].dom = element;
 
-                element.style.top = `${top * this.elements.elementSize}%`;
-                element.style.left = `${left * this.elements.elementSize}%`;
+                element.style.top = `${top * this.elements.elementSize}px`;
+                element.style.left = `${left * this.elements.elementSize}px`;
 
-                element.addEventListener('click', () => {
+                const move = () => {
                     this.move(f);
                     console.log(this.elements.elemArr);
-                })
+                }
+                element.addEventListener('click', move);
+
+                // element.addEventListener('click', function move() {
+                //     this.move(f);
+                //     console.log(this.elements.elemArr);
+                // })
+
+
             } else {
                 this.elements.empty.top = arr[i].top;
                 this.elements.empty.left = arr[i].left;
@@ -189,14 +180,19 @@ class Puzzle {
                 element.classList.add('empty');
                 this.elements.empty.dom = element;
                 field.append(element);
-                this.elements.empty.dom.style.top = `${this.elements.empty.top * this.elements.elementSize}%`;
-                this.elements.empty.dom.style.left = `${this.elements.empty.left * this.elements.elementSize}%`;
+                this.elements.empty.dom.style.top = `${this.elements.empty.top * this.elements.elementSize}px`;
+                this.elements.empty.dom.style.left = `${this.elements.empty.left * this.elements.elementSize}px`;
             }
+
+            // element.ondragstart = function () {
+            //     return false;
+            // }
         }
         document.body.appendChild(field);
     }
 
     move(index) {
+        if (this.drug.Drug) return;
         const elem = this.elements.elemArr[index];
 
         const leftDiff = Math.abs(this.elements.empty.left - elem.left);
@@ -207,8 +203,8 @@ class Puzzle {
         this.elements.moves += 1;
         this.elements.move.innerText = ` Ходов: ${this.elements.moves}`;
 
-        elem.dom.style.top = `${this.elements.empty.top * this.elements.elementSize}%`;
-        elem.dom.style.left = `${this.elements.empty.left * this.elements.elementSize}%`;
+        elem.dom.style.top = `${this.elements.empty.top * this.elements.elementSize}px`;
+        elem.dom.style.left = `${this.elements.empty.left * this.elements.elementSize}px`;
 
         const emptyLeft = this.elements.empty.left;
         const emptyTop = this.elements.empty.top;
@@ -217,8 +213,8 @@ class Puzzle {
         elem.left = emptyLeft;
         elem.top = emptyTop;
 
-        this.elements.empty.dom.style.top = `${this.elements.empty.top * this.elements.elementSize}%`;
-        this.elements.empty.dom.style.left = `${this.elements.empty.left * this.elements.elementSize}%`;
+        this.elements.empty.dom.style.top = `${this.elements.empty.top * this.elements.elementSize}px`;
+        this.elements.empty.dom.style.left = `${this.elements.empty.left * this.elements.elementSize}px`;
 
         const finish = this.elements.elemArr.every(item => {
             return item.value === item.top * 4 + item.left;
@@ -254,6 +250,79 @@ class Puzzle {
 
 
 
+
+
+    //Drug & Drop
+    moveElem(index, event, field) {
+        const elem = this.elements.elemArr[index];
+        const mr = window.getComputedStyle(field, null).getPropertyValue('margin-right');
+        console.log(mr.slice(0, -2));
+        const element = this.elements.elemArr[index].dom;
+        const leftDiff = Math.abs(this.elements.empty.left - this.elements.elemArr[index].left);
+        const topDiff = Math.abs(this.elements.empty.top - this.elements.elemArr[index].top);
+        const IndexLeft = this.elements.elemArr[index].left;
+        const IndexTop = this.elements.elemArr[index].top;
+        if (leftDiff + topDiff > 1) {
+            return;
+        }
+
+        const ShiftX = event.clientX - element.getBoundingClientRect().left;
+        const ShiftY = event.clientY - element.getBoundingClientRect().top;
+        element.style.zIndex = 100;        
+        moveAt(event.pageX, event.pageY);
+        function moveAt(pageX, pageY) {
+            element.style.left = pageX - ShiftX - (mr.slice(0, -2)) - 10 + 'px';
+            element.style.top = pageY - ShiftY - 92 + 'px';
+        }
+
+        let currentDroppable = null;
+        let dropitem = 1;
+        let droppableBelow;
+        function onMouseMove(event) {
+            moveAt(event.pageX, event.pageY);
+            element.style.display = 'none';
+            let elementBelow = document.elementFromPoint(event.clientX, event.clientY);
+            element.style.display = 'flex';
+            if (!elementBelow) return;
+            droppableBelow = elementBelow.closest('.empty');
+        }
+
+        let mouseup;
+        document.addEventListener('mousemove', onMouseMove);
+        const elementSize = this.elements.elementSize;
+        const enterDroppable1 = this.enterDroppable.bind(this);
+        function liveDroppable(IndexLeft, IndexTop, element) {
+            element.style.top = `${IndexTop * elementSize}px`;
+            element.style.left = `${IndexLeft * elementSize}px`;
+        }
+        
+        element.onmouseup = function (event) {
+            if (!droppableBelow) {
+                liveDroppable(IndexLeft, IndexTop, element);
+            } else {
+                enterDroppable1(IndexLeft, IndexTop, element, elem);
+            }
+            document.removeEventListener('mousemove', onMouseMove);
+            element.onmouseup = null;
+            element.style.zIndex = 0;
+        }
+    }
+
+    enterDroppable(IndexLeft, IndexTop, element, elem) {
+        console.log(this);
+        this.elements.moves += 1;
+        this.elements.move.innerText = ` Ходов: ${this.elements.moves}`;
+        element.style.top = `${this.elements.empty.top * this.elements.elementSize}px`;
+        element.style.left = `${this.elements.empty.left * this.elements.elementSize}px`;
+        const emptyLeft = this.elements.empty.left;
+        const emptyTop = this.elements.empty.top;
+        this.elements.empty.left = IndexLeft;
+        this.elements.empty.top = IndexTop;
+        elem.left = emptyLeft;
+        elem.top = emptyTop;
+        this.elements.empty.dom.style.top = `${this.elements.empty.top * this.elements.elementSize}px`;
+        this.elements.empty.dom.style.left = `${this.elements.empty.left * this.elements.elementSize}px`;
+    }
 }
 
 

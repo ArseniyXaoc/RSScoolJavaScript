@@ -43,6 +43,7 @@ const load = document.createElement('button');
 
 let ard;
 let saved;
+let moves;
 let empty;
 let timer;
 //const restart = document.querySelector('.ReStart');
@@ -83,6 +84,7 @@ restart.addEventListener('click', () => {
 function SaveGame() {
   localStorage.setItem('save', JSON.stringify(ard.elements.elemArr));
   localStorage.setItem('empty', JSON.stringify(ard.elements.empty));
+  localStorage.setItem('moves', JSON.stringify(ard.elements.moves));
   
   // saved = JSON.parse(JSON.stringify(ard.elements.elemArr));  //ard.elements.elemArr.slice();
 }
@@ -90,9 +92,11 @@ function SaveGame() {
 function LoadGame() {
   saved = JSON.parse(localStorage.getItem('save'));
   empty = JSON.parse(localStorage.getItem('empty'));
-  console.log(saved);
+  moves = JSON.parse(localStorage.getItem('moves'));
+  
   ard.elements.elemArr = saved; // JSON.parse(JSON.stringify(saved));
   ard.elements.empty = empty;
+  ard.elements.moves = moves;
   const field = document.querySelector('.field');
   if (field)(document.body.removeChild(field));
   ard.load(saved);

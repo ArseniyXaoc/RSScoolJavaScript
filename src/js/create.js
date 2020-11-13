@@ -261,11 +261,12 @@ class Puzzle {
         const enterDroppable1 = this.enterDroppable.bind(this);
 
 
-        document.addEventListener('mousemove', onMouseMove);
+        
 
         if (leftDiff + topDiff > 1) {
             return;
         }
+        document.addEventListener('mousemove', onMouseMove);
 
         element.style.zIndex = 100;
         moveAt(event.pageX, event.pageY);

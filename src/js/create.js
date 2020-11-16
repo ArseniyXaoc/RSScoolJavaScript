@@ -1,16 +1,32 @@
-//const Puzzle = {
 
 import {
     minits,
     seconds,
 } from './time';
 
+
+import {
+    restart,
+} from './index';
+
 class Puzzle {
     constructor() {
+
+        this.player,
+        
+        this.size = {
+            elementSize: 33.33,
+            numOfPuzzle: 8,
+            puzzleLength: 3,
+        },
+
         this.elements = {
+            result:[{},{},{},{},{},{},{},{},{},{}],
+            partOfresult: 0,
+            flag: false,
             win: false,
             elemArr: [], // Массив с позицией элемента
-            elementSize: 100,
+            
             moves: 0,
             move: null,
             empty: {
@@ -28,32 +44,30 @@ class Puzzle {
             StartX: null,
             StartY: null,
         }
-    }
-    // elements: {
-    //     win: false,
-    //     elemArr: [], // Массив с позицией элемента
-    //     elementSize: 25,
-    //     empty: {
-    //         value: 0,
-    //         top: 0,
-    //         left: 0,
-    //     },
-    // },
+    }   
 
     creator() {
-        //this.elements.elemArr.push(this.elements.empty);
+        this.player = new Audio();
+        this.player.volume = 1;
+        
+
         const field = document.createElement('div');
-        this.elements.move = document.createElement('div');
+        
         field.classList.add('field');
-        this.elements.move.classList.add('move');
+        this.elements.move = document.createElement('div');
         this.elements.move.innerText = ` Ходов: ${this.elements.moves}`;
+        this.elements.move.classList.add('move');
+
+        
         field.setAttribute('onselectstart', 'return false');
         const inMass = this.solvability();
 
-        for (let i = 0; i <= 15; i += 1) {
+        for (let i = 0; i <= this.size.numOfPuzzle ; i += 1) {
             const f = i;
             const element = document.createElement('div');
             element.classList.add('element');
+            element.style.height = `${this.size.elementSize}%`;
+            element.style.width = `${this.size.elementSize}%`;
             let value;
 
             if (i === 0) {
@@ -64,8 +78,8 @@ class Puzzle {
 
             element.innerHTML = value;
             field.append(element);
-            const left = i % 4;
-            const top = (i - left) / 4;
+            const left = i % this.size.puzzleLength;
+            const top = (i - left) / this.size.puzzleLength;
 
             if (i === 0) {
                 this.elements.empty.value = 0;
@@ -83,57 +97,75 @@ class Puzzle {
                 })
 
 
-                element.style.top = `${top * this.elements.elementSize}px`;
-                element.style.left = `${left * this.elements.elementSize}px`;
+                element.style.top = `${top * this.size.elementSize}%`;
+                element.style.left = `${left * this.size.elementSize}%`;
 
                 const move = () => {
                     this.move(f);
-                    console.log(this.elements.elemArr);
+                    
                 }
 
                 element.addEventListener('click', move);
 
                 element.addEventListener('mousedown', (event) => {
+                    this.elements.flag = true;
                     this.moveElem(f, event, field);
+                })
+
+                element.addEventListener('mouseup', (event) => {
+                    this.noize();
+
+                    this.elements.flag = false;                    
                 })
 
                 element.ondragstart = function () {
                     return false;
                 }
 
-                // Drug&Drop//////////////////////////
-                //element.onmousedown = 
-                //////////////////////////////////////
-
+                // Drug&Drop//////////////////////////               
             }
             document.body.appendChild(field);
             document.body.appendChild(this.elements.move);
         }
     }
 
+    noize() {
+        let link = '';
+        this.playSound(link);
+    }
+
+    playSound(link){
+        this.player.src = link;
+        this.player.play;
+    }
+
     // eslint-disable-next-line class-methods-use-this
     load(arr) {
-        console.log(arr);
-        this.elements.move.innerText = ` Ходов: ${this.elements.moves}`;
+        
+        
+        
         this.elements.elemArr[0] = this.elements.empty;
         const field = document.createElement('div');
         field.classList.add('field');
+       
 
         const inMass = [];
         arr.forEach(item => {
             inMass.push(item.value);
         })
-        console.log(inMass);
+        
         document.body.appendChild(field);
 
-        for (let i = 0; i <= 15; i += 1) {
+        for (let i = 0; i <= this.size.numOfPuzzle; i += 1) {
             if (i !== 0) {
                 const f = i;
                 const element = document.createElement('div');
                 element.classList.add('element');
+                element.style.height = `${this.size.elementSize}%`;
+                element.style.width = `${this.size.elementSize}%`;
                 const {
                     value
-                } = arr[i]; //inMass[i - 1] + 1;
+                } = arr[i]; 
                 element.innerHTML = value;
                 field.append(element);
                 const {
@@ -147,12 +179,12 @@ class Puzzle {
                 this.elements.elemArr[i].left = arr[i].left;
                 this.elements.elemArr[i].dom = element;
 
-                element.style.top = `${top * this.elements.elementSize}px`;
-                element.style.left = `${left * this.elements.elementSize}px`;
+                element.style.top = `${top * this.size.elementSize}%`;
+                element.style.left = `${left * this.size.elementSize}%`;
 
                 const move = () => {
                     this.move(f);
-                    console.log(this.elements.elemArr);
+                    
                 }
                 element.addEventListener('click', move);
 
@@ -173,15 +205,17 @@ class Puzzle {
                 element.classList.add('empty');
                 this.elements.empty.dom = element;
                 field.append(element);
-                this.elements.empty.dom.style.top = `${this.elements.empty.top * this.elements.elementSize}px`;
-                this.elements.empty.dom.style.left = `${this.elements.empty.left * this.elements.elementSize}px`;
-            }
+                this.elements.empty.dom.style.top = `${this.elements.empty.top * this.size.elementSize}%`;
+                this.elements.empty.dom.style.left = `${this.elements.empty.left * this.size.elementSize}%`;
 
-            // element.ondragstart = function () {
-            //     return false;
-            // }
+                this.elements.empty.dom.style.height = `${this.size.elementSize}%`;
+                this.elements.empty.dom.style.width = `${this.size.elementSize}%`;
+
+            }            
         }
         document.body.appendChild(field);
+        
+        this.elements.move.innerText = ` Ходов: ${this.elements.moves}`;
     }
 
     move(index) {
@@ -196,8 +230,8 @@ class Puzzle {
         this.elements.moves += 1;
         this.elements.move.innerText = ` Ходов: ${this.elements.moves}`;
 
-        elem.dom.style.top = `${this.elements.empty.top * this.elements.elementSize}px`;
-        elem.dom.style.left = `${this.elements.empty.left * this.elements.elementSize}px`;
+        elem.dom.style.top = `${this.elements.empty.top * this.size.elementSize}%`;
+        elem.dom.style.left = `${this.elements.empty.left * this.size.elementSize}%`;
 
         const emptyLeft = this.elements.empty.left;
         const emptyTop = this.elements.empty.top;
@@ -206,26 +240,45 @@ class Puzzle {
         elem.left = emptyLeft;
         elem.top = emptyTop;
 
-        this.elements.empty.dom.style.top = `${this.elements.empty.top * this.elements.elementSize}px`;
-        this.elements.empty.dom.style.left = `${this.elements.empty.left * this.elements.elementSize}px`;
+        this.elements.empty.dom.style.top = `${this.elements.empty.top * this.size.elementSize}%`;
+        this.elements.empty.dom.style.left = `${this.elements.empty.left * this.size.elementSize}%`;
+        
 
         const finish = this.elements.elemArr.every(item => {
-            return item.value === item.top * 4 + item.left;
+            return item.value === item.top * this.size.puzzleLength + item.left;
         })
 
         if (finish) setTimeout(() => {
             alert(`Ура! вы выиграли головоломку за и ${minits.innerText}${seconds.innerText} и ${this.elements.moves} ходов`);
-            this.elements.win = true;
+            
+            if(localStorage.getItem('result') != null) this.elements.result = JSON.parse(localStorage.getItem('result'));  
+           
+           let moves = this.elements.moves;
+
+            for(let item of this.elements.result){
+                if(item.moves > moves ||  item.moves === undefined) {
+                    item.moves = moves;
+                    item.time = `${minits.innerText}${seconds.innerText}`;
+                    break;
+                }                
+            }
+
+            console.log(this.elements.result);            
+            localStorage.setItem('result', JSON.stringify(this.elements.result));
+            this.elements.win = true;   
+
+            restart.click();
+
         }, 250);;
     }
 
 
     solvability() {
         const sortArr = [];
-        for (let i = 0; i <= 14; i += 1) {
+        for (let i = 0; i <= (this.size.numOfPuzzle)-1; i += 1) {
             sortArr.push(i);
         }
-        // sortArr.sort(() => Math.random() - 0.5);
+         sortArr.sort(() => Math.random() - 0.5);
 
         let iter = 0
         sortArr.forEach((element, index, array) => {
@@ -235,7 +288,7 @@ class Puzzle {
                 }
             }
         });
-        //console.log(iter);
+        
         if (iter % 2 === 0) return sortArr;
         return this.solvability();
 
@@ -243,9 +296,7 @@ class Puzzle {
 
     //Drug & Drop
     moveElem(index, event, field) {
-        // setTimeout(() =>{
-        // }, 300);
-        //console.log(mr.slice(0, -2));
+       
         let Drug = this.drug;
         const element = this.elements.elemArr[index].dom;
         const elem = this.elements.elemArr[index];
@@ -257,15 +308,16 @@ class Puzzle {
         let droppableBelow;
         const ShiftX = event.clientX - element.getBoundingClientRect().left;
         const ShiftY = event.clientY - element.getBoundingClientRect().top;
-        const elementSize = this.elements.elementSize;
+        const elementSize = this.size.elementSize;
         const enterDroppable1 = this.enterDroppable.bind(this);
 
 
-        
+
 
         if (leftDiff + topDiff > 1) {
             return;
-        }
+        }       
+
         document.addEventListener('mousemove', onMouseMove);
 
         element.style.zIndex = 100;
@@ -273,12 +325,13 @@ class Puzzle {
 
         function moveAt(pageX, pageY) {
             element.style.left = pageX - ShiftX - (mr.slice(0, -2)) - 10 + 'px';
-            element.style.top = pageY - ShiftY - 92 + 'px';
+            element.style.top = pageY - ShiftY - 132 + 'px';
         }
 
         function onMouseMove(event) {
+            
             Drug.Drug = true;
-            console.log(Drug);
+            
             moveAt(event.pageX, event.pageY);
             element.style.display = 'none';
             let elementBelow = document.elementFromPoint(event.clientX, event.clientY);
@@ -288,8 +341,8 @@ class Puzzle {
         }
 
         function liveDroppable(IndexLeft, IndexTop, element) {
-            element.style.top = `${IndexTop * elementSize}px`;
-            element.style.left = `${IndexLeft * elementSize}px`;
+            element.style.top = `${IndexTop * elementSize}%`;
+            element.style.left = `${IndexLeft * elementSize}%`;
         }
 
         element.onmouseup = function (event) {
@@ -301,42 +354,54 @@ class Puzzle {
             document.removeEventListener('mousemove', onMouseMove);
             element.onmouseup = null;
             element.style.zIndex = 0;
-
         }
         Drug.Drug = false;
     }
 
     enterDroppable(IndexLeft, IndexTop, element, elem) {
-        console.log(this);
+        
         this.elements.moves += 1;
         this.elements.move.innerText = ` Ходов: ${this.elements.moves}`;
-        element.style.top = `${this.elements.empty.top * this.elements.elementSize}px`;
-        element.style.left = `${this.elements.empty.left * this.elements.elementSize}px`;
+        element.style.top = `${this.elements.empty.top * this.size.elementSize}%`;
+        element.style.left = `${this.elements.empty.left * this.size.elementSize}%`;
         const emptyLeft = this.elements.empty.left;
         const emptyTop = this.elements.empty.top;
         this.elements.empty.left = IndexLeft;
         this.elements.empty.top = IndexTop;
         elem.left = emptyLeft;
         elem.top = emptyTop;
-        this.elements.empty.dom.style.top = `${this.elements.empty.top * this.elements.elementSize}px`;
-        this.elements.empty.dom.style.left = `${this.elements.empty.left * this.elements.elementSize}px`;
+        this.elements.empty.dom.style.top = `${this.elements.empty.top * this.size.elementSize}%`;
+        this.elements.empty.dom.style.left = `${this.elements.empty.left * this.size.elementSize}%`;
 
         const finish = this.elements.elemArr.every(item => {
-            return item.value === item.top * 4 + item.left;
+            return item.value === item.top * this.size.puzzleLength + item.left;
         })
 
         if (finish) setTimeout(() => {
             alert(`Ура! вы выиграли головоломку за и ${minits.innerText}${seconds.innerText} и ${this.elements.moves} ходов`);
-            this.elements.win = true;
+            
+            if(localStorage.getItem('result') != null) this.elements.result = JSON.parse(localStorage.getItem('result'));  
+           
+           let moves = this.elements.moves;
+
+            for(let item of this.elements.result){
+                if(item.moves > moves ||  item.moves === undefined) {
+                    item.moves = moves;
+                    item.time = `${minits.innerText}${seconds.innerText}`;
+                    break;
+                }                
+            }
+
+            console.log(this.elements.result);            
+            localStorage.setItem('result', JSON.stringify(this.elements.result));
+            this.elements.win = true;   
+
+            restart.click();
+
         }, 250);;
     }
 }
 
-
 export {
     Puzzle
 };
-
-// module.exports = {
-//     Puzzle
-// };

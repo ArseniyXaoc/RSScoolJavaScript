@@ -1,10 +1,7 @@
 import '../css/style.css';
 import '../css/style.scss';
+import '../img/2.jpg'
 
-
-// import {
-//   moduleOne
-// } from './moduleOne';
 
 import {
   Puzzle
@@ -18,27 +15,33 @@ import {
   seconds,
   timerX,
 } from './time';
-// const helloArr = require('./moduleOne.js');
+
 
 time();
-
-
-
 
 const restart = document.createElement('button');
 const save = document.createElement('button');
 const load = document.createElement('button');
+const numPuzzle = document.createElement('select');
+const result = document.createElement('button');
+numPuzzle.size = 1;
 
 (function () {
   restart.classList.add('ReStart');
   save.classList.add('Save');
   load.classList.add('Load');
+  numPuzzle.classList.add('numPuzzle');
+  result.classList.add('result');
   document.body.appendChild(restart);
   document.body.appendChild(save);
   document.body.appendChild(load);
+  document.body.appendChild(numPuzzle);
+  document.body.appendChild(result);
   restart.innerText = 'New Game';
   save.innerText = 'Save';
   load.innerText = 'Load';
+  result.innerText = 'Result';
+  numPuzzle.innerHTML = '<option value = "3x3">3x3</option><option value = "4x4">4x4</option><option value = "8x8">8x8</option>';
 }())
 
 let ard;
@@ -46,14 +49,15 @@ let saved;
 let moves;
 let empty;
 let timer;
-//const restart = document.querySelector('.ReStart');
+
+result.addEventListener('click', res);
+
 restart.addEventListener('click', () => {
 
   //Style///////////////////////////////////////////////
   restart.style.fontSize = '14px';
   restart.style.width = 'auto';
   restart.style.height = 'auto';
-  //restart.style.fontSize = '14px';
 
 
   timerX.x = 0;
@@ -69,31 +73,52 @@ restart.addEventListener('click', () => {
   clearInterval(timer);
   ard = '';
   ard = new Puzzle;
+  switch (numPuzzle.options.selectedIndex) {
+    case 0:
+      ard.size.elementSize = 33.33;
+      ard.size.numOfPuzzle = 8;
+      ard.size.puzzleLength = 3;
+      break;
+    case 1:
+      ard.size.elementSize = 25;
+      ard.size.numOfPuzzle = 15;
+      ard.size.puzzleLength = 4;
+      break;
+    case 2:
+      ard.size.elementSize = 12.5;
+      ard.size.numOfPuzzle = 63;
+      ard.size.puzzleLength = 8;
+      break;
+  }
   ard.creator();
-
-  console.log(time);
+  //console.log(time); 
   timer = setInterval(time, 1000);
-  console.log(rest);
   rest.x = 1;
 })
 
-//const save = document.querySelector('.Save');
-//const load = document.querySelector('.Load');
+function res() {
+  if (localStorage.getItem('result') != null) {
+    let x = localStorage.getItem('result').replace(/"moves"/gi, 'Ходы');
+    x = x.replace(/"time"/gi, 'Время');
+    x = x.replace(/'}'/gi, ' ');
+    alert(`Лучшие результаты : ${x}`);
+  }
+}
 
 
 function SaveGame() {
   localStorage.setItem('save', JSON.stringify(ard.elements.elemArr));
   localStorage.setItem('empty', JSON.stringify(ard.elements.empty));
   localStorage.setItem('moves', JSON.stringify(ard.elements.moves));
-  
-  // saved = JSON.parse(JSON.stringify(ard.elements.elemArr));  //ard.elements.elemArr.slice();
+
 }
 
 function LoadGame() {
+  if(save === null) return;
   saved = JSON.parse(localStorage.getItem('save'));
   empty = JSON.parse(localStorage.getItem('empty'));
   moves = JSON.parse(localStorage.getItem('moves'));
-  
+
   ard.elements.elemArr = saved; // JSON.parse(JSON.stringify(saved));
   ard.elements.empty = empty;
   ard.elements.moves = moves;
@@ -104,20 +129,36 @@ function LoadGame() {
 
 save.addEventListener('click', SaveGame);
 load.addEventListener('click', LoadGame);
-// class TestClass {
-//   constructor() {
-//     const msg = "Using ES2015+ syntax";
-//     console.log(msg);
-//   }
+
+// Canvas////////////////////////////////////////////
+// let canvas = document.createElement('canvas');
+// canvas.style.width = '133px';
+// canvas.style.height = '133px';
+// canvas.classList.add('myCanvas');
+// let context = canvas.getContext('2d');
+// let imageObj = new Image();
+// imageObj.src = '../img/2.jpg';
+// imageObj.onload = function () {
+//     let sourceX = 200;
+//     let sourceY = 100;
+//     let sourceWidth = 300;
+//     let sourceHeight = 200;
+//     let destWidth = sourceWidth;
+//     let destHeight = sourceHeight;
+//     let destX = canvas.width / 2 - destWidth / 2;
+//     let destY = canvas.height / 2 - destHeight / 2;
+//     context.drawImage(imageObj, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight);
 // }
 
-// const test = new TestClass();
+// let dataUrl = canvas.toDataURL('image/jpg');
+// console.log(dataUrl);
+// restart.style.background = dataUrl;
 
 
-// Пример массива
-// console.log(helloArr);
+ export {
+ restart}
 
-// пример подключения модуля
-// let mod = moduleOne(2, 3);
+//document.body.appendChild(canvas);
 
-// console.log(mod);
+//restart.appendChild(canvas);
+////////////////////////////////////////////////////////

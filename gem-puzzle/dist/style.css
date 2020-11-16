@@ -1,0 +1,6 @@
+
+@font-face{
+    font-family: 'Roboto';
+    src: url(fonts/11eabca2251325cfc5589c9c6fb57b46.ttf) format('truetype');
+}
+*{box-sizing:border-box}body{font-family:Roboto,sans-serif;text-align:center;max-width:440px;font-size:24px}.hello{font-size:2rem}.field{max-width:94vw;position:relative;width:93vw;height:93vw;max-width:404px;max-height:404px;border:2px solid #000;border-radius:10px}.Load,.ReStart,.Save{margin:10px;font-size:22px;border-radius:10px;-webkit-transition:all 1s;transition:all 1s}.ReStart{max-width:400px;height:400px;margin:0 auto}.element,.ReStart{display:-webkit-box;display:flex;-webkit-box-pack:center;justify-content:center;font-size:40px}.element{background-color:#e9967a;border:1px solid #000;position:absolute;border-radius:10px;-webkit-box-align:center;align-items:center;-webkit-transition:all .2s;transition:all .2s;cursor:pointer}.element:hover{background-color:#fffa7a}.empty{color:#fff;border:none;cursor:default}.empty,.empty:hover{background-color:#fff}.move{position:absolute;top:0}.time{margin-top:27px}

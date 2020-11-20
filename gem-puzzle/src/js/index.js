@@ -148,31 +148,37 @@ function SaveGame() {
       localStorage.setItem('save0', JSON.stringify(ard.elements.elemArr));
       localStorage.setItem('empty0', JSON.stringify(ard.elements.empty));
       localStorage.setItem('moves0', JSON.stringify(ard.elements.moves));
+      localStorage.setItem('time0', JSON.stringify(timerX));
       break;
     case 1:
       localStorage.setItem('save1', JSON.stringify(ard.elements.elemArr));
       localStorage.setItem('empty1', JSON.stringify(ard.elements.empty));
       localStorage.setItem('moves1', JSON.stringify(ard.elements.moves));
+      localStorage.setItem('time1', JSON.stringify(timerX));
       break;
     case 2:
       localStorage.setItem('save2', JSON.stringify(ard.elements.elemArr));
       localStorage.setItem('empty2', JSON.stringify(ard.elements.empty));
       localStorage.setItem('moves2', JSON.stringify(ard.elements.moves));
+      localStorage.setItem('time2', JSON.stringify(timerX));
       break;
     case 3:
       localStorage.setItem('save3', JSON.stringify(ard.elements.elemArr));
       localStorage.setItem('empty3', JSON.stringify(ard.elements.empty));
       localStorage.setItem('moves3', JSON.stringify(ard.elements.moves));
+      localStorage.setItem('time3', JSON.stringify(timerX));
       break;
     case 4:
       localStorage.setItem('save4', JSON.stringify(ard.elements.elemArr));
       localStorage.setItem('empty4', JSON.stringify(ard.elements.empty));
       localStorage.setItem('moves4', JSON.stringify(ard.elements.moves));
+      localStorage.setItem('time4', JSON.stringify(timerX));
       break;
     case 5:
       localStorage.setItem('save5', JSON.stringify(ard.elements.elemArr));
       localStorage.setItem('empty5', JSON.stringify(ard.elements.empty));
       localStorage.setItem('moves5', JSON.stringify(ard.elements.moves));
+      localStorage.setItem('time5', JSON.stringify(timerX));
       break;
   }
 }
@@ -182,13 +188,18 @@ function LoadGame() {
   
   let indexNum = numPuzzle.options.selectedIndex;
   numLoad(indexNum);
-
+  //console.log(timerX);
   function numLoad(indexNum) {
     saved = JSON.parse(localStorage.getItem(`save${indexNum}`));
     if (saved === null) return null;
     restart.click();
     empty = JSON.parse(localStorage.getItem(`empty${indexNum}`));
     moves = JSON.parse(localStorage.getItem(`moves${indexNum}`));
+    let time =  JSON.parse(localStorage.getItem(`time${indexNum}`));
+    console.log(timerX);
+    timerX.x = time.x;
+    //timerX = time;
+    console.log(time);
     ard.elements.elemArr = saved; // JSON.parse(JSON.stringify(saved));
     ard.elements.empty = empty;
     ard.elements.moves = moves;

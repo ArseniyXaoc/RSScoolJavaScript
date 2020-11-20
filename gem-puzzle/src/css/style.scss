@@ -37,6 +37,14 @@ body {
   transition: all 1s;
 }
 
+.Save, .Load{
+  visibility: hidden;
+}
+
+.on {
+  background-color: green;
+}
+
 .ReStart{
   display: flex;
   justify-content: center;

@@ -24,6 +24,7 @@ const save = document.createElement('button');
 const load = document.createElement('button');
 const numPuzzle = document.createElement('select');
 const result = document.createElement('button');
+const sound = document.createElement('button');
 numPuzzle.size = 1;
 
 (function () {
@@ -32,16 +33,20 @@ numPuzzle.size = 1;
   load.classList.add('Load');
   numPuzzle.classList.add('numPuzzle');
   result.classList.add('result');
+  sound.classList.add('result');
   document.body.appendChild(restart);
   document.body.appendChild(save);
   document.body.appendChild(load);
   document.body.appendChild(numPuzzle);
   document.body.appendChild(result);
+  document.body.appendChild(sound);
   restart.innerText = 'New Game';
   save.innerText = 'Save';
   load.innerText = 'Load';
   result.innerText = 'Result';
-  numPuzzle.innerHTML = '<option value = "3x3">3x3</option><option value = "4x4">4x4</option><option value = "8x8">8x8</option>';
+  sound.innerText = 'sound On Off';
+  sound.classList.add('on');
+  numPuzzle.innerHTML = '<option value = "3x3">3x3</option><option value = "4x4">4x4</option><option value = "5x5">5x5</option><option value = "6x6">6x6</option><option value = "7x7">7x7</option><option value = "8x8">8x8</option>';
 }())
 
 let ard;
@@ -50,9 +55,16 @@ let moves;
 let empty;
 let timer;
 
+sound.addEventListener('click', () =>{
+  sound.classList.toggle('on');
+  ard.soundOn = ard.soundOn ? false : true;
+})
+
 result.addEventListener('click', res);
 
 restart.addEventListener('click', () => {
+  save.style.visibility = 'visible';
+  load.style.visibility = 'visible';
 
   //Style///////////////////////////////////////////////
   restart.style.fontSize = '14px';
@@ -75,23 +87,45 @@ restart.addEventListener('click', () => {
   ard = new Puzzle;
   switch (numPuzzle.options.selectedIndex) {
     case 0:
+      ard.size.selectedIndex = 0;
       ard.size.elementSize = 33.33;
       ard.size.numOfPuzzle = 8;
       ard.size.puzzleLength = 3;
       break;
     case 1:
+      ard.size.selectedIndex = 1;
       ard.size.elementSize = 25;
       ard.size.numOfPuzzle = 15;
       ard.size.puzzleLength = 4;
       break;
     case 2:
+      ard.size.selectedIndex = 2;
+      ard.size.elementSize = 20;
+      ard.size.numOfPuzzle = 24;
+      ard.size.puzzleLength = 5;
+      break;
+    case 3:
+      ard.size.selectedIndex = 3;
+      ard.size.elementSize = 16.66;
+      ard.size.numOfPuzzle = 35;
+      ard.size.puzzleLength = 6;
+      break;
+    case 4:
+      ard.size.selectedIndex = 4;
+      ard.size.elementSize = 14.286;
+      ard.size.numOfPuzzle = 48;
+      ard.size.puzzleLength = 7;
+      break;
+    case 5:
+      ard.size.selectedIndex = 5;
       ard.size.elementSize = 12.5;
       ard.size.numOfPuzzle = 63;
       ard.size.puzzleLength = 8;
       break;
+
   }
   ard.creator();
-  //console.log(time); 
+
   timer = setInterval(time, 1000);
   rest.x = 1;
 })
@@ -102,29 +136,66 @@ function res() {
     x = x.replace(/"time"/gi, 'Время');
     x = x.replace(/'}'/gi, ' ');
     alert(`Лучшие результаты : ${x}`);
+
   }
+  else alert('Еще нет результатов!');
 }
 
 
 function SaveGame() {
-  localStorage.setItem('save', JSON.stringify(ard.elements.elemArr));
-  localStorage.setItem('empty', JSON.stringify(ard.elements.empty));
-  localStorage.setItem('moves', JSON.stringify(ard.elements.moves));
-
+  switch (numPuzzle.options.selectedIndex) {
+    case 0:
+      localStorage.setItem('save0', JSON.stringify(ard.elements.elemArr));
+      localStorage.setItem('empty0', JSON.stringify(ard.elements.empty));
+      localStorage.setItem('moves0', JSON.stringify(ard.elements.moves));
+      break;
+    case 1:
+      localStorage.setItem('save1', JSON.stringify(ard.elements.elemArr));
+      localStorage.setItem('empty1', JSON.stringify(ard.elements.empty));
+      localStorage.setItem('moves1', JSON.stringify(ard.elements.moves));
+      break;
+    case 2:
+      localStorage.setItem('save2', JSON.stringify(ard.elements.elemArr));
+      localStorage.setItem('empty2', JSON.stringify(ard.elements.empty));
+      localStorage.setItem('moves2', JSON.stringify(ard.elements.moves));
+      break;
+    case 3:
+      localStorage.setItem('save3', JSON.stringify(ard.elements.elemArr));
+      localStorage.setItem('empty3', JSON.stringify(ard.elements.empty));
+      localStorage.setItem('moves3', JSON.stringify(ard.elements.moves));
+      break;
+    case 4:
+      localStorage.setItem('save4', JSON.stringify(ard.elements.elemArr));
+      localStorage.setItem('empty4', JSON.stringify(ard.elements.empty));
+      localStorage.setItem('moves4', JSON.stringify(ard.elements.moves));
+      break;
+    case 5:
+      localStorage.setItem('save5', JSON.stringify(ard.elements.elemArr));
+      localStorage.setItem('empty5', JSON.stringify(ard.elements.empty));
+      localStorage.setItem('moves5', JSON.stringify(ard.elements.moves));
+      break;
+  }
 }
 
 function LoadGame() {
-  if(save === null) return;
-  saved = JSON.parse(localStorage.getItem('save'));
-  empty = JSON.parse(localStorage.getItem('empty'));
-  moves = JSON.parse(localStorage.getItem('moves'));
+  if (save === null) return;
+  
+  let indexNum = numPuzzle.options.selectedIndex;
+  numLoad(indexNum);
 
-  ard.elements.elemArr = saved; // JSON.parse(JSON.stringify(saved));
-  ard.elements.empty = empty;
-  ard.elements.moves = moves;
-  const field = document.querySelector('.field');
-  if (field)(document.body.removeChild(field));
-  ard.load(saved);
+  function numLoad(indexNum) {
+    saved = JSON.parse(localStorage.getItem(`save${indexNum}`));
+    if (saved === null) return null;
+    restart.click();
+    empty = JSON.parse(localStorage.getItem(`empty${indexNum}`));
+    moves = JSON.parse(localStorage.getItem(`moves${indexNum}`));
+    ard.elements.elemArr = saved; // JSON.parse(JSON.stringify(saved));
+    ard.elements.empty = empty;
+    ard.elements.moves = moves;
+    const field = document.querySelector('.field');
+    if (field)(document.body.removeChild(field));
+    ard.load(saved);
+  }
 }
 
 save.addEventListener('click', SaveGame);
@@ -155,8 +226,9 @@ load.addEventListener('click', LoadGame);
 // restart.style.background = dataUrl;
 
 
- export {
- restart}
+export {
+  restart
+}
 
 //document.body.appendChild(canvas);
 

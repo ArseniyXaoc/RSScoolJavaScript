@@ -50,7 +50,7 @@ class Puzzle {
 
     creator() {
         this.width = document.body.clientWidth;
-        console.log(this.width);
+        //console.log(this.width);
         //this.player = new Audio();
         //this.player.volume = 4;
         this.soundOn = true;
@@ -268,7 +268,7 @@ class Puzzle {
                 }
             }
 
-            console.log(this.elements.result);
+            //console.log(this.elements.result);
             localStorage.setItem('result', JSON.stringify(this.elements.result));
             this.elements.win = true;
 
@@ -333,7 +333,7 @@ class Puzzle {
         function moveAt(pageX, pageY) {
             let mr = window.getComputedStyle(field, null).getPropertyValue('width');
             let width = document.body.clientWidth;
-            console.log(mr.slice(0, -2));
+            //console.log(mr.slice(0, -2));
             element.style.left = pageX - ShiftX - width / 2 + (mr.slice(0, -2)) / 2 - 10 + 'px';
             element.style.top = pageY - ShiftY - 132 + 'px';
         }
@@ -402,7 +402,7 @@ class Puzzle {
                 }
             }
 
-            console.log(this.elements.result);
+            //console.log(this.elements.result);
             localStorage.setItem('result', JSON.stringify(this.elements.result));
             this.elements.win = true;
 

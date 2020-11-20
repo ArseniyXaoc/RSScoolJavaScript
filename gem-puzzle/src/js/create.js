@@ -11,6 +11,7 @@ import {
 
 class Puzzle {
     constructor() {
+        this.width,
 
         this.player,
         
@@ -46,9 +47,15 @@ class Puzzle {
         }
     }   
 
+
     creator() {
+        this.width = document.body.clientWidth;
+        console.log(this.width);
         this.player = new Audio();
         this.player.volume = 1;
+        window.addEventListener('resize', () =>{
+            this.width = document.body.clientWidth;
+        })
         
 
         const field = document.createElement('div');
@@ -300,7 +307,8 @@ class Puzzle {
         let Drug = this.drug;
         const element = this.elements.elemArr[index].dom;
         const elem = this.elements.elemArr[index];
-        const mr = window.getComputedStyle(field, null).getPropertyValue('margin-right');
+        //let width = this.width;
+        let mr = window.getComputedStyle(field, null).getPropertyValue('width');
         const leftDiff = Math.abs(this.elements.empty.left - this.elements.elemArr[index].left);
         const topDiff = Math.abs(this.elements.empty.top - this.elements.elemArr[index].top);
         const IndexLeft = this.elements.elemArr[index].left;
@@ -324,7 +332,10 @@ class Puzzle {
         moveAt(event.pageX, event.pageY);
 
         function moveAt(pageX, pageY) {
-            element.style.left = pageX - ShiftX - (mr.slice(0, -2)) - 10 + 'px';
+            let mr = window.getComputedStyle(field, null).getPropertyValue('width');
+            let width = document.body.clientWidth;
+            console.log(mr.slice(0,-2));
+            element.style.left = pageX - ShiftX - width/2 + (mr.slice(0,-2))/2 - 10 + 'px';
             element.style.top = pageY - ShiftY - 132 + 'px';
         }
 

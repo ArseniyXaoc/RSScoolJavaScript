@@ -36,7 +36,11 @@ body {
   border-radius: 10px;
   transition: all 1s;
 }
-
+.sound{
+  position: absolute;
+    top: 10px;
+    right: 10px;
+}
 .Save, .Load{
   visibility: hidden;
 }

@@ -33,7 +33,7 @@ numPuzzle.size = 1;
   load.classList.add('Load');
   numPuzzle.classList.add('numPuzzle');
   result.classList.add('result');
-  sound.classList.add('result');
+  sound.classList.add('sound');
   document.body.appendChild(restart);
   document.body.appendChild(save);
   document.body.appendChild(load);

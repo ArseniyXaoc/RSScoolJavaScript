@@ -11,23 +11,19 @@ import {
 class Puzzle {
     constructor() {
         this.width,
-
             this.player,
-
             this.size = {
                 selectedIndex: 0,
                 elementSize: 33.33,
                 numOfPuzzle: 8,
                 puzzleLength: 3,
             },
-
             this.elements = {
                 result: [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}],
                 partOfresult: 0,
                 flag: false,
                 win: false,
                 elemArr: [], // Массив с позицией элемента
-
                 moves: 0,
                 move: null,
                 empty: {
@@ -47,22 +43,15 @@ class Puzzle {
         }
     }
 
-
     creator() {
         this.width = document.body.clientWidth;
-        //console.log(this.width);
-        //this.player = new Audio();
-        //this.player.volume = 4;
         this.soundOn = true;
         this.audio = new Audio();
         this.audio.preload = 'auto';
         this.audio.src = 'https://sampleswap.org/samples-ghost/SOUND%20EFFECTS%20and%20NOISES/Scars%20FNC%20SFX/30[kb]question_2.aif.mp3';
-        
-
         window.addEventListener('resize', () => {
             this.width = document.body.clientWidth;
         })
-
 
         const field = document.createElement('div');
 
@@ -70,7 +59,6 @@ class Puzzle {
         this.elements.move = document.createElement('div');
         this.elements.move.innerText = ` Ходов: ${this.elements.moves}`;
         this.elements.move.classList.add('move');
-
 
         field.setAttribute('onselectstart', 'return false');
         const inMass = this.solvability();
@@ -82,18 +70,15 @@ class Puzzle {
             element.style.height = `${this.size.elementSize}%`;
             element.style.width = `${this.size.elementSize}%`;
             let value;
-
             if (i === 0) {
                 value = inMass[i];
             } else {
                 value = inMass[i - 1] + 1;
             }
-
             element.innerHTML = value;
             field.append(element);
             const left = i % this.size.puzzleLength;
             const top = (i - left) / this.size.puzzleLength;
-
             if (i === 0) {
                 this.elements.empty.value = 0;
                 this.elements.empty.left = left;
@@ -108,32 +93,22 @@ class Puzzle {
                     top,
                     dom: element,
                 })
-
-
                 element.style.top = `${top * this.size.elementSize}%`;
                 element.style.left = `${left * this.size.elementSize}%`;
-
                 const move = () => {
                     this.move(f);
-
                 }
-
                 element.addEventListener('click', move);
-
                 element.addEventListener('mousedown', (event) => {
                     this.elements.flag = true;
                     this.moveElem(f, event, field);
                 })
-
                 element.addEventListener('mouseup', (event) => {
-                    //this.noize();
                     this.elements.flag = false;
                 })
-
                 element.ondragstart = function () {
                     return false;
                 }
-
                 // Drug&Drop//////////////////////////               
             }
             document.body.appendChild(field);
@@ -141,23 +116,15 @@ class Puzzle {
         }
     }
 
-    
-
     // eslint-disable-next-line class-methods-use-this
     load(arr) {
-
-
-
         this.elements.elemArr[0] = this.elements.empty;
         const field = document.createElement('div');
         field.classList.add('field');
-
-
         const inMass = [];
         arr.forEach(item => {
             inMass.push(item.value);
         })
-
         document.body.appendChild(field);
 
         for (let i = 0; i <= this.size.numOfPuzzle; i += 1) {
@@ -182,20 +149,15 @@ class Puzzle {
                 this.elements.elemArr[i].top = arr[i].top;
                 this.elements.elemArr[i].left = arr[i].left;
                 this.elements.elemArr[i].dom = element;
-
                 element.style.top = `${top * this.size.elementSize}%`;
                 element.style.left = `${left * this.size.elementSize}%`;
-
                 const move = () => {
                     this.move(f);
-
                 }
                 element.addEventListener('click', move);
-
                 element.addEventListener('mousedown', (event) => {
                     this.moveElem(f, event, field);
                 })
-
                 element.ondragstart = function () {
                     return false;
                 }
@@ -214,18 +176,15 @@ class Puzzle {
 
                 this.elements.empty.dom.style.height = `${this.size.elementSize}%`;
                 this.elements.empty.dom.style.width = `${this.size.elementSize}%`;
-
             }
         }
         document.body.appendChild(field);
-
         this.elements.move.innerText = ` Ходов: ${this.elements.moves}`;
     }
 
     move(index) {
         if (this.drug.Drug) return;
         const elem = this.elements.elemArr[index];
-
         const leftDiff = Math.abs(this.elements.empty.left - elem.left);
         const topDiff = Math.abs(this.elements.empty.top - elem.top);
         if (leftDiff + topDiff > 1) {
@@ -234,20 +193,16 @@ class Puzzle {
         if(this.soundOn) this.audio.play();
         this.elements.moves += 1;
         this.elements.move.innerText = ` Ходов: ${this.elements.moves}`;
-
         elem.dom.style.top = `${this.elements.empty.top * this.size.elementSize}%`;
         elem.dom.style.left = `${this.elements.empty.left * this.size.elementSize}%`;
-
         const emptyLeft = this.elements.empty.left;
         const emptyTop = this.elements.empty.top;
         this.elements.empty.left = elem.left;
         this.elements.empty.top = elem.top;
         elem.left = emptyLeft;
         elem.top = emptyTop;
-
         this.elements.empty.dom.style.top = `${this.elements.empty.top * this.size.elementSize}%`;
         this.elements.empty.dom.style.left = `${this.elements.empty.left * this.size.elementSize}%`;
-
 
         const finish = this.elements.elemArr.every(item => {
             return item.value === item.top * this.size.puzzleLength + item.left;
@@ -255,11 +210,8 @@ class Puzzle {
 
         if (finish) setTimeout(() => {
             alert(`Ура! вы выиграли головоломку за и ${minits.innerText}${seconds.innerText} и ${this.elements.moves} ходов`);
-
             if (localStorage.getItem('result') != null) this.elements.result = JSON.parse(localStorage.getItem('result'));
-
             let moves = this.elements.moves;
-
             for (let item of this.elements.result) {
                 if (item.moves > moves || item.moves === undefined) {
                     item.moves = moves;
@@ -267,16 +219,11 @@ class Puzzle {
                     break;
                 }
             }
-
-            //console.log(this.elements.result);
             localStorage.setItem('result', JSON.stringify(this.elements.result));
             this.elements.win = true;
-
             restart.click();
-
         }, 250);;
     }
-
 
     solvability() {
         const sortArr = [];
@@ -284,7 +231,6 @@ class Puzzle {
             sortArr.push(i);
         }
         sortArr.sort(() => Math.random() - 0.5);
-
         let iter = 0
         sortArr.forEach((element, index, array) => {
             for (let i = index + 1; i < array.length; i += 1) {
@@ -293,19 +239,15 @@ class Puzzle {
                 }
             }
         });
-
         if (iter % 2 === 0) return sortArr;
         return this.solvability();
-
     }
 
     //Drug & Drop
     moveElem(index, event, field) {
-
         let Drug = this.drug;
         const element = this.elements.elemArr[index].dom;
         const elem = this.elements.elemArr[index];
-        //let width = this.width;
         let mr = window.getComputedStyle(field, null).getPropertyValue('width');
         const leftDiff = Math.abs(this.elements.empty.left - this.elements.elemArr[index].left);
         const topDiff = Math.abs(this.elements.empty.top - this.elements.elemArr[index].top);
@@ -316,17 +258,11 @@ class Puzzle {
         const ShiftY = event.clientY - element.getBoundingClientRect().top;
         const elementSize = this.size.elementSize;
         const enterDroppable1 = this.enterDroppable.bind(this);
-
-
-
-
         if (leftDiff + topDiff > 1) {
             return;
         }
         if(this.soundOn) this.audio.play();
-
         document.addEventListener('mousemove', onMouseMove);
-
         element.style.zIndex = 100;
         moveAt(event.pageX, event.pageY);
 
@@ -339,9 +275,7 @@ class Puzzle {
         }
 
         function onMouseMove(event) {
-
             Drug.Drug = true;
-
             moveAt(event.pageX, event.pageY);
             element.style.display = 'none';
             let elementBelow = document.elementFromPoint(event.clientX, event.clientY);
@@ -369,7 +303,6 @@ class Puzzle {
     }
 
     enterDroppable(IndexLeft, IndexTop, element, elem) {
-
         this.elements.moves += 1;
         this.elements.move.innerText = ` Ходов: ${this.elements.moves}`;
         element.style.top = `${this.elements.empty.top * this.size.elementSize}%`;
@@ -382,18 +315,13 @@ class Puzzle {
         elem.top = emptyTop;
         this.elements.empty.dom.style.top = `${this.elements.empty.top * this.size.elementSize}%`;
         this.elements.empty.dom.style.left = `${this.elements.empty.left * this.size.elementSize}%`;
-
         const finish = this.elements.elemArr.every(item => {
             return item.value === item.top * this.size.puzzleLength + item.left;
         })
-
         if (finish) setTimeout(() => {
             alert(`Ура! вы выиграли головоломку за и ${minits.innerText}${seconds.innerText} и ${this.elements.moves} ходов`);
-
             if (localStorage.getItem('result') != null) this.elements.result = JSON.parse(localStorage.getItem('result'));
-
             let moves = this.elements.moves;
-
             for (let item of this.elements.result) {
                 if (item.moves > moves || item.moves === undefined) {
                     item.moves = moves;
@@ -401,13 +329,9 @@ class Puzzle {
                     break;
                 }
             }
-
-            //console.log(this.elements.result);
             localStorage.setItem('result', JSON.stringify(this.elements.result));
             this.elements.win = true;
-
             restart.click();
-
         }, 250);;
     }
 }

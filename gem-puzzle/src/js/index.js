@@ -19,57 +19,93 @@ import {
 
 time();
 
-const restart = document.createElement('button');
-const save = document.createElement('button');
-const load = document.createElement('button');
-const numPuzzle = document.createElement('select');
-const result = document.createElement('button');
-const sound = document.createElement('button');
-numPuzzle.size = 1;
+class Settings {
+  constructor() {
+    this.restart = document.createElement('button');
+    this.save = document.createElement('button');
+    this.load = document.createElement('button');
+    this.numPuzzle = document.createElement('select');
+    this.result = document.createElement('button');
+    this.sound = document.createElement('button');
+  }
 
-(function () {
-  restart.classList.add('re-start');
-  save.classList.add('save');
-  load.classList.add('load');
-  numPuzzle.classList.add('numPuzzle');
-  result.classList.add('result');
-  sound.classList.add('sound');
-  document.body.appendChild(restart);
-  document.body.appendChild(save);
-  document.body.appendChild(load);
-  document.body.appendChild(numPuzzle);
-  document.body.appendChild(result);
-  document.body.appendChild(sound);
-  restart.innerText = 'New Game';
-  save.innerText = 'save';
-  load.innerText = 'load';
-  result.innerText = 'Result';
-  sound.innerText = 'sound On Off';
-  sound.classList.add('on');
-  numPuzzle.innerHTML = '<option value = "3x3">3x3</option><option value = "4x4">4x4</option><option value = "5x5">5x5</option><option value = "6x6">6x6</option><option value = "7x7">7x7</option><option value = "8x8">8x8</option>';
-}())
+  createFieldOfPuzzle() {
+    this.restart.classList.add('re-start');
+    this.save.classList.add('save');
+    this.load.classList.add('load');
+    this.numPuzzle.classList.add('numPuzzle');
+    this.result.classList.add('result');
+    this.sound.classList.add('sound');
+    document.body.appendChild(this.restart);
+    document.body.appendChild(this.save);
+    document.body.appendChild(this.load);
+    document.body.appendChild(this.numPuzzle);
+    document.body.appendChild(this.result);
+    document.body.appendChild(this.sound);
+    this.restart.innerText = 'New Game';
+    this.save.innerText = 'save';
+    this.load.innerText = 'load';
+    this.result.innerText = 'Result';
+    this.sound.innerText = 'sound On Off';
+    this.sound.classList.add('on');
+    this.numPuzzle.innerHTML = '<option value = "3x3">3x3</option><option value = "4x4">4x4</option><option value = "5x5">5x5</option><option value = "6x6">6x6</option><option value = "7x7">7x7</option><option value = "8x8">8x8</option>';
+  }
+}
 
-let ard;
+const settings = new Settings;
+settings.createFieldOfPuzzle();
+
+// const restart = document.createElement('button');
+// const save = document.createElement('button');
+// const load = document.createElement('button');
+// const numPuzzle = document.createElement('select');
+// const result = document.createElement('button');
+// const sound = document.createElement('button');
+// numPuzzle.size = 1;
+
+// (function () {
+//   restart.classList.add('re-start');
+//   save.classList.add('save');
+//   load.classList.add('load');
+//   numPuzzle.classList.add('numPuzzle');
+//   result.classList.add('result');
+//   sound.classList.add('sound');
+//   document.body.appendChild(restart);
+//   document.body.appendChild(save);
+//   document.body.appendChild(load);
+//   document.body.appendChild(numPuzzle);
+//   document.body.appendChild(result);
+//   document.body.appendChild(sound);
+//   restart.innerText = 'New Game';
+//   save.innerText = 'save';
+//   load.innerText = 'load';
+//   result.innerText = 'Result';
+//   sound.innerText = 'sound On Off';
+//   sound.classList.add('on');
+//   numPuzzle.innerHTML = '<option value = "3x3">3x3</option><option value = "4x4">4x4</option><option value = "5x5">5x5</option><option value = "6x6">6x6</option><option value = "7x7">7x7</option><option value = "8x8">8x8</option>';
+// }())
+
+let createPuzzleField = '';
 let saved;
 let moves;
 let empty;
 let timer;
 
-sound.addEventListener('click', () =>{
-  sound.classList.toggle('on');
-  ard.soundOn = ard.soundOn ? false : true;
+settings.sound.addEventListener('click', () => {
+  settings.sound.classList.toggle('on');
+  createPuzzleField.soundOn = createPuzzleField.soundOn ? false : true;
 })
 
-result.addEventListener('click', res);
+settings.result.addEventListener('click', res);
 
-restart.addEventListener('click', () => {
-  save.style.visibility = 'visible';
-  load.style.visibility = 'visible';
+settings.restart.addEventListener('click', () => {
+  settings.save.style.visibility = 'visible';
+  settings.load.style.visibility = 'visible';
 
   //Style///////////////////////////////////////////////
-  restart.style.fontSize = '14px';
-  restart.style.width = 'auto';
-  restart.style.height = 'auto';
+  settings.restart.style.fontSize = '14px';
+  settings.restart.style.width = 'auto';
+  settings.restart.style.height = 'auto';
 
 
   timerX.x = 0;
@@ -82,50 +118,51 @@ restart.addEventListener('click', () => {
 
   }
 
-  clearInterval(timer);
-  ard = '';
-  ard = new Puzzle;
-  switch (numPuzzle.options.selectedIndex) {
-    case 0:
-      ard.size.selectedIndex = 0;
-      ard.size.elementSize = 33.33;
-      ard.size.numOfPuzzle = 8;
-      ard.size.puzzleLength = 3;
-      break;
-    case 1:
-      ard.size.selectedIndex = 1;
-      ard.size.elementSize = 25;
-      ard.size.numOfPuzzle = 15;
-      ard.size.puzzleLength = 4;
-      break;
-    case 2:
-      ard.size.selectedIndex = 2;
-      ard.size.elementSize = 20;
-      ard.size.numOfPuzzle = 24;
-      ard.size.puzzleLength = 5;
-      break;
-    case 3:
-      ard.size.selectedIndex = 3;
-      ard.size.elementSize = 16.66;
-      ard.size.numOfPuzzle = 35;
-      ard.size.puzzleLength = 6;
-      break;
-    case 4:
-      ard.size.selectedIndex = 4;
-      ard.size.elementSize = 14.286;
-      ard.size.numOfPuzzle = 48;
-      ard.size.puzzleLength = 7;
-      break;
-    case 5:
-      ard.size.selectedIndex = 5;
-      ard.size.elementSize = 12.5;
-      ard.size.numOfPuzzle = 63;
-      ard.size.puzzleLength = 8;
-      break;
-
+  const gameconfig = {
+    'size-0': {
+      numOfPuzzle: 8,
+      elementSize: 33.33,
+      puzzleLength: 3,
+    },
+    'size-1': {
+      numOfPuzzle: 15,
+      elementSize: 25,
+      puzzleLength: 4,
+    },
+    'size-2': {
+      numOfPuzzle: 24,
+      elementSize: 20,
+      puzzleLength: 5,
+    },
+    'size-3': {
+      numOfPuzzle: 35,
+      elementSize: 16.66,
+      puzzleLength: 6,
+    },
+    'size-4': {
+      numOfPuzzle: 48,
+      elementSize: 14.286,
+      puzzleLength: 7,
+    },
+    'size-5': {
+      numOfPuzzle: 63,
+      elementSize: 12.5,
+      puzzleLength: 8,
+    },
   }
-  ard.creator();
 
+  clearInterval(timer);
+  createPuzzleField = new Puzzle;
+
+  (function PuzzleFieldSettings(settings) {
+    console.log(gameconfig[`size-${settings}`]);
+    createPuzzleField.size.selectedIndex = settings;
+    createPuzzleField.size.elementSize = gameconfig[`size-${settings}`].elementSize;
+    createPuzzleField.size.numOfPuzzle = gameconfig[`size-${settings}`].numOfPuzzle;
+    createPuzzleField.size.puzzleLength = gameconfig[`size-${settings}`].puzzleLength;
+  })(settings.numPuzzle.options.selectedIndex);
+ 
+  createPuzzleField.creator();
   timer = setInterval(time, 1000);
   rest.x = 1;
 })
@@ -136,112 +173,43 @@ function res() {
     x = x.replace(/"time"/gi, 'Время');
     x = x.replace(/'}'/gi, ' ');
     alert(`Лучшие результаты : ${x}`);
-
-  }
-  else alert('Еще нет результатов!');
+  } else alert('Еще нет результатов!');
 }
 
-
 function SaveGame() {
-  switch (numPuzzle.options.selectedIndex) {
-    case 0:
-      localStorage.setItem('save0', JSON.stringify(ard.elements.elemArr));
-      localStorage.setItem('empty0', JSON.stringify(ard.elements.empty));
-      localStorage.setItem('moves0', JSON.stringify(ard.elements.moves));
-      localStorage.setItem('time0', JSON.stringify(timerX));
-      break;
-    case 1:
-      localStorage.setItem('save1', JSON.stringify(ard.elements.elemArr));
-      localStorage.setItem('empty1', JSON.stringify(ard.elements.empty));
-      localStorage.setItem('moves1', JSON.stringify(ard.elements.moves));
-      localStorage.setItem('time1', JSON.stringify(timerX));
-      break;
-    case 2:
-      localStorage.setItem('save2', JSON.stringify(ard.elements.elemArr));
-      localStorage.setItem('empty2', JSON.stringify(ard.elements.empty));
-      localStorage.setItem('moves2', JSON.stringify(ard.elements.moves));
-      localStorage.setItem('time2', JSON.stringify(timerX));
-      break;
-    case 3:
-      localStorage.setItem('save3', JSON.stringify(ard.elements.elemArr));
-      localStorage.setItem('empty3', JSON.stringify(ard.elements.empty));
-      localStorage.setItem('moves3', JSON.stringify(ard.elements.moves));
-      localStorage.setItem('time3', JSON.stringify(timerX));
-      break;
-    case 4:
-      localStorage.setItem('save4', JSON.stringify(ard.elements.elemArr));
-      localStorage.setItem('empty4', JSON.stringify(ard.elements.empty));
-      localStorage.setItem('moves4', JSON.stringify(ard.elements.moves));
-      localStorage.setItem('time4', JSON.stringify(timerX));
-      break;
-    case 5:
-      localStorage.setItem('save5', JSON.stringify(ard.elements.elemArr));
-      localStorage.setItem('empty5', JSON.stringify(ard.elements.empty));
-      localStorage.setItem('moves5', JSON.stringify(ard.elements.moves));
-      localStorage.setItem('time5', JSON.stringify(timerX));
-      break;
-  }
+  localStorage.setItem(`save${settings.numPuzzle.options.selectedIndex}`, JSON.stringify(createPuzzleField.elements.elemArr));
+  localStorage.setItem(`empty${settings.numPuzzle.options.selectedIndex}`, JSON.stringify(createPuzzleField.elements.empty));
+  localStorage.setItem(`moves${settings.numPuzzle.options.selectedIndex}`, JSON.stringify(createPuzzleField.elements.moves));
+  localStorage.setItem(`time${settings.numPuzzle.options.selectedIndex}`, JSON.stringify(timerX));
 }
 
 function LoadGame() {
-  if (save === null) return;
-  
-  let indexNum = numPuzzle.options.selectedIndex;
+  if (settings.save === null) return;
+  let indexNum = settings.numPuzzle.options.selectedIndex;
   numLoad(indexNum);
-  //console.log(timerX);
+
   function numLoad(indexNum) {
     saved = JSON.parse(localStorage.getItem(`save${indexNum}`));
     if (saved === null) return null;
-    restart.click();
+    settings.restart.click();
     empty = JSON.parse(localStorage.getItem(`empty${indexNum}`));
     moves = JSON.parse(localStorage.getItem(`moves${indexNum}`));
-    let time =  JSON.parse(localStorage.getItem(`time${indexNum}`));
+    let time = JSON.parse(localStorage.getItem(`time${indexNum}`));
     console.log(timerX);
     timerX.x = time.x;
-    //timerX = time;
     console.log(time);
-    ard.elements.elemArr = saved; // JSON.parse(JSON.stringify(saved));
-    ard.elements.empty = empty;
-    ard.elements.moves = moves;
+    createPuzzleField.elements.elemArr = saved; // JSON.parse(JSON.stringify(saved));
+    createPuzzleField.elements.empty = empty;
+    createPuzzleField.elements.moves = moves;
     const field = document.querySelector('.field');
     if (field)(document.body.removeChild(field));
-    ard.load(saved);
+    createPuzzleField.load(saved);
   }
 }
 
-save.addEventListener('click', SaveGame);
-load.addEventListener('click', LoadGame);
-
-// Canvas////////////////////////////////////////////
-// let canvas = document.createElement('canvas');
-// canvas.style.width = '133px';
-// canvas.style.height = '133px';
-// canvas.classList.add('myCanvas');
-// let context = canvas.getContext('2d');
-// let imageObj = new Image();
-// imageObj.src = '../img/2.jpg';
-// imageObj.onload = function () {
-//     let sourceX = 200;
-//     let sourceY = 100;
-//     let sourceWidth = 300;
-//     let sourceHeight = 200;
-//     let destWidth = sourceWidth;
-//     let destHeight = sourceHeight;
-//     let destX = canvas.width / 2 - destWidth / 2;
-//     let destY = canvas.height / 2 - destHeight / 2;
-//     context.drawImage(imageObj, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight);
-// }
-
-// let dataUrl = canvas.toDataURL('image/jpg');
-// console.log(dataUrl);
-// restart.style.background = dataUrl;
-
-
+settings.save.addEventListener('click', SaveGame);
+settings.load.addEventListener('click', LoadGame);
+const restart = settings.restart;
 export {
   restart
 }
-
-//document.body.appendChild(canvas);
-
-//restart.appendChild(canvas);
-////////////////////////////////////////////////////////

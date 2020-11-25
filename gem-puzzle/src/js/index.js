@@ -2,11 +2,9 @@ import '../css/style.css';
 import '../css/style.scss';
 import '../img/2.jpg'
 
-
 import {
   Puzzle
 } from './create';
-
 
 import {
   time,
@@ -15,7 +13,6 @@ import {
   seconds,
   timerX,
 } from './time';
-
 
 time();
 
@@ -54,37 +51,6 @@ class Settings {
 
 const settings = new Settings;
 settings.createFieldOfPuzzle();
-
-// const restart = document.createElement('button');
-// const save = document.createElement('button');
-// const load = document.createElement('button');
-// const numPuzzle = document.createElement('select');
-// const result = document.createElement('button');
-// const sound = document.createElement('button');
-// numPuzzle.size = 1;
-
-// (function () {
-//   restart.classList.add('re-start');
-//   save.classList.add('save');
-//   load.classList.add('load');
-//   numPuzzle.classList.add('numPuzzle');
-//   result.classList.add('result');
-//   sound.classList.add('sound');
-//   document.body.appendChild(restart);
-//   document.body.appendChild(save);
-//   document.body.appendChild(load);
-//   document.body.appendChild(numPuzzle);
-//   document.body.appendChild(result);
-//   document.body.appendChild(sound);
-//   restart.innerText = 'New Game';
-//   save.innerText = 'save';
-//   load.innerText = 'load';
-//   result.innerText = 'Result';
-//   sound.innerText = 'sound On Off';
-//   sound.classList.add('on');
-//   numPuzzle.innerHTML = '<option value = "3x3">3x3</option><option value = "4x4">4x4</option><option value = "5x5">5x5</option><option value = "6x6">6x6</option><option value = "7x7">7x7</option><option value = "8x8">8x8</option>';
-// }())
-
 let createPuzzleField = '';
 let saved;
 let moves;
@@ -97,25 +63,20 @@ settings.sound.addEventListener('click', () => {
 })
 
 settings.result.addEventListener('click', res);
-
 settings.restart.addEventListener('click', () => {
   settings.save.style.visibility = 'visible';
   settings.load.style.visibility = 'visible';
-
   //Style///////////////////////////////////////////////
   settings.restart.style.fontSize = '14px';
   settings.restart.style.width = 'auto';
   settings.restart.style.height = 'auto';
-
-
   timerX.x = 0;
   minits.innerText = '00';
   seconds.innerText = ':00';
-  const field = document.querySelector('.field');
+  const field = document.querySelector('.field');  
   if (field) {
     document.body.removeChild(field);
     document.body.removeChild(document.querySelector('.move'));
-
   }
 
   const gameconfig = {
@@ -154,8 +115,7 @@ settings.restart.addEventListener('click', () => {
   clearInterval(timer);
   createPuzzleField = new Puzzle;
 
-  (function PuzzleFieldSettings(settings) {
-    console.log(gameconfig[`size-${settings}`]);
+  (function PuzzleFieldSettings(settings) {    
     createPuzzleField.size.selectedIndex = settings;
     createPuzzleField.size.elementSize = gameconfig[`size-${settings}`].elementSize;
     createPuzzleField.size.numOfPuzzle = gameconfig[`size-${settings}`].numOfPuzzle;
@@ -194,10 +154,8 @@ function LoadGame() {
     settings.restart.click();
     empty = JSON.parse(localStorage.getItem(`empty${indexNum}`));
     moves = JSON.parse(localStorage.getItem(`moves${indexNum}`));
-    let time = JSON.parse(localStorage.getItem(`time${indexNum}`));
-    console.log(timerX);
-    timerX.x = time.x;
-    console.log(time);
+    let time = JSON.parse(localStorage.getItem(`time${indexNum}`));    
+    timerX.x = time.x;    
     createPuzzleField.elements.elemArr = saved; // JSON.parse(JSON.stringify(saved));
     createPuzzleField.elements.empty = empty;
     createPuzzleField.elements.moves = moves;

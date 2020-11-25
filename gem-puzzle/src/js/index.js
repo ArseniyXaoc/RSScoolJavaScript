@@ -77,22 +77,22 @@ settings.restart.addEventListener('click', () => {
   timerX.x = 0;
   minits.innerText = '00';
   seconds.innerText = ':00';
-  const field = document.querySelector('.field');  
+  const field = document.querySelector('.field');
   if (field) {
     document.body.removeChild(field);
     document.body.removeChild(document.querySelector('.move'));
-  }  
+  }
 
   clearInterval(timer);
   createPuzzleField = new Puzzle;
 
-  (function PuzzleFieldSettings(settings) {    
+  (function PuzzleFieldSettings(settings) {
     createPuzzleField.size.selectedIndex = settings;
     createPuzzleField.size.elementSize = gameconfig[`size-${settings}`].elementSize;
     createPuzzleField.size.numOfPuzzle = gameconfig[`size-${settings}`].numOfPuzzle;
     createPuzzleField.size.puzzleLength = gameconfig[`size-${settings}`].puzzleLength;
   })(settings.numPuzzle.options.selectedIndex);
- 
+
   createPuzzleField.creator();
   timer = setInterval(time, 1000);
   rest.x = 1;
@@ -125,8 +125,8 @@ function LoadGame() {
     settings.restart.click();
     empty = JSON.parse(localStorage.getItem(`empty${indexNum}`));
     moves = JSON.parse(localStorage.getItem(`moves${indexNum}`));
-    let time = JSON.parse(localStorage.getItem(`time${indexNum}`));    
-    timerX.x = time.x;    
+    let time = JSON.parse(localStorage.getItem(`time${indexNum}`));
+    timerX.x = time.x;
     createPuzzleField.elements.elemArr = saved; // JSON.parse(JSON.stringify(saved));
     createPuzzleField.elements.empty = empty;
     createPuzzleField.elements.moves = moves;

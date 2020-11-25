@@ -28,9 +28,9 @@ const sound = document.createElement('button');
 numPuzzle.size = 1;
 
 (function () {
-  restart.classList.add('ReStart');
-  save.classList.add('Save');
-  load.classList.add('Load');
+  restart.classList.add('re-start');
+  save.classList.add('save');
+  load.classList.add('load');
   numPuzzle.classList.add('numPuzzle');
   result.classList.add('result');
   sound.classList.add('sound');
@@ -41,8 +41,8 @@ numPuzzle.size = 1;
   document.body.appendChild(result);
   document.body.appendChild(sound);
   restart.innerText = 'New Game';
-  save.innerText = 'Save';
-  load.innerText = 'Load';
+  save.innerText = 'save';
+  load.innerText = 'load';
   result.innerText = 'Result';
   sound.innerText = 'sound On Off';
   sound.classList.add('on');

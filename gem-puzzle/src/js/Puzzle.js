@@ -3,25 +3,22 @@ import {
     seconds,
 } from './time';
 
-
 import {
     restart,
 } from './index';
 
 class Puzzle {
     constructor() {
-        this.width,
-            this.player,
-            this.size = {
-                selectedIndex: 0,
-                elementSize: 33.33,
-                numOfPuzzle: 8,
+        this.widthOfBrowserWindow,
+            this.puzzleSettings = {
+                sizeOfOnePuzzleItem: 33.33,
+                numberOfPuzzle: 8,
                 puzzleLength: 3,
             },
             this.elements = {
                 result: [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}],
                 partOfresult: 0,
-                flag: false,
+                mousedownFlag: false,
                 win: false,
                 elemArr: [], // Массив с позицией элемента
                 moves: 0,
@@ -34,23 +31,23 @@ class Puzzle {
                 },
             }
 
-        this.drug = {
-            Drug: false,
-            StartCursorX: null,
-            StartCursorY: null,
-            StartX: null,
-            StartY: null,
+        this.dragAndDrop = {
+            drag: false,
+            startCursorX: null,
+            startCursorY: null,
+            startX: null,
+            startY: null,
         }
     }
 
     creator() {
-        this.width = document.body.clientWidth;
+        this.widthOfBrowserWindow = document.body.clientWidth;
         this.soundOn = true;
         this.audio = new Audio();
         this.audio.preload = 'auto';
         this.audio.src = 'https://sampleswap.org/samples-ghost/SOUND%20EFFECTS%20and%20NOISES/Scars%20FNC%20SFX/30[kb]question_2.aif.mp3';
         window.addEventListener('resize', () => {
-            this.width = document.body.clientWidth;
+            this.widthOfBrowserWindow = document.body.clientWidth;
         })
 
         const field = document.createElement('div');
@@ -63,12 +60,12 @@ class Puzzle {
         field.setAttribute('onselectstart', 'return false');
         const inMass = this.solvability();
 
-        for (let i = 0; i <= this.size.numOfPuzzle; i += 1) {
+        for (let i = 0; i <= this.puzzleSettings.numberOfPuzzle; i += 1) {
             const f = i;
             const element = document.createElement('div');
             element.classList.add('element');
-            element.style.height = `${this.size.elementSize}%`;
-            element.style.width = `${this.size.elementSize}%`;
+            element.style.height = `${this.puzzleSettings.sizeOfOnePuzzleItem}%`;
+            element.style.width = `${this.puzzleSettings.sizeOfOnePuzzleItem}%`;
             let value;
             if (i === 0) {
                 value = inMass[i];
@@ -77,8 +74,8 @@ class Puzzle {
             }
             element.innerHTML = value;
             field.append(element);
-            const left = i % this.size.puzzleLength;
-            const top = (i - left) / this.size.puzzleLength;
+            const left = i % this.puzzleSettings.puzzleLength;
+            const top = (i - left) / this.puzzleSettings.puzzleLength;
             if (i === 0) {
                 this.elements.empty.value = 0;
                 this.elements.empty.left = left;
@@ -93,23 +90,23 @@ class Puzzle {
                     top,
                     dom: element,
                 })
-                element.style.top = `${top * this.size.elementSize}%`;
-                element.style.left = `${left * this.size.elementSize}%`;
+                element.style.top = `${top * this.puzzleSettings.sizeOfOnePuzzleItem}%`;
+                element.style.left = `${left * this.puzzleSettings.sizeOfOnePuzzleItem}%`;
                 const move = () => {
                     this.move(f);
                 }
                 element.addEventListener('click', move);
                 element.addEventListener('mousedown', (event) => {
-                    this.elements.flag = true;
+                    this.elements.mousedownFlag = true;
                     this.moveElem(f, event, field);
                 })
                 element.addEventListener('mouseup', (event) => {
-                    this.elements.flag = false;
+                    this.elements.mousedownFlag = false;
                 })
                 element.ondragstart = function () {
                     return false;
                 }
-                // Drug&Drop//////////////////////////               
+                // drag&Drop//////////////////////////               
             }
             document.body.appendChild(field);
             document.body.appendChild(this.elements.move);
@@ -127,13 +124,13 @@ class Puzzle {
         })
         document.body.appendChild(field);
 
-        for (let i = 0; i <= this.size.numOfPuzzle; i += 1) {
+        for (let i = 0; i <= this.puzzleSettings.numberOfPuzzle; i += 1) {
             if (i !== 0) {
                 const f = i;
                 const element = document.createElement('div');
                 element.classList.add('element');
-                element.style.height = `${this.size.elementSize}%`;
-                element.style.width = `${this.size.elementSize}%`;
+                element.style.height = `${this.puzzleSettings.sizeOfOnePuzzleItem}%`;
+                element.style.width = `${this.puzzleSettings.sizeOfOnePuzzleItem}%`;
                 const {
                     value
                 } = arr[i];
@@ -149,8 +146,8 @@ class Puzzle {
                 this.elements.elemArr[i].top = arr[i].top;
                 this.elements.elemArr[i].left = arr[i].left;
                 this.elements.elemArr[i].dom = element;
-                element.style.top = `${top * this.size.elementSize}%`;
-                element.style.left = `${left * this.size.elementSize}%`;
+                element.style.top = `${top * this.puzzleSettings.sizeOfOnePuzzleItem}%`;
+                element.style.left = `${left * this.puzzleSettings.sizeOfOnePuzzleItem}%`;
                 const move = () => {
                     this.move(f);
                 }
@@ -171,11 +168,11 @@ class Puzzle {
                 element.classList.add('empty');
                 this.elements.empty.dom = element;
                 field.append(element);
-                this.elements.empty.dom.style.top = `${this.elements.empty.top * this.size.elementSize}%`;
-                this.elements.empty.dom.style.left = `${this.elements.empty.left * this.size.elementSize}%`;
+                this.elements.empty.dom.style.top = `${this.elements.empty.top * this.puzzleSettings.sizeOfOnePuzzleItem}%`;
+                this.elements.empty.dom.style.left = `${this.elements.empty.left * this.puzzleSettings.sizeOfOnePuzzleItem}%`;
 
-                this.elements.empty.dom.style.height = `${this.size.elementSize}%`;
-                this.elements.empty.dom.style.width = `${this.size.elementSize}%`;
+                this.elements.empty.dom.style.height = `${this.puzzleSettings.sizeOfOnePuzzleItem}%`;
+                this.elements.empty.dom.style.width = `${this.puzzleSettings.sizeOfOnePuzzleItem}%`;
             }
         }
         document.body.appendChild(field);
@@ -183,29 +180,29 @@ class Puzzle {
     }
 
     move(index) {
-        if (this.drug.Drug) return;
+        if (this.dragAndDrop.drag) return;
         const elem = this.elements.elemArr[index];
         const leftDiff = Math.abs(this.elements.empty.left - elem.left);
         const topDiff = Math.abs(this.elements.empty.top - elem.top);
         if (leftDiff + topDiff > 1) {
             return;
         }
-        if(this.soundOn) this.audio.play();
+        if (this.soundOn) this.audio.play();
         this.elements.moves += 1;
         this.elements.move.innerText = ` Ходов: ${this.elements.moves}`;
-        elem.dom.style.top = `${this.elements.empty.top * this.size.elementSize}%`;
-        elem.dom.style.left = `${this.elements.empty.left * this.size.elementSize}%`;
+        elem.dom.style.top = `${this.elements.empty.top * this.puzzleSettings.sizeOfOnePuzzleItem}%`;
+        elem.dom.style.left = `${this.elements.empty.left * this.puzzleSettings.sizeOfOnePuzzleItem}%`;
         const emptyLeft = this.elements.empty.left;
         const emptyTop = this.elements.empty.top;
         this.elements.empty.left = elem.left;
         this.elements.empty.top = elem.top;
         elem.left = emptyLeft;
         elem.top = emptyTop;
-        this.elements.empty.dom.style.top = `${this.elements.empty.top * this.size.elementSize}%`;
-        this.elements.empty.dom.style.left = `${this.elements.empty.left * this.size.elementSize}%`;
+        this.elements.empty.dom.style.top = `${this.elements.empty.top * this.puzzleSettings.sizeOfOnePuzzleItem}%`;
+        this.elements.empty.dom.style.left = `${this.elements.empty.left * this.puzzleSettings.sizeOfOnePuzzleItem}%`;
 
         const finish = this.elements.elemArr.every(item => {
-            return item.value === item.top * this.size.puzzleLength + item.left;
+            return item.value === item.top * this.puzzleSettings.puzzleLength + item.left;
         })
 
         if (finish) setTimeout(() => {
@@ -227,7 +224,7 @@ class Puzzle {
 
     solvability() {
         const sortArr = [];
-        for (let i = 0; i <= (this.size.numOfPuzzle) - 1; i += 1) {
+        for (let i = 0; i <= (this.puzzleSettings.numberOfPuzzle) - 1; i += 1) {
             sortArr.push(i);
         }
         sortArr.sort(() => Math.random() - 0.5);
@@ -243,9 +240,9 @@ class Puzzle {
         return this.solvability();
     }
 
-    //Drug & Drop
+    //drag & Drop
     moveElem(index, event, field) {
-        let Drug = this.drug;
+        let drag = this.dragAndDrop;
         const element = this.elements.elemArr[index].dom;
         const elem = this.elements.elemArr[index];
         let mr = window.getComputedStyle(field, null).getPropertyValue('width');
@@ -256,12 +253,12 @@ class Puzzle {
         let droppableBelow;
         const ShiftX = event.clientX - element.getBoundingClientRect().left;
         const ShiftY = event.clientY - element.getBoundingClientRect().top;
-        const elementSize = this.size.elementSize;
+        const sizeOfOnePuzzleItem = this.puzzleSettings.sizeOfOnePuzzleItem;
         const enterDroppable1 = this.enterDroppable.bind(this);
         if (leftDiff + topDiff > 1) {
             return;
         }
-        if(this.soundOn) this.audio.play();
+        if (this.soundOn) this.audio.play();
         document.addEventListener('mousemove', onMouseMove);
         element.style.zIndex = 100;
         moveAt(event.pageX, event.pageY);
@@ -275,7 +272,7 @@ class Puzzle {
         }
 
         function onMouseMove(event) {
-            Drug.Drug = true;
+            drag.drag = true;
             moveAt(event.pageX, event.pageY);
             element.style.display = 'none';
             let elementBelow = document.elementFromPoint(event.clientX, event.clientY);
@@ -285,8 +282,8 @@ class Puzzle {
         }
 
         function liveDroppable(IndexLeft, IndexTop, element) {
-            element.style.top = `${IndexTop * elementSize}%`;
-            element.style.left = `${IndexLeft * elementSize}%`;
+            element.style.top = `${IndexTop * sizeOfOnePuzzleItem}%`;
+            element.style.left = `${IndexLeft * sizeOfOnePuzzleItem}%`;
         }
 
         element.onmouseup = function (event) {
@@ -299,24 +296,24 @@ class Puzzle {
             element.onmouseup = null;
             element.style.zIndex = 0;
         }
-        Drug.Drug = false;
+        drag.drag = false;
     }
 
     enterDroppable(IndexLeft, IndexTop, element, elem) {
         this.elements.moves += 1;
         this.elements.move.innerText = ` Ходов: ${this.elements.moves}`;
-        element.style.top = `${this.elements.empty.top * this.size.elementSize}%`;
-        element.style.left = `${this.elements.empty.left * this.size.elementSize}%`;
+        element.style.top = `${this.elements.empty.top * this.puzzleSettings.sizeOfOnePuzzleItem}%`;
+        element.style.left = `${this.elements.empty.left * this.puzzleSettings.sizeOfOnePuzzleItem}%`;
         const emptyLeft = this.elements.empty.left;
         const emptyTop = this.elements.empty.top;
         this.elements.empty.left = IndexLeft;
         this.elements.empty.top = IndexTop;
         elem.left = emptyLeft;
         elem.top = emptyTop;
-        this.elements.empty.dom.style.top = `${this.elements.empty.top * this.size.elementSize}%`;
-        this.elements.empty.dom.style.left = `${this.elements.empty.left * this.size.elementSize}%`;
+        this.elements.empty.dom.style.top = `${this.elements.empty.top * this.puzzleSettings.sizeOfOnePuzzleItem}%`;
+        this.elements.empty.dom.style.left = `${this.elements.empty.left * this.puzzleSettings.sizeOfOnePuzzleItem}%`;
         const finish = this.elements.elemArr.every(item => {
-            return item.value === item.top * this.size.puzzleLength + item.left;
+            return item.value === item.top * this.puzzleSettings.puzzleLength + item.left;
         })
         if (finish) setTimeout(() => {
             alert(`Ура! вы выиграли головоломку за и ${minits.innerText}${seconds.innerText} и ${this.elements.moves} ходов`);

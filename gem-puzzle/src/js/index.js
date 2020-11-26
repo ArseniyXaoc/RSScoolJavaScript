@@ -1,10 +1,9 @@
-import '../css/style.css';
 import '../css/style.scss';
 import '../img/2.jpg'
 
 import {
   Puzzle
-} from './create';
+} from './Puzzle';
 
 import {
   time,
@@ -87,10 +86,10 @@ settings.restart.addEventListener('click', () => {
   createPuzzleField = new Puzzle;
 
   (function PuzzleFieldSettings(settings) {
-    createPuzzleField.size.selectedIndex = settings;
-    createPuzzleField.size.elementSize = gameconfig[`size-${settings}`].elementSize;
-    createPuzzleField.size.numOfPuzzle = gameconfig[`size-${settings}`].numOfPuzzle;
-    createPuzzleField.size.puzzleLength = gameconfig[`size-${settings}`].puzzleLength;
+    createPuzzleField.puzzleSettings.selectedIndex = settings;
+    createPuzzleField.puzzleSettings.sizeOfOnePuzzleItem = gameconfig[`size-${settings}`].sizeOfOnePuzzleItem;
+    createPuzzleField.puzzleSettings.numberOfPuzzle = gameconfig[`size-${settings}`].numberOfPuzzle;
+    createPuzzleField.puzzleSettings.puzzleLength = gameconfig[`size-${settings}`].puzzleLength;
   })(settings.numPuzzle.options.selectedIndex);
 
   createPuzzleField.creator();

@@ -84,7 +84,7 @@ class Puzzle {
         element.addEventListener('click', move);
         element.addEventListener('mousedown', (event) => {
             this.elements.mousedownFlag = true;
-            this.moveElem(f, event, field);
+            this.move_elem(f, event, field);
         })
         element.addEventListener('mouseup', (event) => {
             this.elements.mousedownFlag = false;
@@ -254,7 +254,7 @@ class Puzzle {
     }
 
     //drag & Drop
-    moveElem(index, event, field) {
+    move_elem(index, event, field) {
         let drag = this.dragAndDrop;
         const element = this.elements.elemArr[index].dom;
         const elem = this.elements.elemArr[index];        

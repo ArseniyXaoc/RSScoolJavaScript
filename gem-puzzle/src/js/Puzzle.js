@@ -8,6 +8,8 @@ import {
 } from './index';
 
 const audioLink = 'https://sampleswap.org/samples-ghost/SOUND%20EFFECTS%20and%20NOISES/Scars%20FNC%20SFX/30[kb]question_2.aif.mp3';
+const cursorOffset = 10;            
+const marginTopField = 132;           
 
 class Puzzle {
     constructor() {
@@ -32,7 +34,6 @@ class Puzzle {
                     dom: null,
                 },
             }
-
         this.dragAndDrop = {
             drag: false,
             startCursorX: null,
@@ -102,8 +103,6 @@ class Puzzle {
         const field = this.fieldHtmlAdder();
         const orderOfPuzzleElementsArr = this.randomisePuzzleArrGenerator();
 
-
-
         for (let i = 0; i <= this.puzzleSettings.numberOfPuzzle; i += 1) {
             const f = i;
             const ElementPuzzle = this.addElementOfPuzzle();
@@ -114,6 +113,7 @@ class Puzzle {
             const top = (i - left) / this.puzzleSettings.puzzleLength;
             let value = (i === 0) ? orderOfPuzzleElementsArr[i] : orderOfPuzzleElementsArr[i - 1] + 1;
             element.innerHTML = value;
+
             if (i === 0) {
                 this.elements.empty.value = 0;
                 this.elements.empty.left = left;
@@ -130,6 +130,7 @@ class Puzzle {
                 })
                 this.moveElement(element, top, left, f, field);
             }
+
             document.body.appendChild(field);
             document.body.appendChild(this.elements.move);
         }
@@ -165,7 +166,6 @@ class Puzzle {
                 this.elements.elemArr[i].dom = element;
 
                 this.moveElement(element, top, left, f, field);
-
             } else {
                 this.elements.empty.top = arr[i].top;
                 this.elements.empty.left = arr[i].left;
@@ -177,7 +177,6 @@ class Puzzle {
                 field.append(element);
                 this.elements.empty.dom.style.top = `${this.elements.empty.top * this.puzzleSettings.sizeOfOnePuzzleItem}%`;
                 this.elements.empty.dom.style.left = `${this.elements.empty.left * this.puzzleSettings.sizeOfOnePuzzleItem}%`;
-
                 this.elements.empty.dom.style.height = `${this.puzzleSettings.sizeOfOnePuzzleItem}%`;
                 this.elements.empty.dom.style.width = `${this.puzzleSettings.sizeOfOnePuzzleItem}%`;
             }
@@ -209,7 +208,6 @@ class Puzzle {
         const finish = this.elements.elemArr.every(item => {
             return item.value === item.top * this.puzzleSettings.puzzleLength + item.left;
         })
-
         if (finish) this.finish();
     }
 
@@ -218,6 +216,7 @@ class Puzzle {
             alert(`Ура! вы выиграли головоломку за и ${minits.innerText}${seconds.innerText} и ${this.elements.moves} ходов`);
             if (localStorage.getItem('result') != null) this.elements.result = JSON.parse(localStorage.getItem('result'));
             let moves = this.elements.moves;
+
             for (let item of this.elements.result) {
                 if (item.moves > moves || item.moves === undefined) {
                     item.moves = moves;
@@ -225,6 +224,7 @@ class Puzzle {
                     break;
                 }
             }
+
             localStorage.setItem('result', JSON.stringify(this.elements.result));
             this.elements.win = true;
             restart.click();
@@ -233,11 +233,14 @@ class Puzzle {
 
     randomisePuzzleArrGenerator() {
         const sortArr = [];
+
         for (let i = 0; i <= (this.puzzleSettings.numberOfPuzzle) - 1; i += 1) {
             sortArr.push(i);
         }
-        //sortArr.sort(() => Math.random() - 0.5);
+
+        sortArr.sort(() => Math.random() - 0.5);
         let iter = 0
+
         sortArr.forEach((element, index, array) => {
             for (let i = index + 1; i < array.length; i += 1) {
                 if (element > array[i]) {
@@ -245,6 +248,7 @@ class Puzzle {
                 }
             }
         });
+
         if (iter % 2 === 0) return sortArr;
         return this.randomisePuzzleArrGenerator();
     }
@@ -253,8 +257,7 @@ class Puzzle {
     moveElem(index, event, field) {
         let drag = this.dragAndDrop;
         const element = this.elements.elemArr[index].dom;
-        const elem = this.elements.elemArr[index];
-        let mr = window.getComputedStyle(field, null).getPropertyValue('width');
+        const elem = this.elements.elemArr[index];        
         const leftDiff = Math.abs(this.elements.empty.left - this.elements.elemArr[index].left);
         const topDiff = Math.abs(this.elements.empty.top - this.elements.elemArr[index].top);
         const IndexLeft = this.elements.elemArr[index].left;
@@ -263,21 +266,18 @@ class Puzzle {
         const ShiftX = event.clientX - element.getBoundingClientRect().left;
         const ShiftY = event.clientY - element.getBoundingClientRect().top;
         const sizeOfOnePuzzleItem = this.puzzleSettings.sizeOfOnePuzzleItem;
-        const enterDroppable1 = this.enterDroppable.bind(this);
-        if (leftDiff + topDiff > 1) {
-            return;
-        }
+        const enterDroppable1 = this.enterDroppable.bind(this);        
+        if (leftDiff + topDiff > 1) return;
         if (this.soundOn) this.audio.play();
         document.addEventListener('mousemove', onMouseMove);
         element.style.zIndex = 100;
         moveAt(event.pageX, event.pageY);
 
         function moveAt(pageX, pageY) {
-            let mr = window.getComputedStyle(field, null).getPropertyValue('width');
-            let width = document.body.clientWidth;
-            //console.log(mr.slice(0, -2));
-            element.style.left = pageX - ShiftX - width / 2 + (mr.slice(0, -2)) / 2 - 10 + 'px';
-            element.style.top = pageY - ShiftY - 132 + 'px';
+            let browserWindowWidth = window.getComputedStyle(field, null).getPropertyValue('width');
+            let width = document.body.clientWidth;            
+            element.style.left = pageX - ShiftX - width / 2 + (browserWindowWidth.slice(0, -2)) / 2 - cursorOffset + 'px';
+            element.style.top = pageY - ShiftY - marginTopField + 'px';
         }
 
         function onMouseMove(event) {

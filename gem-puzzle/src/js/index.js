@@ -92,7 +92,7 @@ settings.restart.addEventListener('click', () => {
     createPuzzleField.puzzleSettings.puzzleLength = gameconfig[`size-${settings}`].puzzleLength;
   })(settings.numPuzzle.options.selectedIndex);
 
-  createPuzzleField.creator();
+  createPuzzleField.createGameField();
   timer = setInterval(time, 1000);
   rest.x = 1;
 })

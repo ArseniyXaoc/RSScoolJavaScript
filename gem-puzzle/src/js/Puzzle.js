@@ -7,6 +7,8 @@ import {
     restart,
 } from './index';
 
+const audioLink = 'https://sampleswap.org/samples-ghost/SOUND%20EFFECTS%20and%20NOISES/Scars%20FNC%20SFX/30[kb]question_2.aif.mp3';
+
 class Puzzle {
     constructor() {
         this.widthOfBrowserWindow,
@@ -40,42 +42,60 @@ class Puzzle {
         }
     }
 
-    creator() {
-        this.widthOfBrowserWindow = document.body.clientWidth;
+    audioInitializer() {
         this.soundOn = true;
         this.audio = new Audio();
         this.audio.preload = 'auto';
-        this.audio.src = 'https://sampleswap.org/samples-ghost/SOUND%20EFFECTS%20and%20NOISES/Scars%20FNC%20SFX/30[kb]question_2.aif.mp3';
-        window.addEventListener('resize', () => {
-            this.widthOfBrowserWindow = document.body.clientWidth;
-        })
+        this.audio.src = audioLink;
+    }
 
+    fieldHtmlAdder() {
         const field = document.createElement('div');
-
         field.classList.add('field');
         this.elements.move = document.createElement('div');
         this.elements.move.innerText = ` Ходов: ${this.elements.moves}`;
         this.elements.move.classList.add('move');
-
         field.setAttribute('onselectstart', 'return false');
-        const inMass = this.solvability();
+        return field;
+    }
+
+    createGameField() {
+        this.audioInitializer();        
+        this.widthOfBrowserWindow = document.body.clientWidth;
+        window.addEventListener('resize', () => {
+            this.widthOfBrowserWindow = document.body.clientWidth;
+        })
+        const field = this.fieldHtmlAdder();
+        const orderOfPuzzleElementsArr = this.solvability();
+
+        class Element {
+            constructor(sizeOfOnePuzzleItem, value){
+                this.sizeOfOnePuzzleItem = sizeOfOnePuzzleItem;
+                this.current = document.createElement('div');
+                this.value = value;
+            }
+            elementCrator(sizeOfOnePuzzleItem, iter){
+                this.current.classList.add('element');
+                this.current.style.height = `${sizeOfOnePuzzleItem}%`;
+                this.current.style.width = `${sizeOfOnePuzzleItem}%`;
+                if (iter === 0) {
+                    this.value = orderOfPuzzleElementsArr[iter];
+                } else {
+                    this.value = orderOfPuzzleElementsArr[iter - 1] + 1;
+                }
+                this.current.innerHTML = this.value;
+            }
+        }
 
         for (let i = 0; i <= this.puzzleSettings.numberOfPuzzle; i += 1) {
             const f = i;
-            const element = document.createElement('div');
-            element.classList.add('element');
-            element.style.height = `${this.puzzleSettings.sizeOfOnePuzzleItem}%`;
-            element.style.width = `${this.puzzleSettings.sizeOfOnePuzzleItem}%`;
-            let value;
-            if (i === 0) {
-                value = inMass[i];
-            } else {
-                value = inMass[i - 1] + 1;
-            }
-            element.innerHTML = value;
+            const ElementPuzzle = new Element();
+            ElementPuzzle.elementCrator(this.puzzleSettings.sizeOfOnePuzzleItem, i);
+            const element = ElementPuzzle.current;
             field.append(element);
             const left = i % this.puzzleSettings.puzzleLength;
             const top = (i - left) / this.puzzleSettings.puzzleLength;
+
             if (i === 0) {
                 this.elements.empty.value = 0;
                 this.elements.empty.left = left;
@@ -85,7 +105,7 @@ class Puzzle {
                 this.elements.elemArr.push(this.elements.empty);
             } else {
                 this.elements.elemArr.push({ // Складываем элементы с их координатами в массив
-                    value,
+                    value: ElementPuzzle.value,
                     left,
                     top,
                     dom: element,
@@ -108,6 +128,7 @@ class Puzzle {
                 }
                 // drag&Drop//////////////////////////               
             }
+
             document.body.appendChild(field);
             document.body.appendChild(this.elements.move);
         }
@@ -118,9 +139,9 @@ class Puzzle {
         this.elements.elemArr[0] = this.elements.empty;
         const field = document.createElement('div');
         field.classList.add('field');
-        const inMass = [];
+        const orderOfPuzzleElementsArr = [];
         arr.forEach(item => {
-            inMass.push(item.value);
+            orderOfPuzzleElementsArr.push(item.value);
         })
         document.body.appendChild(field);
 

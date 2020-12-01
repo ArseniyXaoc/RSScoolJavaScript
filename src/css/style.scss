@@ -11,11 +11,24 @@ a {
 
 body {
   font-family: 'Roboto', sans-serif;
+  background-image: url('../img/3308386.jpg');
+  // <a href="http://www.freepik.com">Designed by Freepik</a>
 }
 
 .header {
+  width: 94%;  
+  display: -webkit-box;
   display: flex;
+  -webkit-box-pack: end;
   justify-content: flex-end;
+}
+
+
+.card__image__play{
+  margin-top: 11px;
+    width: 76%;
+    border: solid 5px aqua;
+    border-radius: 33px;
 }
 
 
@@ -81,6 +94,19 @@ body {
   }
 }
 
+.play {
+  background-color: #7fd03e;
+  transition: all 0.5s;
+}
+
 .main-page {
   padding-top: 200px;
+}
+
+.card__image__play{
+  margin-top: 11px;
+    width: 76%;
+    border: solid 5px aqua;
+    border-radius: 33px;
+    transition: all 0.5s;
 }

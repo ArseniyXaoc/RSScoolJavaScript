@@ -83,12 +83,12 @@ function events() {
     flipContainer.addEventListener('click', HadleEvent.playSoundCard);
     flipContainer.addEventListener('click', HadleEvent.flipOneCard);
     cardFlipperBack.forEach((item) => {
-        // item.addEventListener('mouseout', (event) => {
-        //     console.log(event.relatedTarget);
-        //     if(event.relatedTarget.classList.contains('main-page') || event.relatedTarget.classList.contains('flip-container')){
-        //         HadleEvent.flipOneCard(event);
-        //     }
-        // });   
+        item.addEventListener('mouseout', (event) => {
+            console.log(event.relatedTarget);
+            if(event.relatedTarget.classList.contains('main-page') || event.relatedTarget.classList.contains('flip-container')){
+                HadleEvent.flipOneCard(event);
+            }
+        });   
     })
 }
 

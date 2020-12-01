@@ -23,7 +23,7 @@ class HendlerEvent {
 
     flipOneCard(event) {   
       
-        if (event.target.classList.contains('rotateCard')) {
+        if (event.target.classList.contains('rotateCard') || event.target.classList.contains("flipper_back")) {
             const target = event.target.closest('.flip-container');
             //target.childNodes[1].childNodes[1].play();
             if (!plapGame) {

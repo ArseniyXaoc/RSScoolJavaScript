@@ -11,7 +11,7 @@ class EventObserver {
        this.observes = this.observes.filter((subscriber) => subscriber !==fn);
     }
 
-    broadcast(data){
+    broadcast(data){        
         this.observes.forEach((subscriber) => subscriber(data));
     }
 } // Подписаться

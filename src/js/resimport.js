@@ -47,7 +47,7 @@ import '../img/swim.jpg';
 import '../img/scared.jpg';
 import '../img/tired.jpg';
 import '../img/turtle.jpg';
-
+import '../img/rotate.svg';
 import '../audio/angry.mp3';
 import '../audio/bird.mp3';
 import '../audio/blouse.mp3';

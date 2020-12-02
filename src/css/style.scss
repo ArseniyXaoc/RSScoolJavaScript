@@ -110,3 +110,21 @@ body {
     border-radius: 33px;
     transition: all 0.5s;
 }
+
+.start-play{
+  width: 116px;
+  height: 116px;
+  position: absolute;
+  right: 278px;
+  top: 159px;
+  border-radius: 100%;
+  background: #fff;
+  text-align: center;
+  line-height: 110px;
+  font-family: Cabin,sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #fd1a15;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}

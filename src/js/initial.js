@@ -14,6 +14,11 @@ const observer = new EventObserver();
 const mainPadeCard = document.querySelector('.main-page');
 const cardMainContainer = document.querySelector('.wrapper');
 const toggleMenu = document.getElementById('menu__toggle');
+const startButton = document.querySelector('.start-play');
+let randomMassForPlay = [0, 1, 2, 3, 4, 5, 6, 7];
+let iterator = 0;
+
+const pageArr = [...mainPadeCard.childNodes];
 
 let mainPageFlag;
 let cards;
@@ -22,19 +27,52 @@ let mainCard = [...document.querySelectorAll('.card__item')];
 const mainPageLink = document.querySelector('.navigation__link_top');
 const otherPageLink = document.querySelector('.menu__box');
 
+function playGame(params) {
+    let saveSelectedCard;
+    let envisionedCard;
+    let started = false;
+
+    mainPadeCard.addEventListener('click', clickStartGameEvent);
+
+    function clickStartGameEvent(event) {
+        if(started){
+            saveSelectedCard = event.target.closest('.flip-container').dataset.number;
+            console.log(saveSelectedCard);
+            console.log(envisionedCard);
+            if(saveSelectedCard ==  envisionedCard){
+                iterator = iterator === 7 ? 0 : iterator + 1;
+            }            
+        }
+    };   
+
+    startButton.addEventListener('click', goPlay);
+
+    function goPlay(params) {
+        started = true;
+        const soundPage = [...document.querySelectorAll('.audio')];
+        soundPage[randomMassForPlay[iterator]].play();
+        envisionedCard = randomMassForPlay[iterator];        
+        
+    }
+}
 //observer.subscribe(HadleEvent.flipAllCard);
 
 buttonTrainPlay.addEventListener('click', () => {
-    if(!plapGame){observer.subscribe(HadleEvent.flipAllCard);
-    observer.broadcast(cards);
-    plapGame = !plapGame;}
-    else {
+    document.querySelector('.start-play').classList.toggle('hide');
+    iterator = 0;
+    randomMassForPlay.sort((a, b) => Math.random() - 0.5);
+    console.log(randomMassForPlay);
+    if (!plapGame) {
+        playGame();
+        observer.subscribe(HadleEvent.flipAllCard);
+        observer.broadcast(cards);
+        plapGame = !plapGame;
+    } else {                
         observer.broadcast(cards);
         observer.unsubscribe(HadleEvent.flipAllCard);
         plapGame = !plapGame
     }
 });
-
 
 mainPageLink.addEventListener('click', () => {
     clearPage(mainPadeCard);
@@ -42,7 +80,7 @@ mainPageLink.addEventListener('click', () => {
         mainPadeCard.appendChild(item);
     })
     mainPageFlag = true;
-    mainPadeCard.addEventListener('click', goToPageEvents);    
+    mainPadeCard.addEventListener('click', goToPageEvents);
 })
 
 clearPage(cardMainContainer);
@@ -84,11 +122,10 @@ function events() {
     flipContainer.addEventListener('click', HadleEvent.flipOneCard);
     cardFlipperBack.forEach((item) => {
         item.addEventListener('mouseout', (event) => {
-            console.log(event.relatedTarget);
-            if(event.relatedTarget.classList.contains('main-page') || event.relatedTarget.classList.contains('flip-container')){
+            if (event.relatedTarget.classList.contains('main-page') || event.relatedTarget.classList.contains('flip-container')) {
                 HadleEvent.flipOneCard(event);
             }
-        });   
+        });
     })
 }
 

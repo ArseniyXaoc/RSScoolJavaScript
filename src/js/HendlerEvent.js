@@ -13,19 +13,22 @@ import {
 let card = Array(8);
 
 class HendlerEvent {
-    constructor() {}
+    constructor() {
+        this.buttonStart = null;
+    }   
 
     playSoundCard(event) {
+        if(plapGame) return;
+        //if(event.target.classList.contains('flipper_back')) return;
+        //if(event.target.classList.contains('card__image_back')) return;
         if (event.target.closest('.flip-container')) {
             const target = event.target.closest('.flip-container');
             target.childNodes[1].childNodes[1].play();}
     }
 
-    flipOneCard(event) {   
-      
+    flipOneCard(event) {      
         if (event.target.classList.contains('rotateCard') || event.target.classList.contains("flipper_back")) {
-            const target = event.target.closest('.flip-container');
-            //target.childNodes[1].childNodes[1].play();
+            const target = event.target.closest('.flip-container');            
             if (!plapGame) {
                 console.log(event.type);
                 if (event.type === 'click' || event.type === 'mouseout') {
@@ -36,7 +39,6 @@ class HendlerEvent {
     }
 
     flipAllCard(cards) {
-
         if (cards && !mainPageFlag) {
             cards.forEach((item) => {
                 item.classList.toggle('train');
@@ -49,8 +51,7 @@ class HendlerEvent {
                     flipContainer.classList.toggle('flip');
                 }
             });
-        } else {
-            //console.log(mainCard);
+        } else {            
             mainCard.forEach(item => {
                 item.classList.toggle('play');
             })
@@ -58,12 +59,14 @@ class HendlerEvent {
     }
 
     createThemeCard(part, pege) {
-
+        
+        console.log(pege.parentNode.childNodes[1]);
+               
         for (let i = 0; i < 8; i++) {
             card[i] = document.createElement('div');
             card[i].classList.add("card__item", "card__f")
             card[i].innerHTML =
-                `<div class="flip-container">
+                `<div class="flip-container" data-number = "${i}">
                     <div class="flipper">
                         <audio class="audio" src="${cards1[part][i].audioSrc}"></audio>
                         <div class="flipper_font">
@@ -72,12 +75,15 @@ class HendlerEvent {
                             <div class="rotateCard"><img class="rotateCard" src="../img/rotate.svg" alt=""></div>
                         </div>
                         <div class="flipper_back">
-                            <span>${cards1[part][i].translation}</span><img src ='../${cards1[part][i].image}' class="card__image">
+                            <span>${cards1[part][i].translation}</span><img src ='../${cards1[part][i].image}' class="card__image card__image_back">
                         </div>                        
                     </div>
                 </div>`
             pege.appendChild(card[i]);
-        }
+            
+        }        
+       
+        
     }
 }
 

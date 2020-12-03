@@ -28,6 +28,7 @@
         top: 0px;
         left: 0;
         transform: translateX(0);
+        z-index: 2;
 
     }
 
@@ -38,6 +39,7 @@
         position: fixed;
         top: 0;
         left: 0;
+        z-index: 1;
     }
 
 }
@@ -58,7 +60,7 @@
     width: 43px;
     height: 25px;
     cursor: pointer;
-    z-index: 2;
+    z-index: 3;
 }
 
 .menu__btn>span,
@@ -86,7 +88,7 @@
 }
 
 .menu__box {
-    z-index: 3;
+    z-index: 2;
     display: block;
     flex-direction: column;
     align-items: center;
@@ -139,6 +141,9 @@
 
 .navigation__link_top{
     margin-top: 75px;
+    a {
+        color: red;
+    }
 }
 
 .hide{

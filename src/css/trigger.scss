@@ -26,6 +26,11 @@ $padding: 7px;
   transition: all 500ms ease;
   box-shadow: 0 0px 10px rgba(0, 0, 0, 0.2) inset;
 
+  @media (max-width: 460px) {
+    width: 160px;
+    height: 80px;
+  }
+
   &:before {
     content: 'Train';
     width: $btnWidth;
@@ -44,6 +49,15 @@ $padding: 7px;
     letter-spacing: 3px;
     text-transform: uppercase;
     transition: left 500ms ease, color 500ms ease, transform 150ms ease;
+
+    @media (max-width: 460px) {
+      width: 70px;
+      height: 70px;
+      left: 5px;
+      top: 5px;
+      line-height: 75px;
+      font-size: 16px;
+    }
   }
 
   &:active {
@@ -60,5 +74,9 @@ $padding: 7px;
     content: 'Play';
     color: $green;
     left: ($switchWidth - $btnWidth - $padding);
+
+    @media (max-width: 460px) {
+      left: 84px;
+    }
   }
 }

@@ -19,8 +19,8 @@ class HendlerEvent {
 
     playSoundCard(event) {
         if(plapGame) return;
-        //if(event.target.classList.contains('flipper_back')) return;
-        //if(event.target.classList.contains('card__image_back')) return;
+        if(event.target.classList.contains('flipper_back')) return;
+        if(event.target.classList.contains('card__image_back')) return;
         if (event.target.closest('.flip-container')) {
             const target = event.target.closest('.flip-container');
             target.childNodes[1].childNodes[1].play();}
@@ -30,7 +30,6 @@ class HendlerEvent {
         if (event.target.classList.contains('rotateCard') || event.target.classList.contains("flipper_back")) {
             const target = event.target.closest('.flip-container');            
             if (!plapGame) {
-                console.log(event.type);
                 if (event.type === 'click' || event.type === 'mouseout') {
                     target.classList.toggle('flip')
                 } else target.classList.toggle('hover');
@@ -46,7 +45,6 @@ class HendlerEvent {
                 item.childNodes[1].classList.toggle('hidden');
                 item.childNodes[5].classList.toggle('hidden');
                 item.childNodes[3].classList.toggle('card__image__play');
-                console.log(item.childNodes);
                 if (flipContainer.className === 'flip-container flip') {
                     flipContainer.classList.toggle('flip');
                 }
@@ -58,10 +56,7 @@ class HendlerEvent {
         };
     }
 
-    createThemeCard(part, pege) {
-        
-        console.log(pege.parentNode.childNodes[1]);
-               
+    createThemeCard(part, pege) {               
         for (let i = 0; i < 8; i++) {
             card[i] = document.createElement('div');
             card[i].classList.add("card__item", "card__f")

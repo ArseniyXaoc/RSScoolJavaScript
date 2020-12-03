@@ -63,6 +63,8 @@ import '../audio/dog.mp3';
 import '../audio/dolphin.mp3';
 import '../audio/draw.mp3';
 import '../audio/dress.mp3';
+import '../audio/error.mp3';
+import '../audio/correct.mp3';
 import '../audio/fish.mp3';
 import '../audio/fly.mp3';
 import '../audio/frog.mp3';

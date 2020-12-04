@@ -1,34 +1,46 @@
 import {
     plapGame,
-    cards,
     mainCard,
     mainPageFlag,
+    numberOfCardPage,
 } from './initial';
-
 import {
     cards1
 } from './cards';
+import {
+    Statistic
+} from './statistic';
 
+const statistic = new Statistic;
 
-let card = Array(8);
+const card = Array(8);
 
 class HendlerEvent {
     constructor() {
         this.buttonStart = null;
-    }   
-
-    playSoundCard(event) {
-        if(plapGame) return;
-        if(event.target.classList.contains('flipper_back')) return;
-        if(event.target.classList.contains('card__image_back')) return;
-        if (event.target.closest('.flip-container')) {
-            const target = event.target.closest('.flip-container');
-            target.childNodes[1].childNodes[1].play();}
     }
 
-    flipOneCard(event) {      
+    // eslint-disable-next-line class-methods-use-this
+    playSoundCard(event) {
+        if (plapGame) return;
+        if (event.target.classList.contains('flipper_back')) return;
+        if (event.target.classList.contains('card__image_back')) return;
+        //console.log(statistic.statisticArray);
+        if (event.target.closest('.flip-container')) {
+            const target = event.target.closest('.flip-container');
+            const textInCard = target.firstElementChild.children[1].firstElementChild.innerText;
+            const textInCardTranslate = target.firstElementChild.children[2].firstElementChild.innerText;
+            
+            statistic.statisticCashWord(textInCard, textInCardTranslate, numberOfCardPage,1, 0, 0);
+            
+            target.childNodes[1].childNodes[1].play();
+        }
+    }
+
+    // eslint-disable-next-line class-methods-use-this
+    flipOneCard(event) {
         if (event.target.classList.contains('rotateCard') || event.target.classList.contains("flipper_back")) {
-            const target = event.target.closest('.flip-container');            
+            const target = event.target.closest('.flip-container');
             if (!plapGame) {
                 if (event.type === 'click' || event.type === 'mouseout') {
                     target.classList.toggle('flip')
@@ -37,6 +49,7 @@ class HendlerEvent {
         }
     }
 
+    // eslint-disable-next-line class-methods-use-this
     flipAllCard(cards) {
         if (cards && !mainPageFlag) {
             cards.forEach((item) => {
@@ -49,15 +62,16 @@ class HendlerEvent {
                     flipContainer.classList.toggle('flip');
                 }
             });
-        } else {            
+        } else {
             mainCard.forEach(item => {
                 item.classList.toggle('play');
             })
         };
     }
 
-    createThemeCard(part, pege) {               
-        for (let i = 0; i < 8; i++) {
+    // eslint-disable-next-line class-methods-use-this
+    createThemeCard(part, pege) {
+        for (let i = 0; i < 8; i += 1) {
             card[i] = document.createElement('div');
             card[i].classList.add("card__item", "card__f")
             card[i].innerHTML =
@@ -75,10 +89,7 @@ class HendlerEvent {
                     </div>
                 </div>`
             pege.appendChild(card[i]);
-            
-        }        
-       
-        
+        }
     }
 }
 

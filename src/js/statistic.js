@@ -19,7 +19,8 @@ class Statistic {
             wrong: 0,
             errors: 0,
         }];
-
+        
+        this.clean = document.querySelector('.clean');
         this.run = document.querySelector('.statistic');
         this.statisticPageObject = document.querySelector('.statistic');
         this.statisticTbody = document.querySelector('.tbody');
@@ -30,6 +31,8 @@ class Statistic {
 
 
     statisticCashWord(word, translation, category, click, correct, wrong) {
+        localStorage.setItem('statisticArray', JSON.stringify(this.statisticArray));
+        
 
         const pusheObject = this.statisticArray.find(item => item.word === word)
 
@@ -85,6 +88,7 @@ class Statistic {
     }
 
     staticAddToPage() {
+        
         if (this.statisticTbody) this.clearPage(this.statisticTbody);
         this.statisticArray.forEach(element => {
             const newRow = this.statisticTbody.insertRow();
@@ -110,6 +114,7 @@ class Statistic {
             newRow.appendChild(wrong);
             newRow.appendChild(errors);
         });
+        
     }
 
     sort(param) {
@@ -186,6 +191,7 @@ class Statistic {
 
         console.log(this.statisticArray);
         this.staticAddToPage(); // статистика
+        
     }
 }
 

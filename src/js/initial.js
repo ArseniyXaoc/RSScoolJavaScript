@@ -44,6 +44,9 @@ darkening.addEventListener('click', () => {
     toggleMenu.checked = false
 });
 
+statistic.clean.addEventListener('click', () => {
+    localStorage.setItem('statisticArray',null);
+})
 
 function clearPage(elementForClean) {
     while (elementForClean.firstChild) {
@@ -60,15 +63,20 @@ function clear() {
     clearPage(score);
 }
 
-statisticLink.addEventListener('click', () => {
+const sortStatistic = (event) => {
+    statistic.sort(event);
+}
+
+const statistikShow = () => {
+    if(localStorage.getItem('statisticArray')) statistic.statisticArray = JSON.parse(localStorage.getItem('statisticArray'));
     clearPage(mainPadeCard);
     statisticOverflow.classList.remove('hide');
-    statistic.run.addEventListener('click', (event) => {
-        statistic.sort(event);
-    });
+    statistic.run.addEventListener('click', sortStatistic);
     statistic.staticAddToPage(); // статистика
+}
 
-});
+statisticLink.addEventListener('click', statistikShow);
+
 
 function addImage(f) {
     const star = document.createElement('img');
@@ -206,6 +214,7 @@ function events() {
 
 
 function goToPageEvents(event) { // перешли на страницу
+    
     toggleMenu.checked = false;
     const target = event.target.closest('.card__item_sel');
     if (target === null) return;
@@ -222,6 +231,7 @@ mainPadeCard.addEventListener('click', goToPageEvents);
 otherPageLink.addEventListener('click', goToPageEvents);
 
 mainPageLink.addEventListener('click', () => {
+    statistic.run.removeEventListener('click', sortStatistic);
     statisticOverflow.classList.add('hide');
     clearPage(mainPadeCard);
     mainCard.forEach((item) => {

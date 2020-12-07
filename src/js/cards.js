@@ -299,6 +299,106 @@ const cards1 = [
       image: 'img/laugh.jpg',
       audioSrc: 'audio/laugh.mp3'
     }
+  ],
+  [
+    {
+      word: 'bake',
+      translation: 'выпекать',
+      image: 'img/bake.jpg',
+      audioSrc: 'audio/bake.mp3'
+    },
+    {
+      word: 'paint',
+      translation: 'рисовать',
+      image: 'img/brush.jpg',
+      audioSrc: 'audio/brush.mp3'
+    },
+    {
+      word: 'build',
+      translation: 'строить',
+      image: 'img/build.jpg',
+      audioSrc: 'audio/build.mp3'
+    },
+    {
+      word: 'clap',
+      translation: 'хлопать',
+      image: 'img/clap.jpg',
+      audioSrc: 'audio/clap.mp3'
+    },
+    {
+      word: 'climb',
+      translation: 'подняться',
+      image: 'img/climb.jpg',
+      audioSrc: 'audio/climb.mp3'
+    },
+    {
+      word: 'cut',
+      translation: 'разрезать',
+      image: 'img/cut.jpg',
+      audioSrc: 'audio/cut.mp3'
+    },
+    {
+      word: 'dig',
+      translation: 'копать',
+      image: 'img/dig.jpg',
+      audioSrc: 'audio/dig.mp3'
+    },
+    {
+      word: 'listen',
+      translation: 'слушать',
+      image: 'img/listen.jpg',
+      audioSrc: 'audio/listen.mp3'
+    }
+  ],
+  [
+    {
+      word: 'amused',
+      translation: 'довольный',
+      image: 'img/amused.jpg',
+      audioSrc: 'audio/amused.mp3'
+    },
+    {
+      word: 'cold',
+      translation: 'холодный',
+      image: 'img/cold.jpg',
+      audioSrc: 'audio/cold.mp3'
+    },
+    {
+      word: 'colorful',
+      translation: 'красочный',
+      image: 'img/colorful.jpg',
+      audioSrc: 'audio/colorful.mp3'
+    },
+    {
+      word: 'dirty',
+      translation: 'грязный',
+      image: 'img/dirty.jpg',
+      audioSrc: 'audio/dirty.mp3'
+    },
+    {
+      word: 'fast',
+      translation: 'быстрый',
+      image: 'img/fast.jpg',
+      audioSrc: 'audio/fast.mp3'
+    },
+    {
+      word: 'lazy',
+      translation: 'ленивый',
+      image: 'img/lazy.jpg',
+      audioSrc: 'audio/lazy.mp3'
+    },
+    {
+      word: 'fat',
+      translation: 'толстый',
+      image: 'img/fat.jpg',
+      audioSrc: 'audio/fat.mp3'
+    },
+    {
+      word: 'hot',
+      translation: 'горячий',
+      image: 'img/hot.jpg',
+      audioSrc: 'audio/hot.mp3'
+    }
   ]
 ]
 

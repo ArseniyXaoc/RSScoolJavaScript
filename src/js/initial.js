@@ -201,11 +201,6 @@ buttonTrainPlay.addEventListener('click', () => {
 clearPage(cardMainContainer);
 cardMainContainer.appendChild(mainPadeCard);
 
-function goToPage(part, page) { // переход на страницу
-    statisticOverflow.classList.add('hide');
-    clearPage(page);
-    HadleEvent.createThemeCard(part, page);
-}
 
 function events() {
     cards = [...document.querySelectorAll('.flipper_font')];
@@ -223,10 +218,13 @@ function events() {
     })
 }
 
-
+function goToPage(part, page) { // переход на страницу
+    statisticOverflow.classList.add('hide');
+    clearPage(page);
+    HadleEvent.createThemeCard(part, page);
+}
 
 function goToPageEvents(event) { // перешли на страницу
-
     toggleMenu.checked = false;
     const target = event.target.closest('.card__item_sel');
     if (target === null) return;

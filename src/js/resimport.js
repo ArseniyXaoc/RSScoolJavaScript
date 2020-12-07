@@ -102,3 +102,41 @@ import '../audio/swim.mp3';
 import '../audio/scared.mp3';
 import '../audio/tired.mp3';
 import '../audio/turtle.mp3';
+
+import '../audio/amused.mp3';
+import '../audio/cold.mp3';
+import '../audio/colorful.mp3';
+import '../audio/dirty.mp3';
+import '../audio/fast.mp3';
+import '../audio/fat.mp3';
+import '../audio/hot.mp3';
+import '../audio/lazy.mp3';
+
+import '../audio/bake.mp3';
+import '../audio/brush.mp3';
+import '../audio/build.mp3';
+import '../audio/clap.mp3';
+import '../audio/climb.mp3';
+import '../audio/cut.mp3';
+import '../audio/dig.mp3';
+import '../audio/listen.mp3';
+
+import '../img/amused.jpg';
+import '../img/cold.jpg';
+import '../img/colorful.jpg';
+import '../img/dirty.jpg';
+import '../img/fast.jpg';
+import '../img/fat.jpg';
+import '../img/hot.jpg';
+import '../img/lazy.jpg';
+
+import '../img/bake.jpg';
+import '../img/brush.jpg';
+import '../img/build.jpg';
+import '../img/clap.jpg';
+import '../img/climb.jpg';
+import '../img/cut.jpg';
+import '../img/dig.jpg';
+import '../img/listen.jpg';
+
+

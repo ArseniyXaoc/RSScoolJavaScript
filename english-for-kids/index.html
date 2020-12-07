@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Canvas" />
+    <meta name="author" lang="en" content="Alexander Panov" />
+    <link rel="shortcut icon" href="#" type="image/x-icon">
+    <title>English for kids</title>
+<link href="style.css" rel="stylesheet"></head>
+
+<body>
+    <div class="header">
+        <div class="hamburger-menu">
+            <input id="menu__toggle" type="checkbox">
+            <label class="menu__btn" for="menu__toggle">
+                <span></span>
+            </label>
+            <ul class="menu__box">
+                <li class="navigation__link navigation__link_top"><a href="#">Main page</a></li>
+                <li class="navigation__link card__item_sel navigation__link_s" data-page-number="1"><a href="#">Action
+                        (Set A)</a></li>
+                <li class="navigation__link card__item_sel navigation__link_s" data-page-number="2"><a href="#">Action
+                        (Set B)</a></li>
+                <li class="navigation__link card__item_sel navigation__link_s" data-page-number="7"><a href="#">Action
+                        (Set C)</a></li>
+                <li class="navigation__link card__item_sel navigation__link_s" data-page-number="8"><a
+                        href="#">Adjective</a></li>
+                <li class="navigation__link card__item_sel navigation__link_s" data-page-number="3"><a href="#">Animal
+                        (Set A)</a></li>
+                <li class="navigation__link card__item_sel navigation__link_s" data-page-number="4"><a href="#">Animal
+                        (Set B)</a></li>
+                <li class="navigation__link card__item_sel navigation__link_s" data-page-number="5"><a
+                        href="#">Clothes</a></li>
+                <li class="navigation__link card__item_sel navigation__link_s" data-page-number="6"><a
+                        href="#">Emotion</a></li>
+                <li class="navigation__link navigation__link_statistic" data-page-number="6"><a href="#">Statistic</a>
+                </li>
+            </ul>
+            <div class="menu_out"></div>
+        </div>
+        <div class="score-wrap">
+            <div class="score"></div>
+        </div>
+        <div><button class="start-play hide">Start</button></div>
+        <input type="checkbox" id='checkbox' class="checkbox">
+        <label for="checkbox"></label>
+    </div>
+    <audio class="audio-error" src="./audio/error.mp3"></audio>
+    <audio class="audio-correct" src="./audio/correct.mp3"></audio>
+    <audio class="audio-success" src="./audio/success.mp3"></audio>
+    <audio class="audio-failure" src="./audio/failure.mp3"></audio>
+    <main class="main">
+        <div class="wrapper">
+            <div class="card main-page">
+                <div class="card__item card__item_sel card__main" data-page-number="1">
+                    <img src="img/dance.jpg" class="card__image" data-page-number=""></img>
+                    <div class="card__text">Action (Set A)</div>
+                </div>
+                <div class="card__item card__item_sel card__main" data-page-number="2">
+                    <img src="img/swim.jpg" class="card__image"></img>
+                    <div class="card__text">Action (Set B)</div>
+                </div>
+                <div class="card__item card__item_sel card__main" data-page-number="7">
+                    <img src="img/bake.jpg" class="card__image"></img>
+                    <div class="card__text">Action (Set C)</div>
+                </div>
+                <div class="card__item card__item_sel card__main" data-page-number="8">
+                    <img src="img/cold.jpg" class="card__image"></img>
+                    <div class="card__text">Adjective</div>
+                </div>
+                <div class="card__item card__item_sel card__main" data-page-number="3">
+                    <img src="img/cat.jpg" class="card__image"></img>
+                    <div class="card__text">Animal (Set A)</div>
+                </div>
+                <div class="card__item card__item_sel card__main" data-page-number="4">
+                    <img src="img/bird.jpg" class="card__image"></img>
+                    <div class="card__text">Animal (Set B)</div>
+                </div>
+                <div class="card__item card__item_sel card__main" data-page-number="5">
+                    <img src="img/blouse.jpg" class="card__image"></img>
+                    <div class="card__text">Clothes</div>
+                </div>
+                <div class="card__item card__item_sel card__main" data-page-number="6">
+                    <img src="img/smile.jpg" class="card__image"></img>
+                    <div class="card__text">Emotion</div>
+                </div>
+            </div>
+            <div class="card theme-page">
+            </div>
+        </div>
+    </main>
+
+    <div class="overflow-st hide">
+        <button class="clean">Reset</button>
+        <table class="statistic">
+            <thead>
+                <tr class="thead">
+                    <th class="thead__word">Word</th>
+                    <th class="thead__translation">Translation</th>
+                    <th class="thead__category">Category</th>
+                    <th class="thead__clicks">Clicks</th>
+                    <th class="thead__correct">Correct</th>
+                    <th class="thead__wrong">Wrong</th>
+                    <th class="thead__errors">Errors</th>
+                </tr>
+            </thead>
+            <tbody class="tbody">
+                
+            </tbody>
+        </table>
+    </div>
+<script type="text/javascript" src="index.js"></script></body>
+
+</html>

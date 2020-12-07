@@ -157,3 +157,25 @@ body {
   left: 104px;
   display: flex;
 }
+
+.statistic {
+  border: 1px solid #ff00ff;
+  width: 100%;
+}
+
+.overflow {
+  width: 100%;
+  overflow: auto;
+  border: 1px solid #ff0000;
+}
+
+.thead{
+  color: darkmagenta;
+  :hover{
+    cursor: pointer;
+    color: darksalmon;
+  }
+  th{
+    border: 1px solid blueviolet;
+  }
+}

@@ -3,15 +3,12 @@ import {
     mainCard,
     mainPageFlag,
     numberOfCardPage,
+    statistic,
 } from './initial';
 import {
     cards1
 } from './cards';
-import {
-    Statistic
-} from './statistic';
 
-const statistic = new Statistic;
 
 const card = Array(8);
 
@@ -19,7 +16,7 @@ class HendlerEvent {
     constructor() {
         this.buttonStart = null;
     }
-
+    
     // eslint-disable-next-line class-methods-use-this
     playSoundCard(event) {
         if (plapGame) return;

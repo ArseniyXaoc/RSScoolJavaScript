@@ -17,20 +17,32 @@
             <label class="menu__btn" for="menu__toggle">
                 <span></span>
             </label>
-            <ul class="menu__box">                
+            <ul class="menu__box">
                 <li class="navigation__link navigation__link_top"><a href="#">Main page</a></li>
-                <li class="navigation__link card__item_sel navigation__link_s" data-page-number="1"><a href="#">Action (Set A)</a></li>
-                <li class="navigation__link card__item_sel navigation__link_s" data-page-number="2"><a href="#">Action (Set B)</a></li>
-                <li class="navigation__link card__item_sel navigation__link_s" data-page-number=""><a href="#">Action (Set C)</a></li>
-                <li class="navigation__link card__item_sel navigation__link_s" data-page-number=""><a href="#">Adjective</a></li>
-                <li class="navigation__link card__item_sel navigation__link_s" data-page-number="3"><a href="#">Animal (Set A)</a></li>
-                <li class="navigation__link card__item_sel navigation__link_s" data-page-number="4"><a href="#">Animal (Set B)</a></li>
-                <li class="navigation__link card__item_sel navigation__link_s" data-page-number="5"><a href="#">Clothes</a></li>
-                <li class="navigation__link card__item_sel navigation__link_s" data-page-number="6"><a href="#">Emotion</a></li>
+                <li class="navigation__link card__item_sel navigation__link_s" data-page-number="1"><a href="#">Action
+                        (Set A)</a></li>
+                <li class="navigation__link card__item_sel navigation__link_s" data-page-number="2"><a href="#">Action
+                        (Set B)</a></li>
+                <li class="navigation__link card__item_sel navigation__link_s" data-page-number=""><a href="#">Action
+                        (Set C)</a></li>
+                <li class="navigation__link card__item_sel navigation__link_s" data-page-number=""><a
+                        href="#">Adjective</a></li>
+                <li class="navigation__link card__item_sel navigation__link_s" data-page-number="3"><a href="#">Animal
+                        (Set A)</a></li>
+                <li class="navigation__link card__item_sel navigation__link_s" data-page-number="4"><a href="#">Animal
+                        (Set B)</a></li>
+                <li class="navigation__link card__item_sel navigation__link_s" data-page-number="5"><a
+                        href="#">Clothes</a></li>
+                <li class="navigation__link card__item_sel navigation__link_s" data-page-number="6"><a
+                        href="#">Emotion</a></li>
+                <li class="navigation__link navigation__link_statistic" data-page-number="6"><a href="#">Statistic</a>
+                </li>
             </ul>
             <div class="menu_out"></div>
         </div>
-        <div class="score-wrap"><div class="score"></div></div>
+        <div class="score-wrap">
+            <div class="score"></div>
+        </div>
         <div><button class="start-play hide">Start</button></div>
         <input type="checkbox" id='checkbox' class="checkbox">
         <label for="checkbox"></label>
@@ -77,6 +89,26 @@
             </div>
         </div>
     </main>
+
+    <div class="overflow-st hide">
+        <button class="run">run</button>
+        <table class="statistic">
+            <thead>
+                <tr class="thead">
+                    <th class="thead__word">Word</th>
+                    <th class="thead__translation">Translation</th>
+                    <th class="thead__category">Category</th>
+                    <th class="thead__clicks">Clicks</th>
+                    <th class="thead__correct">Correct</th>
+                    <th class="thead__wrong">Wrong</th>
+                    <th class="thead__errors">Errors</th>
+                </tr>
+            </thead>
+            <tbody class="tbody">
+                
+            </tbody>
+        </table>
+    </div>
 </body>
 
 </html>

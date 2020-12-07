@@ -45,7 +45,8 @@ darkening.addEventListener('click', () => {
 });
 
 statistic.clean.addEventListener('click', () => {
-    localStorage.setItem('statisticArray',null);
+    localStorage.setItem('statisticArray', null);
+    statistikShow();
 })
 
 function clearPage(elementForClean) {
@@ -68,7 +69,18 @@ const sortStatistic = (event) => {
 }
 
 const statistikShow = () => {
-    if(localStorage.getItem('statisticArray')) statistic.statisticArray = JSON.parse(localStorage.getItem('statisticArray'));
+    if (localStorage.getItem('statisticArray')) statistic.statisticArray = JSON.parse(localStorage.getItem('statisticArray'));
+    if (localStorage.getItem('statisticArray') === 'null') {
+        statistic.statisticArray = [{
+            word: '',
+            translation: '',
+            category: '',
+            click: 0,
+            correct: 0,
+            wrong: 0,
+            errors: 0,
+        }];
+    };
     clearPage(mainPadeCard);
     statisticOverflow.classList.remove('hide');
     statistic.run.addEventListener('click', sortStatistic);
@@ -104,7 +116,7 @@ function addImage(f) {
 
 function goPlay() {
     startButton.innerText = 'Repeat';
-    
+
     started = true;
     const soundPage = [...document.querySelectorAll('.audio')];
     if (soundPage[randomMassForPlay[iterator]]) soundPage[randomMassForPlay[iterator]].play();
@@ -214,7 +226,7 @@ function events() {
 
 
 function goToPageEvents(event) { // перешли на страницу
-    
+
     toggleMenu.checked = false;
     const target = event.target.closest('.card__item_sel');
     if (target === null) return;

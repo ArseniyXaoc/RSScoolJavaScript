@@ -1,17 +1,18 @@
 import {
-    HadleEvent
-} from "./HendlerEvent";
+    HadleEvent,
+} from './HendlerEvent';
 
 import {
-    EventObserver
-} from "./observer";
+    EventObserver,
+} from './observer';
 
 import {
-    Statistic
+    Statistic,
 } from './statistic';
 
-const statistic = new Statistic;
+const statistic = new Statistic();
 
+const StartButtonString = 'Start';
 const buttonTrainPlay = document.querySelector('.checkbox');
 const observer = new EventObserver();
 const mainPadeCard = document.querySelector('.main-page');
@@ -25,11 +26,11 @@ const soundFailure = document.querySelector('.audio-failure');
 const statisticLink = document.querySelector('.navigation__link_statistic');
 const statisticOverflow = document.querySelector('.overflow-st');
 const darkening = document.querySelector('.menu_out');
-const randomMassForPlay = [0, 1, 2, 3, 4, 5, 6, 7];
+const randomArrayForPlay = [0, 1, 2, 3, 4, 5, 6, 7];
 let iterator = 0;
-let mainPageFlag = true;
+let currentPageIsMainPage= true;
 let cards;
-let plapGame;
+let playTheGame;
 let started = false;
 let saveSelectedCardNumber;
 let envisionedCard;
@@ -41,32 +42,32 @@ const mainPageLink = document.querySelector('.navigation__link_top');
 const otherPageLink = document.querySelector('.menu__box');
 const score = document.querySelector('.score');
 darkening.addEventListener('click', () => {
-    toggleMenu.checked = false
+    toggleMenu.checked = false;
 });
 
 statistic.clean.addEventListener('click', () => {
     localStorage.setItem('statisticArray', null);
     statistikShow();
-})
+});
 
-function clearPage(elementForClean) {
+function clearElement(elementForClean) {
     while (elementForClean.firstChild) {
         elementForClean.removeChild(elementForClean.firstChild);
     }
 }
 
-function clear() {
+function clearPage() {
     // eslint-disable-next-line no-restricted-syntax
     for (const item of mainPadeCard.children) {
         item.firstElementChild.classList.remove('disabled');
     }
-    startButton.innerText = 'Start';
-    clearPage(score);
+    startButton.innerText = StartButtonString;
+    clearElement(score);
 }
 
 const sortStatistic = (event) => {
     statistic.sort(event);
-}
+};
 
 const statistikShow = () => {
     if (localStorage.getItem('statisticArray')) statistic.statisticArray = JSON.parse(localStorage.getItem('statisticArray'));
@@ -80,15 +81,14 @@ const statistikShow = () => {
             wrong: 0,
             errors: 0,
         }];
-    };
-    clearPage(mainPadeCard);
+    }
+    clearElement(mainPadeCard);
     statisticOverflow.classList.remove('hide');
     statistic.run.addEventListener('click', sortStatistic);
-    statistic.staticAddToPage(); // статистика
-}
+    statistic.staticAddToPage(); 
+};
 
 statisticLink.addEventListener('click', statistikShow);
-
 
 function addImage(f) {
     const star = document.createElement('img');
@@ -100,72 +100,77 @@ function addImage(f) {
     const failure = document.createElement('img');
     failure.setAttribute('src', './img/failure.jpg');
     switch (f) {
-        case 'win':
-            return starWin;
-        case 'loose':
-            return star;
-        case 'success':
-            return success;
-        case 'failure':
-            return failure;
-        default:
-            break;
+    case 'win':
+        return starWin;
+    case 'loose':
+        return star;
+    case 'success':
+        return success;
+    case 'failure':
+        return failure;
+    default:
+        break;
     }
     return null;
 }
 
-function goPlay() {
+function startGame() {
     startButton.innerText = 'Repeat';
 
     started = true;
     const soundPage = [...document.querySelectorAll('.audio')];
-    if (soundPage[randomMassForPlay[iterator]]) soundPage[randomMassForPlay[iterator]].play();
-    envisionedCard = randomMassForPlay[iterator];
+    if (soundPage[randomArrayForPlay[iterator]]) soundPage[randomArrayForPlay[iterator]].play();
+    envisionedCard = randomArrayForPlay[iterator];
 }
 
 function endingTheGame(result) {
-    clearPage(mainPadeCard);
+    clearElement(mainPadeCard);
     if (result === 'failure') soundFailure.play();
     else soundSuccess.play();
     mainPadeCard.prepend(addImage(result));
     setTimeout(() => {
-        clearPage(score);
+        clearElement(score);
         mainPageLink.click();
         buttonTrainPlay.click();
-    }, 3000)
+    }, 3000);
 }
 
-const StartGameEvent = function clickStartGameEvent(event) {
+const startGameEvent = function clickStartGameEvent(event) {
     if (started) {
         const saveSelectedCard = event.target.closest('.flip-container');
         saveSelectedCardNumber = event.target.closest('.flip-container').dataset.number;
         const textInCard = saveSelectedCard.firstElementChild.children[1].firstElementChild.innerHTML;
         const textInCardTranslate = saveSelectedCard.firstElementChild.children[2].firstElementChild.innerText;
+        const maximumNumbersCards = 8;
 
         if (Number(saveSelectedCardNumber) === envisionedCard) {
-            statistic.statisticCashWord(textInCard, textInCardTranslate, numberOfCardPage, 0, 1, 0);
-            console.log(textInCard, textInCardTranslate);
-            score.prepend(addImage("win"));
+            const click = 0;
+            const correct = 1;
+            const wrong = 0;
+            statistic.statisticAddWord(textInCard, textInCardTranslate, numberOfCardPage, click, correct, wrong);
+            score.prepend(addImage('win'));
             soundCorrect.play();
             iterator += 1;
             saveSelectedCardNumber = null;
             saveSelectedCard.classList.add('disabled');
             setTimeout(() => {
-                goPlay();
+                startGame();
             }, 1000);
 
-            if (iterator === 8) {
-                iterator = 0
+            if (iterator === maximumNumbersCards) {
+                iterator = 0;
                 if (fail) {
                     endingTheGame('failure');
                 } else {
                     endingTheGame('success');
                 }
             }
-
         } else {
-            statistic.statisticCashWord(textInCard, textInCardTranslate, numberOfCardPage, 0, 0, 1);
-            score.prepend(addImage("loose"));
+            const click = 0;
+            const correct = 0;
+            const wrong = 1;
+            statistic.statisticAddWord(textInCard, textInCardTranslate, numberOfCardPage, click, correct, wrong);
+            score.prepend(addImage('loose'));
             soundError.play();
             fail = true;
         }
@@ -173,34 +178,31 @@ const StartGameEvent = function clickStartGameEvent(event) {
 };
 
 function playGame() { // игра
-    clear();
-    mainPadeCard.addEventListener('click', StartGameEvent);
-    startButton.addEventListener('click', goPlay);
+    clearPage();
+    mainPadeCard.addEventListener('click', startGameEvent);
+    startButton.addEventListener('click', startGame);
 }
 
 buttonTrainPlay.addEventListener('click', () => {
-    mainPadeCard.removeEventListener('click', StartGameEvent);
-    if (mainPageFlag) document.querySelector('.start-play').style.visibility = 'hidden';
+    mainPadeCard.removeEventListener('click', startGameEvent);
+    if (currentPageIsMainPage) document.querySelector('.start-play').classList.toggle('.hide');
     document.querySelector('.start-play').classList.toggle('hide');
     iterator = 0;
-    randomMassForPlay.sort(() => Math.random() - 0.5);
-    if (!plapGame) {
+    randomArrayForPlay.sort(() => Math.random() - 0.5);
+    if (!playTheGame) {
         playGame();
         observer.subscribe(HadleEvent.flipAllCard);
         observer.broadcast(cards);
-        plapGame = !plapGame;
+        playTheGame = !playTheGame;
     } else {
         observer.broadcast(cards);
         observer.unsubscribe(HadleEvent.flipAllCard);
-        plapGame = !plapGame
+        playTheGame = !playTheGame;
     }
 });
 
-
-
-clearPage(cardMainContainer);
+clearElement(cardMainContainer);
 cardMainContainer.appendChild(mainPadeCard);
-
 
 function events() {
     cards = [...document.querySelectorAll('.flipper_font')];
@@ -215,24 +217,24 @@ function events() {
                 HadleEvent.flipOneCard(event);
             }
         });
-    })
+    });
 }
 
-function goToPage(part, page) { // переход на страницу
+function goToPage(part, page) {
     statisticOverflow.classList.add('hide');
-    clearPage(page);
+    clearElement(page);
     HadleEvent.createThemeCard(part, page);
 }
 
-function goToPageEvents(event) { // перешли на страницу
+function goToPageEvents(event) {
     toggleMenu.checked = false;
-    const target = event.target.closest('.card__item_sel');
+    const target = event.target.closest('.card__item_selector');
     if (target === null) return;
     numberOfCardPage = target.dataset.pageNumber;
     goToPage(numberOfCardPage, mainPadeCard);
     events();
-    mainPageFlag = false;
-    if (!mainPageFlag) document.querySelector('.start-play').style.visibility = 'visible';
+    currentPageIsMainPage= false;
+    if (!currentPageIsMainPage) document.querySelector('.start-play').style.visibility = 'visible';
     mainPadeCard.removeEventListener('click', goToPageEvents);
     observer.broadcast(cards);
 }
@@ -243,21 +245,20 @@ otherPageLink.addEventListener('click', goToPageEvents);
 mainPageLink.addEventListener('click', () => {
     statistic.run.removeEventListener('click', sortStatistic);
     statisticOverflow.classList.add('hide');
-    clearPage(mainPadeCard);
+    clearElement(mainPadeCard);
     mainCard.forEach((item) => {
         mainPadeCard.appendChild(item);
-    })
-    mainPageFlag = true;
-    if (mainPageFlag) document.querySelector('.start-play').style.visibility = 'hidden';
+    });
+    currentPageIsMainPage= true;
+    if (currentPageIsMainPage) document.querySelector('.start-play').style.visibility = 'hidden';
     mainPadeCard.addEventListener('click', goToPageEvents);
-})
-
+});
 
 export {
-    plapGame,
+    playTheGame,
     cards,
     mainCard,
-    mainPageFlag,
+    currentPageIsMainPage,
     numberOfCardPage,
     statistic,
-}
+};

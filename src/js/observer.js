@@ -3,19 +3,17 @@ class EventObserver {
         this.observes = [];
     }
 
-    subscribe(fn){
+    subscribe(fn) {
         this.observes.push(fn);
     }
 
-    unsubscribe(fn){
-       this.observes = this.observes.filter((subscriber) => subscriber !==fn);
+    unsubscribe(fn) {
+        this.observes = this.observes.filter((subscriber) => subscriber !== fn);
     }
 
-    broadcast(data){        
+    broadcast(data) {
         this.observes.forEach((subscriber) => subscriber(data));
     }
 } // Подписаться
 
-export { EventObserver};
-// observer.unsubscribe(fn); // Отписаться
-// observer.broadcast(); // Вызов подписавшихся
+export { EventObserver };

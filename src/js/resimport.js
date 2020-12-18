@@ -138,5 +138,3 @@ import '../img/climb.jpg';
 import '../img/cut.jpg';
 import '../img/dig.jpg';
 import '../img/listen.jpg';
-
-

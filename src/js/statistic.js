@@ -9,7 +9,7 @@ class Statistic {
             correctRevers: false,
             wrongRevers: false,
             wrongErrors: false,
-        }
+        };
         this.statisticArray = [{
             word: '',
             translation: '',
@@ -19,7 +19,7 @@ class Statistic {
             wrong: 0,
             errors: 0,
         }];
-        
+
         this.clean = document.querySelector('.clean');
         this.run = document.querySelector('.statistic');
         this.statisticPageObject = document.querySelector('.statistic');
@@ -27,22 +27,18 @@ class Statistic {
         this.statisticThead = document.querySelector('.thead');
     }
 
-    // eslint-disable-next-line class-methods-use-this
 
 
-    statisticCashWord(word, translation, category, click, correct, wrong) {
-        localStorage.setItem('statisticArray', JSON.stringify(this.statisticArray));
+    statisticAddWord(word, translation, category, click, correct, wrong) {
         
 
-        const pusheObject = this.statisticArray.find(item => item.word === word)
+        const pusheObject = this.statisticArray.find((item) => item.word === word);
 
         if (pusheObject) {
             pusheObject.click += click;
             pusheObject.correct += correct;
             pusheObject.wrong += wrong;
             pusheObject.errors = Math.floor(pusheObject.wrong / (pusheObject.correct + pusheObject.wrong) * 100);
-            console.log(pusheObject);
-
         } else {
             this.statisticArray.push({
                 word,
@@ -76,21 +72,18 @@ class Statistic {
                 errors: 0,
             });
         }
-
-        console.log(this.statisticArray);
-        console.log(this.statisticArray.find(item => item.word === word));
+        localStorage.setItem('statisticArray', JSON.stringify(this.statisticArray));
     }
 
-    clearPage(elementForClean) {
+    clearElement(elementForClean) {
         while (elementForClean.firstChild) {
             elementForClean.removeChild(elementForClean.firstChild);
         }
     }
 
     staticAddToPage() {
-        
-        if (this.statisticTbody) this.clearPage(this.statisticTbody);
-        this.statisticArray.forEach(element => {
+        if (this.statisticTbody) this.clearElement(this.statisticTbody);
+        this.statisticArray.forEach((element) => {
             const newRow = this.statisticTbody.insertRow();
             const word = document.createElement('td');
             const translation = document.createElement('td');
@@ -114,11 +107,9 @@ class Statistic {
             newRow.appendChild(wrong);
             newRow.appendChild(errors);
         });
-        
     }
 
     sort(param) {
-
         if (param.target.closest('.thead__word')) this.wordRevers = !this.wordRevers;
         if (param.target.closest('.thead__translation')) this.translateReverse = !this.translateReverse;
         if (param.target.closest('.thead__clicks')) this.clickRevers = !this.clickRevers;
@@ -134,8 +125,8 @@ class Statistic {
                 s = b.word.slice(0, 1);
 
                 if (this.wordRevers) {
-                    return f > s ? 1 : -1
-                };
+                    return f > s ? 1 : -1;
+                }
                 return f > s ? -1 : 1;
             }
 
@@ -144,8 +135,8 @@ class Statistic {
                 s = b.translation.slice(0, 1);
 
                 if (this.translateReverse) {
-                    return f > s ? 1 : -1
-                };
+                    return f > s ? 1 : -1;
+                }
                 return f > s ? -1 : 1;
             }
 
@@ -154,8 +145,8 @@ class Statistic {
                 s = b.click;
 
                 if (this.clickRevers) {
-                    return f > s ? 1 : -1
-                };
+                    return f > s ? 1 : -1;
+                }
                 return f > s ? -1 : 1;
             }
 
@@ -163,8 +154,8 @@ class Statistic {
                 f = a.correct;
                 s = b.correct;
                 if (this.correctRevers) {
-                    return f > s ? 1 : -1
-                };
+                    return f > s ? 1 : -1;
+                }
                 return f > s ? -1 : 1;
             }
 
@@ -172,8 +163,8 @@ class Statistic {
                 f = a.wrong;
                 s = b.wrong;
                 if (this.wrongRevers) {
-                    return f > s ? 1 : -1
-                };
+                    return f > s ? 1 : -1;
+                }
                 return f > s ? -1 : 1;
             }
 
@@ -181,20 +172,29 @@ class Statistic {
                 f = a.errors;
                 s = b.errors;
                 if (this.wrongErrors) {
-                    return f > s ? 1 : -1
-                };
+                    return f > s ? 1 : -1;
+                }
                 return f > s ? -1 : 1;
             }
-        })
-
-
-
-        console.log(this.statisticArray);
+        });
         this.staticAddToPage(); // статистика
-        
     }
+
+    staticClean() {
+        this.statisticArray = [{
+            word: '',
+            translation: '',
+            category: '',
+            click: 0,
+            correct: 0,
+            wrong: 0,
+            errors: 0,
+        }];
+    }
+
+
 }
 
 export {
-    Statistic
+    Statistic,
 };

@@ -30,7 +30,7 @@ class Statistic {
 
 
     statisticAddWord(word, translation, category, click, correct, wrong) {
-        
+
 
         const pusheObject = this.statisticArray.find((item) => item.word === word);
 
@@ -109,6 +109,13 @@ class Statistic {
         });
     }
 
+    returnSortParametr(parametr, firstElement, secondElement) {
+        if (parametr) {
+            return firstElement > secondElement ? 1 : -1;
+        }
+        return firstElement > secondElement ? -1 : 1;
+    }
+
     sort(param) {
         if (param.target.closest('.thead__word')) this.wordRevers = !this.wordRevers;
         if (param.target.closest('.thead__translation')) this.translateReverse = !this.translateReverse;
@@ -118,63 +125,37 @@ class Statistic {
         if (param.target.closest('.thead__errors')) this.wrongErrors = !this.wrongErrors;
 
         this.statisticArray.sort((a, b) => {
-            let f;
-            let s;
-            if (param.target.closest('.thead__word')) {
-                f = a.word.slice(0, 1);
-                s = b.word.slice(0, 1);
-
-                if (this.wordRevers) {
-                    return f > s ? 1 : -1;
-                }
-                return f > s ? -1 : 1;
-            }
-
-            if (param.target.closest('.thead__translation')) {
-                f = a.translation.slice(0, 1);
-                s = b.translation.slice(0, 1);
-
-                if (this.translateReverse) {
-                    return f > s ? 1 : -1;
-                }
-                return f > s ? -1 : 1;
-            }
-
-            if (param.target.closest('.thead__clicks')) {
-                f = a.click;
-                s = b.click;
-
-                if (this.clickRevers) {
-                    return f > s ? 1 : -1;
-                }
-                return f > s ? -1 : 1;
-            }
-
-            if (param.target.closest('.thead__correct')) {
-                f = a.correct;
-                s = b.correct;
-                if (this.correctRevers) {
-                    return f > s ? 1 : -1;
-                }
-                return f > s ? -1 : 1;
-            }
-
-            if (param.target.closest('.thead__wrong')) {
-                f = a.wrong;
-                s = b.wrong;
-                if (this.wrongRevers) {
-                    return f > s ? 1 : -1;
-                }
-                return f > s ? -1 : 1;
-            }
-
-            if (param.target.closest('.thead__errors')) {
-                f = a.errors;
-                s = b.errors;
-                if (this.wrongErrors) {
-                    return f > s ? 1 : -1;
-                }
-                return f > s ? -1 : 1;
+            let firstElement;
+            let secondElement;
+            const key = true;
+            const closest = (item) => param.target.closest(item);
+            switch (key) {
+                case closest('.thead__word'):
+                    firstElement = a.word.slice(0, 1);
+                    secondElement = b.word.slice(0, 1);
+                    return this.returnSortParametr(this.wordRevers, firstElement, secondElement);
+                case closest('.thead__translation'):
+                    firstElement = a.translation.slice(0, 1);
+                    secondElement = b.translation.slice(0, 1);
+                    return this.returnSortParametr(this.wordRevers, firstElement, secondElement);
+                case closest('.thead__clicks'):
+                    firstElement = a.click;
+                    secondElement = b.click;
+                    return this.returnSortParametr(this.clickRevers, firstElement, secondElement);
+                case closest('.thead__correct'):
+                    firstElement = a.correct;
+                    secondElement = b.correct;
+                    return this.returnSortParametr(this.correctRevers, firstElement, secondElement);
+                case closest('.thead__wrong'):
+                    firstElement = a.wrong;
+                    secondElement = b.wrong;
+                    return this.returnSortParametr(this.wrongRevers, firstElement, secondElement);
+                case closest('.thead__errors'):
+                    firstElement = a.errors;
+                    secondElement = b.errors;
+                    return this.returnSortParametr(this.wrongErrors, firstElement, secondElement);
+                default:
+                    break;
             }
         });
         this.staticAddToPage(); // статистика

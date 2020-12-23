@@ -128,6 +128,7 @@ class GlobalCases {
     this.upDateSpan = {};
     this.stateSpan = {};
     this.valueSpan = {};
+    this.date = '';
     this.createHTML();
   }
 
@@ -140,13 +141,19 @@ class GlobalCases {
   }
 
   showContent(data, state, date) {
-    this.upDateSpan.innerText = `updated ${date}`;
+    this.dateParse(date);
+    this.upDateSpan.innerText = `updated ${this.date}`;
     this.allCountriesData = data;
     const stateBody = state.split('Total').join('');
     const newCases = 'New'.concat(stateBody);
     const totalCases = 'Total'.concat(stateBody);
     this.valueSpan.innerText = `${this.allCountriesData[newCases]} / ${this.allCountriesData[totalCases]}`;
     this.stateSpan.innerText = `new ${stateBody.toLowerCase()} / total ${stateBody.toLowerCase()}`;
+  }
+
+  dateParse(date) {
+    const d = new Date(date);
+    this.date = `${d.getHours()}:${d.getMinutes()} ${d.getDate()}.${d.getMonth() + 1}.${d.getFullYear()}`;
   }
 
 }

@@ -451,7 +451,6 @@ class ChartComponent {
   updatePopulationData(populationData) {
     this.populationData = populationData;
     this.checkbox100000.addEventListener('change', () => {
-      console.log(this.populationData);
       this.getData(this.currentCountry, this.populationData);
     });
   }

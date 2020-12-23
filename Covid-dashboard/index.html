@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Covid-dashboard-2020</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@500;600&display=swap" rel="stylesheet">
+<link href="style.css" rel="stylesheet"></head>
+
+<body>
+    <main>
+        <section class="left-sidebar">
+            <section class="globalCases"></section>
+            <section class="list"></section>
+        </section>
+        <section class="center-section">
+            <section class="map" id="map"></section>
+        </section>
+        <section class="right-sidebar">
+            <section class="table">
+                <div class="table__switch switch">
+                    <div class="switch__work">
+                        <div><span class="total selected">Total</span> / <span class="last-day">Last Day</span>
+                            <input class="switch__input amount-checkbox" type="checkbox" id="amount-checkbox" />
+                            <label class="switch__label" for="amount-checkbox"></label>
+                        </div>
+                        <div>
+                            <span class="global selected">Global</span> /<span class="per-one-hundred">100k
+                                population</span>
+                            <input class="switch__input indicator-checkbox" type="checkbox" id="indicator-checkbox" />
+                            <label class="switch__label" for="indicator-checkbox"></label>
+                        </div>
+                    </div>
+                    <div class="switch__main-text">Global</div>
+                </div>
+                <div class="table__indicators">
+                    <div class='table__indicators-wrap'>
+                        <div class="table__sick"><span>Confirmed</span></div>
+                        <div class="table__death"><span>Deaths</span></div>
+                        <div class="table__get-well"><span>Recovered</span></div>
+                    </div>
+                    <div class="table__country-list">
+                        <div class="table__country"><span>Country</span>
+                        </div>
+                        <div class="table__country-sick"><span>Confirmed</span>
+                        </div>
+                        <div class="table__country-death"><span>Deaths</span>
+                        </div>
+                        <div class="table__countryget-well"><span>Recovered</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="chart"></section>
+        </section>
+    </main>
+    <footer>
+        <div class="contacts">
+            <h4>Contacts:</h4>
+            <a class="github-link" href="https://github.com/ArseniyXaoc">Arseniy</a>
+            <a class="github-link"href="https://github.com/MariyaSin">Mariya</a>
+        </div>
+    <img src="./assets/rs_school_js.svg" alt="ico">
+    <a href="https://rs.school/js/">More about RS courses</a>
+    </footer>
+<script src="main.js"></script></body>
+
+</html>

@@ -1,0 +1,76 @@
+@import './valiables';
+@import './list.scss';
+@import './globalCases';
+@import './map.scss';
+@import '~leaflet/dist/leaflet.css';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: $main-text-color;
+}
+
+body {
+    font-size: 14px;
+    font-family: 'Maven Pro', sans-serif;
+}
+
+h2 {
+    font-size: 1.8rem;
+}
+
+a {
+    text-decoration: none;
+    color: $base-violet-color;
+    transition: color .3s ease;
+    &:hover {
+        color: $white;
+    }
+}
+
+.table, .chart, .map, .list, .globalCases {
+    background: $violet_background;
+    text-align: center;
+    margin: 0 5px 5px 0;
+}
+
+main {
+    height: calc(100% - 50px);
+    background: $gary-background;
+    display: flex;
+    padding: 10px;
+}
+
+.map {
+    height: 100%;
+}
+
+.table, .chart {
+    height: 50%;
+}
+
+footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 50px;
+    background: $dark-gray-background;
+
+    .contacts {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 20%;
+    }
+
+    img {
+        height: 80%;
+    }
+
+    .github-link {
+        margin-right: 5px;
+    }
+}
+
+@import './adaptive.scss';

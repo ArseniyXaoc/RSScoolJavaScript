@@ -1,0 +1,41 @@
+{
+  "name": "covid-dashboard",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack serve",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArseniyXaoc/Covid-dashboard.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ArseniyXaoc/Covid-dashboard/issues"
+  },
+  "homepage": "https://github.com/ArseniyXaoc/Covid-dashboard#readme",
+  "dependencies": {
+    "@babel/core": "^7.12.9",
+    "babel-loader": "^8.2.2",
+    "chart.js": "^2.9.4",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "leaflet": "^1.7.1",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.10.0",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "devDependencies": {
+    "css-loader": "^5.0.1",
+    "eslint": "^7.15.0",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^4.5.0",
+    "mini-css-extract-plugin": "^1.3.2",
+    "sass": "^1.30.0",
+    "sass-loader": "^10.1.0",
+    "webpack-cli": "^4.2.0"
+  }
+}

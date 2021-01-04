@@ -1,0 +1,56 @@
+@media only screen and (min-width: 901px) {
+    body, html {
+        height: 100vh;
+    }
+
+    .left-sidebar {
+        width: 20%;
+    }
+
+    .center-section {
+        width: 40%;
+    }
+
+    .right-sidebar {
+        width: 40%;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    html, body {
+        height: 200vh;
+    }
+
+    main {
+        flex-wrap: wrap;
+    }
+
+    .left-sidebar {
+        width: 30%;
+        height: 110vh;
+    }
+
+    .center-section {
+        width: 100%;
+        height: calc(85vh - 70px);
+        order: 3;
+    }
+
+    .right-sidebar {
+        width: 70%;
+        height: 110vh;
+        order: 2;
+    }
+
+    div.table__indicators-wrap {
+        font-size: 1.2rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    .globalCases_value, .globalCases_state {
+        font-size: 1rem;
+    }
+}

@@ -1,0 +1,14 @@
+@import './valiables';
+
+.map_legend {
+    background-color: $white;
+    opacity: .8;
+    .legend_circle {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        margin: 0 10px;
+        border-radius: 50%;
+        background-color: $red;
+    }
+}
